@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+
+/* CORES 
+#1F3467 - AZUL ESCURO
+#3A75B7 - AZUL MEDIO
+#D2E9EF - AZUL CLARO
+#D7201A - VERMELHO CLARO
+#BB1C17 - VERMELHO ESCURO
+#431551 - ROXO ESCURO
+#883E8E - ROXO CLARO
+#105B1F - VERDE ESCURO
+#25803B - VERDE MEDIO
+#7DC058 - VERDE CLARO
+#F7D827 - AMARELO
+*/
+
+
+
+
 body {
   margin: 0;
   padding: 0;
@@ -25,16 +43,25 @@ body {
   border-bottom: 2px solid #32b9cd;
   background-image: url('../assets/imgs/holder-banana1.png');
   background-size: 500px;
-  background-position: bottom;
+  background-position: top;
+
+  
 }
 
 .header .container {
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
   display: flex;
   width: 100%;
   margin: auto;
+}
+
+ .irmaozinho {
+  position: absolute;
+  left: 20px;
+  height: 70px;
+  width: 70px;
 }
 
 .header a {
@@ -71,9 +98,10 @@ body {
 .banner {
   height: var(--tamanho-banner);
   color: white;
-  background-image: url('../assets/imgs/fundo-banner.png');
+  background-image: url('../assets/imgs/fundo-banner.png'); 
   background-size: 1500px;
   background-position: center;
+  background-color: #1F3467;
 
 }
 
@@ -87,13 +115,12 @@ body {
 
 }
 
-.banner .diario {
-  color: #fee149;
-  font-size: 80px;
-
+.banner .banana {
+  color: #BB1C17;
+  font-size: 100px;
+  position: absolute;
   margin-top: 320px;
   margin-bottom: 200px;
-
   display: flex;
   gap: 10px;
 }
@@ -101,7 +128,6 @@ body {
 .de_um {
   color: #d82424;
   font-size: 40px;
-
   position: absolute;
   margin-top: 320px;
   margin-bottom: 350px;
@@ -109,16 +135,36 @@ body {
   gap: 10px;
 }
 
-.banner .banana {
-  color: #d82424;
-  font-size: 100px;
-
+.banner .diario {
+  color: #F7D827;
+  font-size: 80px;
+  position: absolute;
+  margin-top: 320px;
+  margin-bottom: 500px;
   display: flex;
   gap: 10px;
 
 }
 
+.familia {
+  position: absolute;
+  left: 30px;
+  height: 200px;
+  width: 300px;
+  top: 200px;
+  border: 3px solid #adadad;
+  border-radius: 10px;
+  
+}
 
+.fita-adesiva {
+    position: absolute;
+  left: 10px;
+  height: 100px;
+  width: 100px;
+  top: 150px;
+ 
+}
 
 
 /* MISSÃO VISÃO VALORES */
