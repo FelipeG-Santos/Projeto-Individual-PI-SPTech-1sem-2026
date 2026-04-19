@@ -16,7 +16,6 @@
 */
 
 
-
 /* GERAL -------------------------------------------------------------------------------------------*/
 body {
   margin: 0;
@@ -42,12 +41,10 @@ body {
 
 .header {
   height: var(--tamanho-header);
-  border-bottom: 2px solid #32b9cd;
+  border-bottom: 2px solid #3A75B7;
   background-image: url('../assets/imgs/holder-banana1.png');
   background-size: 500px;
   background-position: top;
-
-  
 }
 
 .header .container {
@@ -59,7 +56,7 @@ body {
   margin: auto;
 }
 
- .irmaozinho {
+.irmaozinho {
   position: absolute;
   left: 20px;
   height: 70px;
@@ -68,27 +65,33 @@ body {
 
 .header a {
   text-decoration: none;
-  color: #e3b062;
+  color: #3A75B7;
 }
 
-.agora {
-  font-weight: 800;
-}
 
 .navbar {
+  font-weight: 800;
   width: 300px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   list-style: none;
-  color: #e3b062;
+  color: #3A75B7;
 
 }
 
 .titulo {
-  color: #32b9cd;
+  color: #D7201A;
   width: fit-content;
   font-weight: 500;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(0, 0, 0)
+}
+
+.diario-header {
+  color: #F7D827;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(0, 0, 0)
 }
 
 .header h1 {
@@ -100,11 +103,10 @@ body {
 .banner {
   height: var(--tamanho-banner);
   color: white;
-  background-image: url('../assets/imgs/fundo-banner.png'); 
+  background-image: url('../assets/imgs/fundo-banner.png');
   background-size: 1500px;
   background-position: center;
   background-color: #1F3467;
-
 }
 
 .banner .container {
@@ -113,8 +115,6 @@ body {
   height: 60%;
   display: flex;
   flex-direction: column;
-
-
 }
 
 .banner .banana {
@@ -125,6 +125,8 @@ body {
   margin-bottom: 200px;
   display: flex;
   gap: 10px;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: rgb(255, 255, 255)
 }
 
 .de_um {
@@ -135,17 +137,21 @@ body {
   margin-bottom: 350px;
   display: flex;
   gap: 10px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(255, 255, 255)
 }
 
 .banner .diario {
   color: #F7D827;
   font-size: 80px;
+  font-family: Georgia, serif;
   position: absolute;
   margin-top: 320px;
   margin-bottom: 500px;
   display: flex;
   gap: 10px;
-
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black
 }
 
 .familia {
@@ -156,21 +162,19 @@ body {
   top: 200px;
   border: 3px solid #adadad;
   border-radius: 10px;
-  
 }
 
 .fita-adesiva {
-    position: absolute;
+  position: absolute;
   left: 10px;
   height: 100px;
   width: 100px;
   top: 150px;
- 
 }
 
 .greg-papel {
   position: absolute;
- right: 70px;
+  right: 70px;
   height: 180px;
   width: 90px;
   top: 225px;
@@ -178,39 +182,35 @@ body {
   border-radius: 10px;
 }
 
-
 /* SOBRE O PROJETO -------------------------------------------------------------------------------------------*/
 
 .social {
- height: 500px;
+  height: 700px;
   display: flex;
-    background-image: url('../assets/imgs/fundo-folha.png');
-   background-size: 1200px;
-     background-position: right;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-   
+  background-image: url('../assets/imgs/fundo-folha.png');
+  background-size: 1200px;
+  background-position: right;
+  justify-content: center;
+  align-items: center;
 }
 
 .social .boxes {
   display: flex;
-  justify-content:space-around;
+  justify-content: space-around;
   width: 90%;
   height: 80%;
   padding: 10px 0;
   flex-direction: row;
-background-color: #D7201A;
-border: 3px solid #BB1C17;
-  border-radius: 10px; 
-
+  background-color: #1F3467;
+  border: 3px solid #000;
+  border-radius: 10px;
 }
 
 .social p {
   text-align: justify;
-  background-color: #f5ca55;
-  border-radius:  10px;
-  border: 3px solid #BB1C17;
+  background-color: #BB1C17;
+  border-radius: 10px;
+  border: 3px solid #000;
   padding: 20px;
 }
 
@@ -219,78 +219,122 @@ border: 3px solid #BB1C17;
   flex-direction: column;
   align-items: center;
   width: 40%;
-  
 }
 
 .greg-famoso {
   right: 10px;
   height: 200px;
-  width: 300px;
+  width: 320px;
   top: 20px;
   border: 3px solid #adadad;
   border-radius: 10px;
-  
 }
 
 .sobre_projeto {
   color: #F7D827;
- 
 }
 
 /* SOBRE MIM -------------------------------------------------------------------------------------------*/
 .container-sobre-mim {
- height: 500px;
+  height: 700px;
   display: flex;
-    background-image: url('../assets/imgs/fundo-folha.png');
-   background-size: 1200px;
-     background-position: right;
-    justify-content: center;
-    align-items: center;
-   
+  background-image: url('../assets/imgs/fundo-folha.png');
+  background-size: 1200px;
+  background-position: right;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-sobre-mim .boxes {
   display: flex;
-  justify-content:space-around;
+  justify-content: space-around;
   width: 90%;
   height: 80%;
   padding: 10px 0;
   flex-direction: row;
-background-color: #D7201A;
-border: 3px solid #BB1C17;
-  border-radius: 10px; 
-
+  background-color: #BB1C17;
+  border: 3px solid #000;
+  border-radius: 10px;
 }
 
 .container-sobre-mim p {
   text-align: justify;
   background-color: #f5ca55;
-  border-radius:  10px;
+  border-radius: 10px;
   border: 3px solid #BB1C17;
   padding: 20px;
 }
 
 .sobre_mim {
   color: #F7D827;
- 
 }
 
-/* FOOTER */
+/* CURIOSIDADES -------------------------------------------------------------------------------------------*/
+.container-curiosidades {
+  height: 1500px;
+  display: flex;
+  background-image: url('../assets/imgs/fundo-folha.png');
+  background-size: 1200px;
+  background-position: right;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-curiosidades .boxes {
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  height: 80%;
+  padding: 10px 0;
+  flex-direction: row;
+  background-color: #1F3467;
+  border: 3px solid #000000;
+  border-radius: 10px;
+}
+
+.container-curiosidades p {
+  text-align: justify;
+  background-color: #BB1C17;
+  border-radius: 10px;
+  border: 3px solid #000;
+  padding: 20px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+}
+
+.greg-famoso {
+  right: 10px;
+  height: 200px;
+  width: 320px;
+  top: 20px;
+  border: 3px solid #adadad;
+  border-radius: 10px;
+}
+
+.curiosidades {
+  color: #F7D827;
+}
+
+/* FOOTER-------------------------------------------------------------------------------------------*/
 
 .footer {
   height: 150px;
   color: #fff;
   display: flex;
   font-size: 15px;
-  background-image: url('../assets/imgs/fundo-banner.png'); 
+  background-image: url('../assets/imgs/fundo-banner.png');
   background-size: 1500px;
   background-position: center;
-  margin-top: 10px;
   justify-content: center;
   text-align: center;
 }
 
-/* LOGIN */
+/* LOGIN -------------------------------------------------------------------------------------------*/
 
 .login {
   height: var(--tamanho-login);
@@ -388,7 +432,7 @@ border: 3px solid #BB1C17;
   display: none
 }
 
-/* FORMULARIO */
+/* FORMULARIO -------------------------------------------------------------------------------------------*/
 
 .alerta_erro {
   display: flex;
@@ -455,7 +499,7 @@ input {
   width: 50px;
 }
 
-/* SIMULADOR */
+/* SIMULADOR -------------------------------------------------------------------------------------------*/
 
 .simulador {
   color: white;
@@ -467,7 +511,7 @@ input {
   height: var(--tamanho-simulador);
 }
 
-/* ALERTA */
+/* ALERTA -------------------------------------------------------------------------------------------*/
 
 #alerta {
   position: absolute;
