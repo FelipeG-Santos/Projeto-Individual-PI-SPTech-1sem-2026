@@ -17,12 +17,12 @@
 
 
 
-
+/* GERAL -------------------------------------------------------------------------------------------*/
 body {
   margin: 0;
   padding: 0;
   font-family: 'WimpyKid', 'Comic Sans MS', cursive;
-  background-color: black;
+  background-color: rgb(0, 0, 0);
 }
 
 :root {
@@ -37,6 +37,8 @@ body {
   position: relative;
 
 }
+
+/* HEADER -------------------------------------------------------------------------------------------*/
 
 .header {
   height: var(--tamanho-header);
@@ -93,7 +95,7 @@ body {
   margin: 0;
 }
 
-/* BANNER */
+/* BANNER -------------------------------------------------------------------------------------------*/
 
 .banner {
   height: var(--tamanho-banner);
@@ -126,7 +128,7 @@ body {
 }
 
 .de_um {
-  color: #d82424;
+  color: #BB1C17;
   font-size: 40px;
   position: absolute;
   margin-top: 320px;
@@ -166,56 +168,126 @@ body {
  
 }
 
+.greg-papel {
+  position: absolute;
+ right: 70px;
+  height: 180px;
+  width: 90px;
+  top: 225px;
+  border: 3px solid #adadad;
+  border-radius: 10px;
+}
 
-/* MISSÃO VISÃO VALORES */
+
+/* SOBRE O PROJETO -------------------------------------------------------------------------------------------*/
 
 .social {
-  background-color: #e5e5e5;
+ height: 500px;
   display: flex;
+    background-image: url('../assets/imgs/fundo-folha.png');
+   background-size: 1200px;
+     background-position: right;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+   
 }
 
-.social .container {
-  justify-content: center;
-}
-
-.box img {
-  width: 170px;
-}
-
-.social .container .boxes {
+.social .boxes {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 30px 0;
+  justify-content:space-around;
+  width: 90%;
+  height: 80%;
+  padding: 10px 0;
+  flex-direction: row;
+background-color: #D7201A;
+border: 3px solid #BB1C17;
+  border-radius: 10px; 
+
 }
 
 .social p {
-  text-align: center;
+  text-align: justify;
+  background-color: #f5ca55;
+  border-radius:  10px;
+  border: 3px solid #BB1C17;
+  padding: 20px;
 }
 
 .box {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 40%;
+  
+}
+
+.greg-famoso {
+  right: 10px;
+  height: 200px;
+  width: 300px;
+  top: 20px;
+  border: 3px solid #adadad;
+  border-radius: 10px;
+  
+}
+
+.sobre_projeto {
+  color: #F7D827;
+ 
+}
+
+/* SOBRE MIM -------------------------------------------------------------------------------------------*/
+.container-sobre-mim {
+ height: 500px;
+  display: flex;
+    background-image: url('../assets/imgs/fundo-folha.png');
+   background-size: 1200px;
+     background-position: right;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.container-sobre-mim .boxes {
+  display: flex;
+  justify-content:space-around;
+  width: 90%;
+  height: 80%;
+  padding: 10px 0;
+  flex-direction: row;
+background-color: #D7201A;
+border: 3px solid #BB1C17;
+  border-radius: 10px; 
+
+}
+
+.container-sobre-mim p {
+  text-align: justify;
+  background-color: #f5ca55;
+  border-radius:  10px;
+  border: 3px solid #BB1C17;
+  padding: 20px;
+}
+
+.sobre_mim {
+  color: #F7D827;
+ 
 }
 
 /* FOOTER */
 
 .footer {
-  background-color: #32b9cd;
   height: 150px;
   color: #fff;
   display: flex;
   font-size: 15px;
-}
-
-.footer .container {
+  background-image: url('../assets/imgs/fundo-banner.png'); 
+  background-size: 1500px;
+  background-position: center;
+  margin-top: 10px;
   justify-content: center;
   text-align: center;
-}
-
-.footer .container .version {
-  font-size: 12px;
 }
 
 /* LOGIN */
