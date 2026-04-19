@@ -166,10 +166,29 @@ body {
 
 .fita-adesiva {
   position: absolute;
-  left: 10px;
   height: 100px;
   width: 100px;
+ 
+}
+
+.fita1 {
+ left: 10px;
   top: 150px;
+}
+
+.fita2 {
+   left: 280px;
+  top: 330px;
+}
+
+.fita3 {
+   right: 30px;
+  top: 170px;
+}
+
+.fita4 {
+   right: 110px;
+  top: 360px;
 }
 
 .greg-papel {
@@ -185,7 +204,7 @@ body {
 /* SOBRE O PROJETO -------------------------------------------------------------------------------------------*/
 
 .social {
-  height: 700px;
+  height: 800px;
   display: flex;
   background-image: url('../assets/imgs/fundo-folha.png');
   background-size: 1200px;
@@ -223,20 +242,34 @@ body {
 
 .greg-famoso {
   right: 10px;
-  height: 200px;
+  height: 210px;
   width: 320px;
   top: 20px;
   border: 3px solid #adadad;
   border-radius: 10px;
+  margin-top: 20px;
 }
 
-.sobre_projeto {
+.fita5 {
+   right: 400px;
+  top: 960px;
+}
+
+.fita6 {
+   right: 100px;
+  top: 1150px;
+}
+
+.subtitulos {
   color: #F7D827;
+  font-size: 40px;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: rgb(0, 0, 0)
 }
 
 /* SOBRE MIM -------------------------------------------------------------------------------------------*/
 .container-sobre-mim {
-  height: 700px;
+  height: 1150px;
   display: flex;
   background-image: url('../assets/imgs/fundo-folha.png');
   background-size: 1200px;
@@ -261,17 +294,72 @@ body {
   text-align: justify;
   background-color: #f5ca55;
   border-radius: 10px;
-  border: 3px solid #BB1C17;
+  border: 3px solid #000000b4;
   padding: 20px;
 }
 
-.sobre_mim {
-  color: #F7D827;
+
+.clube-livros {
+   right: 10px;
+  height: 190px;
+  width: 300px;
+  top: 20px;
+  border: 3px solid #adadad;
+  border-radius: 10px;
+}
+
+.minha-foto {
+  right: 10px;
+  height: 320px;
+  width: 250px;
+  top: 20px;
+  border: 3px solid #adadad;
+  border-radius: 10px;
+   margin-top: 60px;
+}
+
+.rodrick-bateria {
+  right: 10px;
+  height: 280px;
+  width: 300px;
+  top: 20px;
+  border: 3px solid #adadad;
+  border-radius: 10px;
+}
+
+.fita7 {
+   right: 400px;
+  top: 1730px;
+}
+
+.fita8 {
+   right: 100px;
+  top: 1870px;
+}
+
+.fita9 {
+   right: 150px;
+  top: 1970px;
+}
+
+.fita10 {
+   right: 350px;
+  top: 2280px;
+}
+
+.fita11 {
+   left: 100px;
+  top: 2050px;
+}
+
+.fita12 {
+   left: 400px;
+  top: 2280px;
 }
 
 /* CURIOSIDADES -------------------------------------------------------------------------------------------*/
 .container-curiosidades {
-  height: 1500px;
+  height: 1600px;
   display: flex;
   background-image: url('../assets/imgs/fundo-folha.png');
   background-size: 1200px;
@@ -298,6 +386,7 @@ body {
   border-radius: 10px;
   border: 3px solid #000;
   padding: 20px;
+  margin-top: 70px;
 }
 
 .box {
@@ -307,7 +396,7 @@ body {
   width: 40%;
 }
 
-.greg-famoso {
+.punicao-mae {
   right: 10px;
   height: 200px;
   width: 320px;
@@ -316,8 +405,13 @@ body {
   border-radius: 10px;
 }
 
-.curiosidades {
-  color: #F7D827;
+.manny-jogo {
+  right: 10px;
+  height: 200px;
+  width: 320px;
+  top: 20px;
+  border: 3px solid #adadad;
+  border-radius: 10px;
 }
 
 /* FOOTER-------------------------------------------------------------------------------------------*/
