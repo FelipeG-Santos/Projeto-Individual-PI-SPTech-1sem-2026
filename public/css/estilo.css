@@ -41,7 +41,7 @@ body {
 
 .header {
   height: var(--tamanho-header);
-  border-bottom: 2px solid #3A75B7;
+  border-bottom: 2px solid #ffffff;
   background-image: url('../assets/imgs/holder-banana1.png');
   background-size: 500px;
   background-position: top;
@@ -168,26 +168,26 @@ body {
   position: absolute;
   height: 100px;
   width: 100px;
- 
+
 }
 
 .fita1 {
- left: 10px;
+  left: 10px;
   top: 150px;
 }
 
 .fita2 {
-   left: 280px;
+  left: 280px;
   top: 330px;
 }
 
 .fita3 {
-   right: 30px;
+  right: 30px;
   top: 170px;
 }
 
 .fita4 {
-   right: 110px;
+  right: 110px;
   top: 360px;
 }
 
@@ -251,12 +251,12 @@ body {
 }
 
 .fita5 {
-   right: 400px;
+  right: 400px;
   top: 960px;
 }
 
 .fita6 {
-   right: 100px;
+  right: 100px;
   top: 1150px;
 }
 
@@ -300,7 +300,7 @@ body {
 
 
 .clube-livros {
-   right: 10px;
+  right: 10px;
   height: 190px;
   width: 300px;
   top: 20px;
@@ -315,7 +315,7 @@ body {
   top: 20px;
   border: 3px solid #adadad;
   border-radius: 10px;
-   margin-top: 60px;
+  margin-top: 60px;
 }
 
 .rodrick-bateria {
@@ -328,32 +328,32 @@ body {
 }
 
 .fita7 {
-   right: 400px;
+  right: 400px;
   top: 1730px;
 }
 
 .fita8 {
-   right: 100px;
+  right: 100px;
   top: 1870px;
 }
 
 .fita9 {
-   right: 150px;
+  right: 150px;
   top: 1970px;
 }
 
 .fita10 {
-   right: 350px;
+  right: 350px;
   top: 2280px;
 }
 
 .fita11 {
-   left: 100px;
+  left: 100px;
   top: 2050px;
 }
 
 .fita12 {
-   left: 400px;
+  left: 400px;
   top: 2280px;
 }
 
@@ -414,11 +414,30 @@ body {
   border-radius: 10px;
 }
 
+.fita13 {
+  right: 120px;
+  top: 3030px;
+}
+
+.fita14 {
+  right: 400px;
+  top: 3210px;
+}
+
+.fita15 {
+  right: 410px;
+  top: 3540px;
+}
+
+.fita16 {
+  right: 100px;
+  top: 3720px;
+}
 /* FOOTER-------------------------------------------------------------------------------------------*/
 
 .footer {
-  height: 150px;
-  color: #fff;
+  height: 100px;
+  color: #ffffff;
   display: flex;
   font-size: 15px;
   background-image: url('../assets/imgs/fundo-banner.png');
@@ -432,11 +451,15 @@ body {
 
 .login {
   height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  background-color: #431551;
   background-size: cover;
+  height: 600px;
+
+
 }
 
 .login .container {
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -444,12 +467,10 @@ body {
 
 .card {
   width: 50%;
-  background-color: #e5e5e5;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: palevioletred;
   flex-direction: column;
   height: fit-content;
   padding: 20px 0;
@@ -458,6 +479,12 @@ body {
 .card h2 {
   margin: 0;
   font-size: 30px;
+}
+
+.card_login {
+   background-color:#883E8E; 
+  color: #431551;
+  border: 3px solid #fbbcff; 
 }
 
 .formulario {
@@ -474,10 +501,11 @@ body {
 }
 
 .formulario input {
-  border: 2px solid #32b9cd;
+  border: 2px solid #000000;
   text-align: center;
   border-radius: 10px;
   margin: 0;
+  background-color: #ffffff;
 }
 
 .formulario select {
@@ -500,12 +528,12 @@ body {
 .botao {
   cursor: pointer;
   font-family: "Barlow", sans-serif;
-  border: 0;
+  border: 2px solid #000;
   border-radius: 5px;
   font-weight: 600;
   font-size: 18px;
-  color: #fff;
-  background-color: #ED145B;
+  color: #000000;
+  background-color: #F7D827;
   width: 120px;
   height: 30px;
   align-self: center;
@@ -525,6 +553,32 @@ body {
 #div_erros_login {
   display: none
 }
+
+/* CADASTRO -------------------------------------------------------------------------------------------*/
+
+.cadastro {
+  height: var(--tamanho-login);
+  background-color: #25803B;
+  background-size: cover;
+  height: 600px;
+}
+
+.cadastro .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+}
+
+.card_cadastro {
+  background-color: #105B1F;
+  color: #7DC058;
+  border: 3px solid #7DC058;
+}
+
+
+
 
 /* FORMULARIO -------------------------------------------------------------------------------------------*/
 
