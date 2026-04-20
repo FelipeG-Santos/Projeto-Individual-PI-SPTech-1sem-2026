@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Livros</title>
+</head>
+<body>
+
+    <h1>Meus Livros "Diário de um Banana"</h1><br>
+
+    <br><span>Cadastrar livro:</span>
+    <input type="text" id="livro_cadastrado">
+    <button onclick="Cadastrar()">Cadastrar</button><br>
+
+    <br><button onclick="Verificar()">Verificar Estoque</button><br>
+
+
+    <br><span>Procure pelos seus livros cadastrados:</span>
+    <input type="text" id="procura_livro"><br>
+
+    <br><button onclick="Pesquisar()">Procurar</button><br>
+
+
+    <br><span>Remover livro:</span>
+    <input type="text" id="remover_livro"><br>
+
+    <button onclick="Remover()">Remover</button><br>
+
+
+</body>
+<script>
+    livros = []
+
+    function Cadastrar() {
+
+        livros.push(livro_cadastrado.value);
+
+        console.log(`${livros}`);
+
+    }
+
+    function Verificar() {
+        let texto = "";
+
+        qtd_livro_cadastrado = livros.length
+
+        if (qtd_livro_cadastrado < 3) {
+            texto += "A"
+        } else if (qtd_livro_cadastrado <= 7) {
+            texto += "B"
+        } else if (qtd_livro_cadastrado <= 10) {
+            texto += "C"
+        } else {
+            texto += "D"
+        }
+
+        mensagem.innerHTML = `${texto}`
+    }
+
+    function Pesquisar() {
+        let texto = "";
+        let unidades = 0;
+
+        for (let i = 0; i < livros.length; i++) {
+            if (livros[i] == procura_livro.value) {
+                unidades++
+
+            } else {
+                texto = `Não encontramos o item ${procura_livro.value}, talvez seja hora de procurar essa raridade!`
+            }
+        }
+
+        if (unidades > 0) {
+            texto = `Temos o item ${procura_livro.value} e há ${unidades} unidade(s) dele na loja`
+        }
+
+        mensagem.innerHTML = `${texto}`
+    }
+
+    function Remover() {
+        let texto = "";
+        let contador = 0;
+
+        for (let i = 0; i < livros.length; i++) {
+            if (livros[i] == remover_livro.value) {
+                livros.splice(i, 1);
+                i--;
+                contador++
+            }
+        }
+
+        if (contador > 0) {
+            texto = `O item '${remover_livro.value}' foi removido do estoque`
+        } else {
+            texto = `O item '${remover_livro.value}' não está no estoque`
+        }
+        console.log(`${livros}`);
+
+        mensagem.innerHTML = `${texto}`
+
+    }
+</script>
+</html>
