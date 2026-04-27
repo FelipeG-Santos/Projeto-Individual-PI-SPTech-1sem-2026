@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
-<body onload="listar()">
+<body>
   <!--header inicio-->
   <div class="header">
     <div class="container">
@@ -40,6 +40,7 @@
   </div>
   <!--header fim-->
 
+  <!--PÁGINA DE CADASTRO----------------------------------------------------------------------------------------------->
   <div class="cadastro">
     <div class="alerta_erro">
       <div class="card_erro" id="cardErro">
@@ -47,19 +48,14 @@
       </div>
     </div>
 
+    <!--ETAPA 1----------------------------------------------------------------------------------------------->
     <div class="container">
       <div class="card card_cadastro">
-        <h2>Bem-vindo!</h2>
-        <div class="formulario">
-          <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
-          <!--<div class="campo">
-            <span>Código de ativação:</span>
-            <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
-          </div> -->
-          
+
+        <h2 id="titulo_formulario">Bem-vindo!</h2>
+        <div class="formulario" id="etapa1">
+
+
           <div class="campo">
             <span>Nome:</span>
             <input id="nome_input" type="text" placeholder="Seu nome" />
@@ -76,36 +72,122 @@
             <span>Confirmação da Senha:</span>
             <input id="confirmacao_senha_input" type="password" placeholder="******" />
           </div>
-          <button class="botao" onclick="cadastrar()">Cadastrar</button>
+
         </div>
 
-        <!--<div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
-        </div> -->
+        <div id="div_erros_login"></div>
+
+
+
+        <div class="formulario" id="etapa2" style="display: none;">
+
+          <div class="campo">
+            <span>Estado que você mora:</span>
+            <input id="estado_input" type="text" placeholder="somente a sigla, ex: SP" />
+          </div>
+          <div class="campo">
+            <span>Cidade:</span>
+            <input id="cidade_input" type="text" placeholder="cidade" />
+          </div>
+          <div class="campo">
+            <span>Bairro:</span>
+            <input id="bairro_input" type="text" placeholder="bairro" />
+          </div>
+
+
+        </div>
+        <button class="botao" id="botao_etapa" onclick="proximaEtapa()">Continuar</button>
 
         <div id="div_erros_login"></div>
       </div>
     </div>
+
   </div>
 
   <!--footer inicio-->
   <div class="footer">
     <div class="container">
       <h4>Feito por Felipe Santos, aluno SPTech-CCO 2026</h4>
-      
+
     </div>
   </div>
   <!--footer fim-->
 </body>
+
 </html>
 
 <script>
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  /*let listaEmpresasCadastradas = [];*/
+
+  let etapaAtual_botao = 1;
+  function proximaEtapa() {
+
+    let nomeVar = nome_input.value;
+    let emailVar = email_input.value;
+    let senhaVar = senha_input.value;
+    let confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+    let indice_arroba = emailVar.indexOf("@");
+    let indice_com = emailVar.indexOf(".com");
+
+    if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+
+      //Mensagem de erro pois está vazio:
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+      // imterrompe a função, impedindo o cadastro:
+      /* return false: para a função inteira
+      break: para somente o loop */
+      return false;
+
+    } else if (indice_arroba == -1 || indice_com == -1) {
+
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "(Mensagem de erro para email errado)";
+
+      return false;
+
+    } else if (senhaVar.length < 6) {
+
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "(Mensagem de erro para senha curta)";
+
+      return false;
+
+    } else if (senhaVar != confirmacaoSenhaVar) {
+
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "(Mensagem de erro para senha incorreta)";
+
+      return false;
+
+    } else {
+      //Se todos os campos estiverem preenchidos, sumir com a mensagem de erro:
+      setTimeout(sumirMensagem, 1000);
+
+
+      if (etapaAtual_botao === 1) {
+
+        console.log("CHEGUEI AQUI");
+
+        etapa1.style.display = "none";
+        etapa2.style.display = "block";
+
+        titulo_formulario.innerHTML = "Está quase lá!";
+
+        botao_etapa.innerHTML = "Cadastrar"
+
+        etapaAtual_botao = 2;
+
+      } else {
+        cadastrar()
+      }
+    }
+  }
+
 
   function cadastrar() {
-    // aguardar();
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
@@ -113,97 +195,97 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    
-    /*var codigoVar = codigo_input.value;
-    var idEmpresaVincular*/
+
+    let estadoVar = estado_input.value;
+    let cidadeVar = cidade_input.value;
+    let bairroVar = bairro_input.value;
+
 
     // Verificando se há algum campo em branco
-    if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" /*|| codigoVar == ""*/) {
+    if (estadoVar == "" || cidadeVar == "" || bairroVar == "") {
+
+      //Mensagem de erro pois está vazio:
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
 
-    /*  finalizarAguardar();*/
+      // imterrompe a função, impedindo o cadastro:
       return false;
+    } else if (estadoVar.length > 2) {
+
+      console.log("chegou aqui");
+      
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "(Mensagem de erro para estado muito grande)";
+
+      return false;
+
     } else {
-      setInterval(sumirMensagem, 5000);
+      //Se todos os campos estiverem preenchidos, sumir com a mensagem de erro:
+      setTimeout(sumirMensagem, 5000);
     }
 
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    /*for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
-    }*/
 
     // Enviando o valor da nova input
+    //rota:
     fetch("/usuarios/cadastrar", {
+      //POST: enviar dados para salvar
       method: "POST",
+      //cabeçalho
       headers: {
         "Content-Type": "application/json",
       },
+      //transforma em json
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
+
+        estadoServer: estadoVar,
+        cidadeServer: cidadeVar,
+        bairroServer: bairroVar,
+        
       }),
     })
+
+      //executa quando a API responde
       .then(function (resposta) {
         console.log("resposta: ", resposta);
 
+        //Caso a resposta esteja ok:
         if (resposta.ok) {
           cardErro.style.display = "block";
 
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
+          //espera 2 segundos e redireciona para a tela de login
           setTimeout(() => {
             window.location = "login.html";
           }, "2000");
 
           limparFormulario();
-          finalizarAguardar();
+          
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
+
+      //Resposta caso ocorra um erro na API:
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
+        
       });
 
     return false;
   }
 
-  // Listando empresas cadastradas 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
 
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
+
 
   function sumirMensagem() {
     cardErro.style.display = "none";
   }
+
+
 </script>
