@@ -68,12 +68,12 @@
                 unidades++
 
             } else {
-                texto = `Não encontramos o item ${procura_livro.value}, talvez seja hora de procurar essa raridade!`
+                texto = `Não encontramos o item ${procura_livro.value}!`
             }
         }
 
         if (unidades > 0) {
-            texto = `Temos o item ${procura_livro.value} e há ${unidades} unidade(s) dele na loja`
+            texto = `Temos o item ${procura_livro.value} e há ${unidades} unidade(s) dele`
         }
 
         mensagem.innerHTML = `${texto}`
