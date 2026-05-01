@@ -10,21 +10,25 @@
 
     <h1>Meus Livros "Diário de um Banana"</h1><br>
 
-    <br><span>Cadastrar livro:</span>
-    <input type="text" id="livro_cadastrado">
-    <button onclick="Cadastrar()">Cadastrar</button><br>
+    <br><span>Nome do livro:</span>
+    <input type="text" id="ipt_nome_livro">
 
-    <br><button onclick="Verificar()">Verificar Estoque</button><br>
+    <br><span>Nota do livro:</span>
+    <input type="text" id="ipt_nota_livro">
+
+    <br><span>Descrição:</span>
+    <input type="text" id="ipt_descricao">
+
+    <button onclick="Cadastrar()">Cadastrar</button><br>
 
 
     <br><span>Procure pelos seus livros cadastrados:</span>
-    <input type="text" id="procura_livro"><br>
-
-    <br><button onclick="Pesquisar()">Procurar</button><br>
+    <input type="text" id="ipt_procura_livro"><br>
+<button onclick="Procurar()">Procurar</button><br>
 
 
     <br><span>Remover livro:</span>
-    <input type="text" id="remover_livro"><br>
+    <input type="text" id="ipt_remover_livro"><br>
 
     <button onclick="Remover()">Remover</button><br>
 
@@ -33,33 +37,22 @@
 <script>
     livros = []
 
+    let nome_livro = ipt_nome_livro.value;
+    let nota_livro = ipt_nota_livro.value;
+    let descricao = ipt_descricao.value;
+
+
+    let procura_livro = ipt_procura_livro.value;
+    let remover_livro = ipt_remover_livro.value;
+
     function Cadastrar() {
-
+        
         livros.push(livro_cadastrado.value);
-
         console.log(`${livros}`);
 
     }
 
-    function Verificar() {
-        let texto = "";
-
-        qtd_livro_cadastrado = livros.length
-
-        if (qtd_livro_cadastrado < 3) {
-            texto += "A"
-        } else if (qtd_livro_cadastrado <= 7) {
-            texto += "B"
-        } else if (qtd_livro_cadastrado <= 10) {
-            texto += "C"
-        } else {
-            texto += "D"
-        }
-
-        mensagem.innerHTML = `${texto}`
-    }
-
-    function Pesquisar() {
+    function Procurar() {
         let texto = "";
         let unidades = 0;
 
