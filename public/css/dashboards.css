@@ -8,6 +8,44 @@ body {
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+
+.dashboard {
+  background-color: #5c6bc0;
+}
+
+.Kpis {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+}
+
+.mais_avaliado {
+  background-color: #883E8E ;
+}
+
+.mais_avaliado_semana {
+  background-color: #883E8E ;
+}
+
+.melhor_avaliado {
+  background-color: #25803B ;
+}
+
+.pior_avaliado {
+  background-color: #e6005a;
+}
+
+.classificacao {
+  background-color: #32b9cd;
+}
+
+.completou_serie {
+  background-color: #ffee58;
+}
+
+
+
+
 .label-captura {
   display: flex;
   justify-content: center;

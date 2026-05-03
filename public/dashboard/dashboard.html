@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
+    <title>Diário de um Banana | Dashboards</title>
 
-    
-    <link rel="stylesheet" href="./../css/dashboards.css">
+
+     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
@@ -26,65 +26,80 @@
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
+
+<!--HEADER--------------------------------------------------------------------------------->
+<div class="header">
+    <div class="container">
+        <img class="irmaozinho" src="../assets/imgs/irmaozinho-png.png" alt="">
+        <h1 class="titulo"><span class="diario-header">Diário</span> de um Banana</h1>
+        <ul class="navbar">
+            <li>
+                <a href="#">Inicial</a>
+            </li>
+            <li>
+                <a href="simulador.html">Simulador</a>
+            </li>
+            <li>|</li>
+            <li>
+                <a href="login.html">Login</a>
+            </li>
+            <li>
+                <a href="cadastro.html">Cadastro</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--HEADER--------------------------------------------------------------------------------->
 <!-- <body onload=" atualizarFeed()"> -->
 
 <body>
-
-    <div class="janela">
-        <div class="header-left">
-            <h1>AquaTech</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-
-                <h3>Gráficos</h3>
-
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
+<div class="dashboard">
+    <div class="Kpis">
+        <div class="mais_avaliado">
+            <h2>Livro mais avaliado</h2>
+            <img class="irmaozinho" src="../assets/imgs/irmaozinho-png.png" alt="">
         </div>
+         <div class="mais_avaliado_semana">
+            <h2>O livro mais avaliado última semana</h2>
+            <img class="irmaozinho" src="../assets/imgs/irmaozinho-png.png" alt="">
+        </div>
+        <div class="melhor_avaliado">
+            <h2>Livro mais bem avaliado</h2>
+            <img class="irmaozinho" src="../assets/imgs/irmaozinho-png.png" alt="">
+        </div>
+        <div class="pior_avaliado">
+            <h2>Livro menos bem avaliado</h2>
+            <img class="irmaozinho" src="../assets/imgs/irmaozinho-png.png" alt="">
+        </div>
+        <div class="classificacao">
+            <h2>sua classificação</h2>
+            <img class="irmaozinho" src="../assets/imgs/irmaozinho-png.png" alt="">
+        </div>
+        <div class="completou_serie">
+            <h2>% que completou a saga</h2>
+            <img class="irmaozinho" src="../assets/imgs/irmaozinho-png.png" alt="">
+        </div>
+       
+    </div>
+</div>
+    <!--FOOTER--------------------------------------------------------------------------------->
+    <div class="footer">
+        <div class="container">
+            <h4>Feito por Felipe Santos, aluno SPTech-CCO 2026</h4>
 
-        <div class="dash">
-            <div id="alerta">
-            </div>
-
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-            </div>
-            <div id="graficos">
-            </div>
         </div>
     </div>
-
-
+    <!--FOOTER--------------------------------------------------------------------------------->
 </body>
 
 </html>
 
 <script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-    let proximaAtualizacao;
-
-    window.onload = exibirAquariosDoUsuario();
+    /* b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+ 
+     let proximaAtualizacao;
+ 
+     window.onload = exibirAquariosDoUsuario();*/
 
     function exibirAquariosDoUsuario() {
         var aquarios = JSON.parse(sessionStorage.AQUARIOS);
