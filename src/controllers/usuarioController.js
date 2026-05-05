@@ -8,6 +8,8 @@ var usuarioModel = require("../models/usuarioModel");
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var fk_usuario = req.body.fk_usuarioServer;
+
 
     if (email == undefined) {
         res.status(400).send("Seu email está indefinido!");
@@ -27,7 +29,8 @@ function autenticar(req, res) {
                                         id: resultadoAutenticar[0].id_usuario,
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha
+                                        senha: resultadoAutenticar[0].senha,
+                                        fk_usuario: resultadoAutenticar[0].fk_usuario
                                         
                                     });
                                
