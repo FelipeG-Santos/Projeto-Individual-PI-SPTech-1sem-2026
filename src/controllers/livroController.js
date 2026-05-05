@@ -13,7 +13,8 @@ function cadastrar(req, res) {
 
     var nome_livro = req.body.nome_livroServer;
     var nota_livro = req.body.nota_livroServer;
-    var descricao = req.body.descricao_livroServer;
+    var descricao = req.body.descricaoServer;
+    var fk_usuario = req.body.fk_usuarioServer;
 
     if (nome_livro == undefined) {
         res.status(400).send("O nome do livro está indefinido!");
