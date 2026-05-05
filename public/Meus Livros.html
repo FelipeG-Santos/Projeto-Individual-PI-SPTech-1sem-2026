@@ -62,7 +62,7 @@
         var nota_livroVar = ipt_nota_livro.value;
         var descricaoVar = ipt_descricao.value;
 
-        console.log("FK que vai ser enviada:", sessionStorage.ID_USUARIO);
+        console.log("fk que vai ser enviada:", sessionStorage.ID_USUARIO);
 // Enviando o valor da nova input
     //rota:
     fetch("/livros/cadastrar", {
@@ -79,6 +79,7 @@
         nome_livroServer: nome_livroVar,
         nota_livroServer: nota_livroVar,
         descricaoServer: descricaoVar,
+        // pega o id salvo temporariamente como sessionStorage
         fk_usuarioServer: Number(sessionStorage.ID_USUARIO)
         
       }),

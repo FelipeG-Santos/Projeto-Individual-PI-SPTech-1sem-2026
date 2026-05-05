@@ -14,7 +14,7 @@ function listar(req, res) {
 
 function cadastrar(req, res) {
 
-console.log("BODY:", req.body);
+console.log("BODY teste:", req.body);
 
     var nome_livro = req.body.nome_livroServer;
     var nota_livro = req.body.nota_livroServer;
@@ -28,7 +28,7 @@ console.log("BODY:", req.body);
     } else if (descricao == undefined) {
         res.status(400).send("A descrição do livro está indefinida!");
     }else {
-console.log("FK antes do model:", fk_usuario);
+
     livroModel.cadastrar(nome_livro, nota_livro, descricao, fk_usuario)
     .then(function (resposta) {
         res.status(200).send("livro registrado com sucesso");

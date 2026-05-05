@@ -18,27 +18,41 @@
 <body>
 
     <!--Header-------------------------------------------------------------------------------->
-    <div class="header">
-        <div class="container">
-            <img class="irmaozinho" src="../public/assets/imgs/irmaozinho-png.png" alt="">
+   <div class="header">
+    <div class="container">
+      <img class="irmaozinho" src="assets/imgs/irmaozinho-png.png" alt="">
       <h1 class="titulo"><span class="diario-header">Diário</span> de um Banana</h1>
-            <ul class="navbar">
-                <li>
-                    <a href="index.html">Inicial</a>
-                </li>
-                <li>
-                    <a href="simulador.html">Simulador</a>
-                </li>
-                <li>|</li>
-                <li class="agora">
-                    <a href="#">Login</a>
-                </li>
-                <li>
-                    <a href="cadastro.html">Cadastro</a>
-                </li>
-            </ul>
-        </div>
+      <ul class="navbar">
+        <li>
+          <a href="index.html">Inicial</a>
+        </li><br>
+        <br>
+        <li>|</li><br>
+        <br>
+        <li>
+          <a href="Meus Livros.html">Meus Livros</a>
+        </li><br>
+        <br>
+        <li>|</li><br>
+        <br>
+        <li>
+          <a href="login.html">Dashboard</a>
+        </li><br>
+        <br>
+        <li>|</li><br>
+        <br>
+        <li>
+          <a href="#">Login</a>
+        </li><br>
+        <br>
+        <li>|</li><br>
+        <br>
+        <li>
+          <a href="cadastro.html">Cadastro</a>
+        </li>
+      </ul>
     </div>
+  </div>
 <!--Header-------------------------------------------------------------------------------->
 
 <!--login-------------------------------------------------------------------------------->
@@ -50,7 +64,7 @@
         </div>
         <div class="container">
             <div class="card card_login">
-                <h2>Olá de volta!</h2>
+                <h2>Realize o login para ter acesso as demais páginas!</h2>
                 <div class="formulario">
                     <div class="campo">
                         <span>E-mail:</span>
@@ -72,13 +86,13 @@
         </div>
     </div>
 
-    <!--footer inicio-->
+    <!--footer inicio-------------------------------------------------------------->
     <div class="footer">
         <div class="container">
              <h4>Feito por Felipe Santos, aluno SPTech-CCO 2026</h4>
         </div>
     </div>
-    <!--footer fim-->
+    <!--footer fim----------------------------------------------------------------->
 
 </body>
 
@@ -87,6 +101,7 @@
 <script>
 
 
+// função para conferir os dados e permitir o login
     function entrar() {
       /*  aguardar();*/
 
@@ -130,6 +145,7 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
+                    // pega o id para posterior salvamento na página de cadastro de livros
                     sessionStorage.ID_USUARIO = json.id;
                    
                   

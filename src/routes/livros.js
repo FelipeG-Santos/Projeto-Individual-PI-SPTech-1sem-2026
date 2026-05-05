@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
+// indo para a próxima etapa
 var livroController = require("../controllers/livroController");
 
 router.post("/cadastrar", function (req, res) {

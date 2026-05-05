@@ -16,29 +16,43 @@
 </head>
 
 <body>
-  <!--header inicio-->
+  <!--header inicio------------------------------------------------------------------------>
   <div class="header">
     <div class="container">
-      <img class="irmaozinho" src="../public/assets/imgs/irmaozinho-png.png" alt="">
+      <img class="irmaozinho" src="assets/imgs/irmaozinho-png.png" alt="">
       <h1 class="titulo"><span class="diario-header">Diário</span> de um Banana</h1>
       <ul class="navbar">
         <li>
           <a href="index.html">Inicial</a>
-        </li>
+        </li><br>
+        <br>
+        <li>|</li><br>
+        <br>
         <li>
-          <a href="simulador.html">Simulador</a>
-        </li>
-        <li>|</li>
+          <a href="Meus Livros.html">Meus Livros</a>
+        </li><br>
+        <br>
+        <li>|</li><br>
+        <br>
+        <li>
+          <a href="login.html">Dashboard</a>
+        </li><br>
+        <br>
+        <li>|</li><br>
+        <br>
         <li>
           <a href="login.html">Login</a>
-        </li>
-        <li class="agora">
+        </li><br>
+        <br>
+        <li>|</li><br>
+        <br>
+        <li>
           <a href="#">Cadastro</a>
         </li>
       </ul>
     </div>
   </div>
-  <!--header fim-->
+  <!--header fim--------------------------------------------------------------------------->
 
   <!--PÁGINA DE CADASTRO----------------------------------------------------------------------------------------------->
   <div class="cadastro">
@@ -48,10 +62,11 @@
       </div>
     </div>
 
-    <!--ETAPA 1----------------------------------------------------------------------------------------------->
+
     <div class="container">
       <div class="card card_cadastro">
 
+        <!--ETAPA 1----------------------------------------------------------------------------------------------->
         <h2 id="titulo_formulario">Bem-vindo!</h2>
         <div class="formulario" id="etapa1">
 
@@ -78,7 +93,7 @@
         <div id="div_erros_login"></div>
 
 
-<!--ETAPA 2----------------------------------------------------------------------------------------------->
+        <!--ETAPA 2----------------------------------------------------------------------------------------------->
         <div class="formulario" id="etapa2" style="display: none;">
 
           <div class="campo">
@@ -104,29 +119,32 @@
 
   </div>
 
-  <!--footer inicio-->
+  <!--footer inicio-------------------------------------------------------------------->
   <div class="footer">
     <div class="container">
       <h4>Feito por Felipe Santos, aluno SPTech-CCO 2026</h4>
 
     </div>
   </div>
-  <!--footer fim-->
+  <!--footer fim----------------------------------------------------------------------->
 </body>
 
 </html>
 
 <script>
 
-
+  // Atribui a etapa como 1
   let etapaAtual_botao = 1;
+  // essa função valida os itens cadastrados na etapa 1 e chama a função "cadastrar"
   function proximaEtapa() {
 
+    // pegando inputs
     let nomeVar = nome_input.value;
     let emailVar = email_input.value;
     let senhaVar = senha_input.value;
     let confirmacaoSenhaVar = confirmacao_senha_input.value;
 
+    // VALIDAÇÕES:
     let indice_arroba = emailVar.indexOf("@");
     let indice_com = emailVar.indexOf(".com");
 
@@ -167,9 +185,8 @@
       setTimeout(sumirMensagem, 1000);
 
 
+      // muda a etapa e muda o titulo do formulario e do botão
       if (etapaAtual_botao === 1) {
-
-        console.log("CHEGUEI AQUI");
 
         etapa1.style.display = "none";
         etapa2.style.display = "block";
@@ -181,12 +198,13 @@
         etapaAtual_botao = 2;
 
       } else {
+        // chama a execução da outra função:
         cadastrar()
       }
     }
   }
 
-
+// aqui cadastra os dados
   function cadastrar() {
 
     //Recupere o valor da nova input pelo nome do id
@@ -211,8 +229,7 @@
       return false;
     } else if (estadoVar.length > 2) {
 
-      console.log("chegou aqui");
-      
+
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "(Mensagem de erro para estado muito grande)";
 
@@ -244,7 +261,7 @@
         estadoServer: estadoVar,
         cidadeServer: cidadeVar,
         bairroServer: bairroVar
-        
+
       }),
     })
 
@@ -264,7 +281,7 @@
           }, "2000");
 
           limparFormulario();
-          
+
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
@@ -273,7 +290,7 @@
       //Resposta caso ocorra um erro na API:
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        
+
       });
 
     return false;
