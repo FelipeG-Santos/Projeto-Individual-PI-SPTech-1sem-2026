@@ -1,0 +1,16 @@
+var express = require("express");
+var router = express.Router();
+
+var livroController = require("../controllers/livroController");
+
+router.post("/cadastrar", function (req, res) {
+    // função a ser chamada quando acessar /livros/cadastrar
+    livroController.cadastrar(req, res);
+});
+
+router.get("/listar", function (req, res) {
+    // função a ser chamada quando acessar /livros/listar
+    livroController.listar(req, res);
+});
+
+module.exports = router;

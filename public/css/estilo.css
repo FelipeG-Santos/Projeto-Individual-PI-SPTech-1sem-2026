@@ -94,7 +94,7 @@ font-family: "Patrick Hand", cursive;
   width: 300px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content:space-evenly;
   list-style: none;
   color: #3A75B7;
 

@@ -4,27 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/estilo.css">
     <title>Meus Livros</title>
 </head>
+
 <body>
 
     <h1>Meus Livros "Diário de um Banana"</h1><br>
 
-    <br><span>Nome do livro:</span>
-    <input type="text" id="ipt_nome_livro">
+    <div class="formulario" id="etapa1">
 
-    <br><span>Nota do livro:</span>
-    <input type="text" id="ipt_nota_livro">
 
-    <br><span>Descrição:</span>
-    <input type="text" id="ipt_descricao">
+        <div class="campo">
+            <span>Nome do livro:</span>
+            <input type="text" id="ipt_nome_livro" placeholder="digite o nome do livro">
+        </div>
+        <div class="campo">
+            <br><span>Nota do livro:</span>
+            <input type="number" id="ipt_nota_livro" placeholder="digite a nota de 1 a 5">
+        </div>
+        <div class="campo">
+            <br><span>Descrição:</span>
+            <input type="text" id="ipt_descricao" placeholder="descrição da sua avaliação">
+        </div>
 
-    <button onclick="Cadastrar()">Cadastrar</button><br>
+    </div>
+
+
+
+
+
+    <button class="botao" onclick="Cadastrar()">Cadastrar</button><br>
 
 
     <br><span>Procure pelos seus livros cadastrados:</span>
     <input type="text" id="ipt_procura_livro"><br>
-<button onclick="Procurar()">Procurar</button><br>
+    <button onclick="Procurar()">Procurar</button><br>
 
 
     <br><span>Remover livro:</span>
@@ -37,20 +52,85 @@
 <script>
     livros = []
 
-    let nome_livro = ipt_nome_livro.value;
-    let nota_livro = ipt_nota_livro.value;
-    let descricao = ipt_descricao.value;
+    var procura_livro = ipt_procura_livro.value;
+    var remover_livro = ipt_remover_livro.value;
 
+    function cadastrar() {
 
-    let procura_livro = ipt_procura_livro.value;
-    let remover_livro = ipt_remover_livro.value;
+        // Agora vá para o método fetch logo abaixo
+        var nome_livro = ipt_nome_livro.value;
+        var nota_livro = ipt_nota_livro.value;
+        var descricao = ipt_descricao.value;
 
-    function Cadastrar() {
+// Enviando o valor da nova input
+    //rota:
+    fetch("/usuarios/cadastrar", {
+      //POST: enviar dados para salvar
+      method: "POST",
+      //cabeçalho
+      headers: {
+        "Content-Type": "application/json",
+      },
+      //transforma em json
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+
+        estadoServer: estadoVar,
+        cidadeServer: cidadeVar,
+        bairroServer: bairroVar
         
-        livros.push(livro_cadastrado.value);
-        console.log(`${livros}`);
+      }),
+    })
 
-    }
+      //executa quando a API responde
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        //Caso a resposta esteja ok:
+        if (resposta.ok) {
+          cardErro.style.display = "block";
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+          //espera 2 segundos e redireciona para a tela de login
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+
+      //Resposta caso ocorra um erro na API:
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        
+      });
+
+    return false;
+  }
+
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+
+
+    
+
+
+
+
+
+
+
 
     function Procurar() {
         let texto = "";
@@ -95,4 +175,5 @@
 
     }
 </script>
+
 </html>
