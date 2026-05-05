@@ -84,11 +84,11 @@ references usuario (id_usuario)
 
 create table avaliacao_livros (
 id_avaliacao_livros int primary key auto_increment,
-nome varchar(45),
-nota int,
+nome_livro varchar(45),
+nota_livro int,
 descricao varchar(100),
 fk_usuario int,
-constraint ctnota check(nota between 1 and 5),
+constraint ctnota check(nota_livro between 1 and 5),
 constraint ctfk_usuario_avaliacao foreign key (fk_usuario)
 references usuario (id_usuario)
 );

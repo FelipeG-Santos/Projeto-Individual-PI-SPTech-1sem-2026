@@ -55,16 +55,16 @@
     var procura_livro = ipt_procura_livro.value;
     var remover_livro = ipt_remover_livro.value;
 
-    function cadastrar() {
+    function Cadastrar() {
 
         // Agora vá para o método fetch logo abaixo
-        var nome_livro = ipt_nome_livro.value;
-        var nota_livro = ipt_nota_livro.value;
-        var descricao = ipt_descricao.value;
+        var nome_livroVar = ipt_nome_livro.value;
+        var nota_livroVar = ipt_nota_livro.value;
+        var descricaoVar = ipt_descricao.value;
 
 // Enviando o valor da nova input
     //rota:
-    fetch("/usuarios/cadastrar", {
+    fetch("/livros/cadastrar", {
       //POST: enviar dados para salvar
       method: "POST",
       //cabeçalho
@@ -75,13 +75,9 @@
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-
-        estadoServer: estadoVar,
-        cidadeServer: cidadeVar,
-        bairroServer: bairroVar
+        nome_livroServer: nome_livroVar,
+        nota_livroServer: nota_livroVar,
+        descricaoServer: descricaoVar
         
       }),
     })
@@ -95,16 +91,13 @@
           cardErro.style.display = "block";
 
           mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-          //espera 2 segundos e redireciona para a tela de login
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
-
+            "Livro cadastrado com sucesso";
+         
+          
           limparFormulario();
           
         } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
+          throw "Houve um erro ao tentar cadastrar o livro!";
         }
       })
 
