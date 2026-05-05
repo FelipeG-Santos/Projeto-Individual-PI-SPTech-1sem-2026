@@ -1,3 +1,5 @@
+
+
 var livroModel = require("../models/livroModel");
 
 function listar(req, res) {
@@ -9,7 +11,10 @@ function listar(req, res) {
     })
 }
 
+
 function cadastrar(req, res) {
+
+console.log("BODY:", req.body);
 
     var nome_livro = req.body.nome_livroServer;
     var nota_livro = req.body.nota_livroServer;
@@ -23,8 +28,8 @@ function cadastrar(req, res) {
     } else if (descricao == undefined) {
         res.status(400).send("A descrição do livro está indefinida!");
     }else {
-
-    livroModel.cadastrar(nome_livro, nota_livro, descricao)
+console.log("FK antes do model:", fk_usuario);
+    livroModel.cadastrar(nome_livro, nota_livro, descricao, fk_usuario)
     .then(function (resposta) {
         res.status(200).send("livro registrado com sucesso");
     }).catch(function (erro) {
