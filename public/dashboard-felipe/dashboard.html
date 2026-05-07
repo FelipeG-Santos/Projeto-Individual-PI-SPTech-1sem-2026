@@ -2,13 +2,13 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <!-- <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon"> -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Dashboards</title>
+    <title>Diário de um Banana | Dashboards</title>
 
-    
+
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
@@ -26,67 +26,155 @@
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
+
+<!--HEADER--------------------------------------------------------------------------------->
+<div class="header">
+    <div class="container">
+        <img class="irmaozinho" src="../assets/imgs/irmaozinho-png.png" alt="">
+        <h1 class="titulo"><span class="diario-header">Diário</span> de um Banana</h1>
+        <ul class="navbar">
+            <li>
+                <a href="#">Inicial</a>
+            </li>
+            <li>
+                <a href="simulador.html">Simulador</a>
+            </li>
+            <li>|</li>
+            <li>
+                <a href="login.html">Login</a>
+            </li>
+            <li>
+                <a href="cadastro.html">Cadastro</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--HEADER--------------------------------------------------------------------------------->
 <!-- <body onload=" atualizarFeed()"> -->
 
 <body>
-
-    <div class="janela">
-        <div class="header-left">
-            <h1>AquaTech</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+    <div class="dashboard">
+        <div class="Kpis">
+            <div class="mais_avaliado kpis-individual">
+                <h3>Livro mais avaliado</h3>
+                <img class="diarios" src="../assets/imgs/diario-12.jpg" alt="">
             </div>
-
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Aquários</h3>
-                </a>
+            <div class="mais_avaliado_semana kpis-individual">
+                <h3>O livro mais avaliado da última semana</h3>
+                <img class="diarios" src="../assets/imgs/diario-1.jpg" alt="">
             </div>
-
-            <div class="btn-nav">
-
-                <h3>Gráficos</h3>
+            <div class="melhor_avaliado kpis-individual">
+                <h3>Livro mais bem avaliado</h3>
+                <img class="diarios" src="../assets/imgs/diario-16.jpg" alt="">
+            </div>
+            <div class="pior_avaliado kpis-individual">
+                <h3>Livro menos bem avaliado</h3>
+                <img class="diarios" src="../assets/imgs/diario-8.jpg" alt="">
+            </div>
+            <div class="classificacao kpis-individual">
+                <h3>sua classificação</h3>
 
             </div>
+            <div class="completou_serie kpis-individual">
+                <h3>% que completou a saga</h3>
 
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
             </div>
 
         </div>
 
-        <div class="dash">
-            <div id="alerta">
+        <div class="posicao-graficos">
+            <div class="posicao-graficos2">
+
+                <div class="tamanho-grafico-barras">
+                    <canvas style="position: relative; background-color: #f0f0f0;" id="myChart1"></canvas>
+                </div>
+
+                <div>
+                    <canvas style="background-color: #ffcdcd;" id="myChart2"></canvas>
+                </div>
             </div>
 
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
+            <div>
+                <h1>Ranking de livros</h1>
             </div>
-            <div id="graficos">
-            </div>
+
         </div>
     </div>
+    <!--FOOTER--------------------------------------------------------------------------------->
+    <div class="footer">
+        <div class="container">
+            <h4>Feito por Felipe Santos, aluno SPTech-CCO 2026</h4>
 
-
+        </div>
+    </div>
+    <!--FOOTER--------------------------------------------------------------------------------->
 </body>
 
 </html>
 
 <script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    let proximaAtualizacao;
+    const ctx = document.getElementById('myChart1');
+    new Chart(ctx, {
 
-    window.onload = exibirAquariosDoUsuario();
+        type: 'bar',
 
-    function exibirAquariosDoUsuario() {
+        data: {
+            labels: ['diario 1', 'diario2', 'diario3', 'diario4', 'diario5'],
+            datasets: [
+                {
+                    label: 'Quantidade de avaliações por livros',
+                    data: [22, 24, 27, 23, 20],
+                    backgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56",
+                         "#FFCE56",
+                         "#FF6384",
+                    ],
+                    borderWidth: 2,
+
+                },
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const ctx2 = document.getElementById('myChart2');
+    new Chart(ctx2, {
+
+        type: 'pie',
+        data: {
+            labels: ['2 livros', '10 livros', '15 livros', '8 livros', '11 livros',],
+            datasets: [
+                {
+                    data: [20, 10, 20, 10, 40],
+                    borderWidth: 2,
+                    backgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56",
+                         "#FFCE56",
+                         "#FF6384",
+                    ],
+                },
+            ]
+        },
+    });
+
+    /* b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+     let proximaAtualizacao;
+
+     window.onload = exibirAquariosDoUsuario();*/
+
+    /*function exibirAquariosDoUsuario() {
         var aquarios = JSON.parse(sessionStorage.AQUARIOS);
         aquarios.forEach(item => {
             document.getElementById("btnAquario").innerHTML += `
@@ -152,7 +240,7 @@
         btnExibir.classList.remove("btn-white")
         btnExibir.classList.add("btn-pink")
     }
-
+*/
     // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
     // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
@@ -164,7 +252,7 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(idAquario) {
+    /*function obterDadosGrafico(idAquario) {
 
         alterarTitulo(idAquario)
 
@@ -189,11 +277,11 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
-
+*/
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e,
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, idAquario) {
+    /*function plotarGrafico(resposta, idAquario) {
 
         console.log('iniciando plotagem do gráfico...');
 
@@ -314,5 +402,5 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
 
-    }
+    }*/
 </script>
