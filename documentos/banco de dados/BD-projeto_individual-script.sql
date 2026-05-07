@@ -19,18 +19,65 @@ references usuario (id_usuario)
 
 create table avaliacao_livros (
 id_avaliacao_livros int primary key auto_increment,
-nome varchar(45),
-nota int,
+nome_livro varchar(45),
+nota_livro int,
 descricao varchar(100),
 fk_usuario int,
-constraint ctnota check(nota between 1 and 5),
+constraint ctnota check(nota_livro between 1 and 5),
 constraint ctfk_usuario_avaliacao foreign key (fk_usuario)
 references usuario (id_usuario)
 );
 
 select * from usuario;
 select * from endereco;
+select * from avaliacao_livros;
 
+select 
+u.nome as 'nome do usuario',
+e.cidade as 'cidade',
+a.nome_livro as 'livro',
+a.descricao as 'descricao'
+from usuario u 
+left join endereco e
+on u.id_usuario = e.fk_usuario
+left join avaliacao_livros a
+on u.id_usuario = a.fk_usuario;
+
+insert into usuario (nome, email, senha) values
+('Felipe', 'felipe@gmail.com', '222222'),
+('Caio', 'caio@gmail.com', '333333'),
+('Guilherme', 'guilherme@gmail.com', '444444'),
+('Ana', 'ana@gmail.com', '555555'),
+('Gustavo', 'gustavo@gmail.com', '666666'),
+('Arthur', 'arthur@gmail.com', '777777'),
+('Marcus', 'marcus@gmail.com', '888888');
+
+insert into endereco (estado, cidade, bairro, fk_usuario) values
+('SP', 'São Paulo', 'Rua A', 3),
+('SP', 'Cotia', 'Rua B', 4),
+('SP', 'Cotia', 'Rua B', 5),
+('BA', 'Salvador', 'Rua C', 6),
+('BA', 'Noronha', 'Rua D', 7),
+('RJ', 'Rio de Janeiro', 'Rua E', 8),
+('RJ', 'Rio de Janeiro', 'Rua E', 9);
+
+insert into avaliacao_livros (nome_livro, nota_livro, descricao, fk_usuario) values
+('Diário de um Banana 1', 2.5, 'Achei o primeiro fraco', 3), 
+('Diário de um Banana 3', 3.5, 'Mediano', 3), 
+('Diário de um Banana 3', 4.5, 'Gostei muito da parte da viagem', 4), 
+('Diário de um Banana 4', 5, 'Muito bom', 4), 
+('Diário de um Banana 3', 1.5, 'Esse é péssimo', 5), 
+('Diário de um Banana 3', 2, 'Não gostei', 6), 
+('Diário de um Banana 10', 2.8, 'Não é o meu favorito', 6),
+('Diário de um Banana 8', 3.4, 'O irmão é muito engraçado', 6),
+('Diário de um Banana 8', 4.1, 'Achei que foi um dos mais legais', 7),
+('Diário de um Banana 4', 3.3, 'Achei muito bom esse', 7),
+('Diário de um Banana 10', 3.5, 'Mais ou menos', 8),
+('Diário de um Banana 11', 5, 'Cara, esse é o melhor de todos', 8),
+('Diário de um Banana 12', 4.5, 'Muito divertido', 8),
+('Diário de um Banana 12', 1.5, 'Me deu sono', 9),
+('Diário de um Banana 8', 5, 'Simplesmente cinema', 9),
+('Diário de um Banana 10', 4.8, 'Só não dou 10 por causa do pai chato', 9);
 
 
 
