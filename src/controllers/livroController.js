@@ -92,5 +92,5 @@ module.exports = {
     listar,
     cadastrar,
     buscarUltimosLivros,
-    buscarMedidasEmTempoReal
+    buscarLivrosEmTempoReal
 }

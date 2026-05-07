@@ -111,21 +111,15 @@ insert into avaliacao_livros (nome_livro, nota_livro, descricao, fk_usuario) val
 
 -- selects para gerar os gráficos:
 
--- quantidade de avaliações por livro:
+
 select 
 nome_livro as livro,
 nota_livro as nota
-from avaliacao_livros;
--- group by? count? order by?
+from avaliacao_livros 
+order by ...
 
--- porcentagem da quantidade de livros lidos por usuários:
-select
-nome_livro as livro
-from avaliacao_livros;
--- group by? count? a porcentagem eu defino no html? join?
 
--- ranking dos livros mais bem avaliados com base na nota e na qtd de avaliações:
-select
+
 
 
 

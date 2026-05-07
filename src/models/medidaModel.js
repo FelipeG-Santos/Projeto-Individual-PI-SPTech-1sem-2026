@@ -9,7 +9,10 @@ function buscarUltimasMedidas(idAquario, limite_linhas) {
                         DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
                     FROM medida
                     WHERE fk_aquario = ${idAquario}
+                    
                     ORDER BY id DESC LIMIT ${limite_linhas}`;
+                    /* limite_linhas: é um número que trabalha com o LIMIT, puxando
+                     somente uma certa qtd de linhas, "últimas inseridas"*/
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
