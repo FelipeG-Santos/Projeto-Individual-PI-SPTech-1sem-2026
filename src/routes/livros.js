@@ -14,4 +14,14 @@ router.get("/listar", function (req, res) {
     livroController.listar(req, res);
 });
 
+
+// rota para gerar os gráficos:
+router.get("/ultimos/:idLivros", function (req, res) {
+    livroController.buscarUltimosLivros(req, res);
+});
+
+router.get("/tempo-real/:idLivros", function (req, res) {
+    livroController.buscarLivrosEmTempoReal(req, res);
+})
+
 module.exports = router;

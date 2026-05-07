@@ -20,7 +20,7 @@ references usuario (id_usuario)
 create table avaliacao_livros (
 id_avaliacao_livros int primary key auto_increment,
 nome_livro varchar(45),
-nota_livro int,
+nota_livro decimal(4,2),
 descricao varchar(100),
 fk_usuario int,
 constraint ctnota check(nota_livro between 1 and 5),
@@ -80,7 +80,52 @@ insert into avaliacao_livros (nome_livro, nota_livro, descricao, fk_usuario) val
 ('Diário de um Banana 10', 4.8, 'Só não dou 10 por causa do pai chato', 9);
 
 
+-- inserts sem os insert de testes iniciais:
+insert into endereco (estado, cidade, bairro, fk_usuario) values
+('SP', 'São Paulo', 'Rua A', 1),
+('SP', 'Cotia', 'Rua B', 2),
+('SP', 'Cotia', 'Rua B', 3),
+('BA', 'Salvador', 'Rua C', 4),
+('BA', 'Noronha', 'Rua D', 5),
+('RJ', 'Rio de Janeiro', 'Rua E', 6),
+('RJ', 'Rio de Janeiro', 'Rua E', 7);
 
+insert into avaliacao_livros (nome_livro, nota_livro, descricao, fk_usuario) values
+('Diário de um Banana 1', 2.5, 'Achei o primeiro fraco', 1), 
+('Diário de um Banana 3', 3.5, 'Mediano', 1), 
+('Diário de um Banana 3', 4.5, 'Gostei muito da parte da viagem', 2), 
+('Diário de um Banana 4', 5, 'Muito bom', 2), 
+('Diário de um Banana 3', 1.5, 'Esse é péssimo', 3), 
+('Diário de um Banana 3', 2, 'Não gostei', 4), 
+('Diário de um Banana 10', 2.8, 'Não é o meu favorito', 4),
+('Diário de um Banana 8', 3.4, 'O irmão é muito engraçado', 4),
+('Diário de um Banana 8', 4.1, 'Achei que foi um dos mais legais', 5),
+('Diário de um Banana 4', 3.3, 'Achei muito bom esse', 5),
+('Diário de um Banana 10', 3.5, 'Mais ou menos', 6),
+('Diário de um Banana 11', 5, 'Cara, esse é o melhor de todos', 6),
+('Diário de um Banana 12', 4.5, 'Muito divertido', 6),
+('Diário de um Banana 12', 1.5, 'Me deu sono', 7),
+('Diário de um Banana 8', 5, 'Simplesmente cinema', 7),
+('Diário de um Banana 10', 4.8, 'Só não dou 10 por causa do pai chato', 7);
+
+
+-- selects para gerar os gráficos:
+
+-- quantidade de avaliações por livro:
+select 
+nome_livro as livro,
+nota_livro as nota
+from avaliacao_livros;
+-- group by? count? order by?
+
+-- porcentagem da quantidade de livros lidos por usuários:
+select
+nome_livro as livro
+from avaliacao_livros;
+-- group by? count? a porcentagem eu defino no html? join?
+
+-- ranking dos livros mais bem avaliados com base na nota e na qtd de avaliações:
+select
 
 
 

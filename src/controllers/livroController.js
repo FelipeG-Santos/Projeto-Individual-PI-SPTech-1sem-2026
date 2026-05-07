@@ -42,7 +42,55 @@ console.log("BODY teste:", req.body);
 }
 }
 
+
+
+// controller para gerar os gráficos da dashboard:
+function buscarUltimosLivros(req, res) {
+
+    const limite_linhas = 7;
+
+    var idLivros = req.params.idLivros;
+
+    console.log(`Recuperando os ultimos ${limite_linhas} livros`);
+
+    livroModel.buscarUltimosLivros(idLivros, limite_linhas).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os ultimos livros.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
+function buscarLivrosEmTempoReal(req, res) {
+
+    var idLivros = req.params.idLivros;
+
+    console.log(`Recuperando livros em tempo real`);
+
+    livroModel.buscarLivrosEmTempoReal(idLivros).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os ultimos livros.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
+
 module.exports = {
     listar,
-    cadastrar
+    cadastrar,
+    buscarUltimosLivros,
+    buscarMedidasEmTempoReal
 }
