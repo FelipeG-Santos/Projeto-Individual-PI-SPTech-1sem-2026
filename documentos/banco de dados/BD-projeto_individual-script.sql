@@ -115,10 +115,11 @@ insert into avaliacao_livros (nome_livro, nota_livro, descricao, fk_usuario) val
 
 -- gráfico: quantidade de avaliações por livro:
 select
-nome_livro as 'Livro',
-count(nota_livro) as 'Avaliações'
+nome_livro,
+count(id_avaliacao_livros) as qtd_avaliacoes
 from avaliacao_livros
-group by nome_livro;
+group by nome_livro
+order by qtd_avaliacoes desc;
 
 -- gráfico: ranking de livros mais bem avaliados:
 select 
