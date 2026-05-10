@@ -44,6 +44,24 @@ console.log("BODY teste:", req.body);
 
 
 
+function buscarLivrosMaisAvaliados(req, res) {
+
+    livroModel.buscarLivrosMaisAvaliados()
+    .then(function(resultado) {
+
+        res.status(200).json(resultado);
+
+    }).catch(function(erro) {
+
+        console.log(erro);
+        console.log("Erro ao buscar livros mais avaliados");
+
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
+
 // controller para gerar os gráficos da dashboard:
 function buscarUltimosLivros(req, res) {
 
@@ -92,5 +110,6 @@ module.exports = {
     listar,
     cadastrar,
     buscarUltimosLivros,
-    buscarLivrosEmTempoReal
+    buscarLivrosEmTempoReal,
+    buscarLivrosMaisAvaliados
 }

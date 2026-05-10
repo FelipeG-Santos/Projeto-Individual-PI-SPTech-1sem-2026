@@ -22,6 +22,11 @@ router.get("/ultimos/:idLivros", function (req, res) {
 
 router.get("/tempo-real/:idLivros", function (req, res) {
     livroController.buscarLivrosEmTempoReal(req, res);
-})
+});
+
+
+router.get("/livrosMaisAvaliados", function (req, res) {
+    livroController.buscarLivrosMaisAvaliados(req, res);
+});
 
 module.exports = router;

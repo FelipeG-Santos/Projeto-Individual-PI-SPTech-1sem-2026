@@ -9,6 +9,25 @@ function listar() {
     return database.executar(instrucao);
 }
 
+
+function buscarLivrosMaisAvaliados() {
+
+    var instrucao = `
+    SELECT 
+            nome_livro,
+            COUNT(id_avaliacao_livros) AS quantidade_avaliacoes
+        FROM avaliacao_livros
+        GROUP BY nome_livro
+        ORDER BY quantidade_avaliacoes DESC;
+    `;
+
+    console.log("executando a instrução sql: \n" + instrucao);
+
+    return database.executar(instrucao);
+    
+}
+
+
 // comando de inserção dos dados no banco:
 function cadastrar(nome_livro, nota_livro, descricao, fk_usuario) {
     var instrucao = `
@@ -52,5 +71,6 @@ from avaliacao_livros
 // torna possível que outros arquivos vejam esse arquivo:
 module.exports = {
     cadastrar,
-    listar
+    listar,
+    buscarLivrosMaisAvaliados
 };
