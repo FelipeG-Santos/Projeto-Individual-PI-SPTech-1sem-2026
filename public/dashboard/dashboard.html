@@ -40,7 +40,7 @@
 
             <div class="btn-nav-white">
                 <a href="./cards.html">
-                    <h3>Aquários</h3>
+                    <h3>Livros</h3>
                 </a>
             </div>
 
@@ -63,13 +63,16 @@
         </div>
 
         <div class="dash">
-            <div id="alerta">
-            </div>
+            <!-- <div id="alerta"></div> -->
 
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-            </div>
+            <!-- <div class="btns-dash" id="btnAquario"> 
+                 O gráfico é chamado de acordo com o id (fk_aquario) do banco 
+            </div> -->
             <div id="graficos">
+
+                <div class="graph">
+                    <canvas id="myChartCanvas"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -82,11 +85,13 @@
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    let proximaAtualizacao;
+    window.onload = obterDadosGrafico;
 
-    window.onload = exibirAquariosDoUsuario();
+   /* let proximaAtualizacao;*/
 
-    function exibirAquariosDoUsuario() {
+   /* window.onload = exibirAquariosDoUsuario();*/
+
+    /*function exibirAquariosDoUsuario() {
         var aquarios = JSON.parse(sessionStorage.AQUARIOS);
         aquarios.forEach(item => {
             document.getElementById("btnAquario").innerHTML += `
@@ -113,15 +118,15 @@
         if (aquarios.length > 0) {
             exibirAquario(aquarios[0].id)
         }
-    }
+    }*/
 
-    function alterarTitulo(idAquario) {
+   /* function alterarTitulo(idAquario) {
         var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)
         var descricao = JSON.parse(sessionStorage.AQUARIOS).find(item => item.id == idAquario).descricao;
         tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
-    }
+    }*/
 
-    function exibirAquario(idAquario) {
+   /* function exibirAquario(idAquario) {
         let todosOsGraficos = JSON.parse(sessionStorage.AQUARIOS);
 
         for (i = 0; i < todosOsGraficos.length; i++) {
@@ -151,7 +156,7 @@
         let btnExibir = document.getElementById(`btnAquario${idAquario}`)
         btnExibir.classList.remove("btn-white")
         btnExibir.classList.add("btn-pink")
-    }
+    }*/
 
     // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
@@ -168,15 +173,16 @@
 
         /*alterarTitulo(idAquario)*/
 
-        if (proximaAtualizacao != undefined) {
+        /*if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
-        }
+        }*/
 
-        fetch('/livros/ultimos/'/*${idLivros}'*//*`/medidas/ultimas/${idAquario}`*/, { cache: 'no-store' }).then(function (response) {
+        fetch('/livros/listar/'/*${idLivros}'*//*`/medidas/ultimas/${idAquario}`*//*, { cache: 'no-store' }*/)
+         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
+                    /*resposta.reverse();*/
 
                     plotarGrafico(resposta/*, idLivros/*idAquario*/);
 
@@ -201,35 +207,35 @@
         let labels = [];
 
         // Criando estrutura para plotar gráfico - dados
-        let dados = {
+        /*let dados = {
             labels: labels,
             datasets: [{
-                label: 'Umidade',
+                /*label: 'Umidade',
                 data: [],
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1
             },
             {
-                label: 'Temperatura',
+                /*label: 'Temperatura',
                 data: [],
                 fill: false,
                 borderColor: 'rgb(199, 52, 52)',
                 tension: 0.1
             }]
-        };
+        };*/
 
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
+        /*for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
+            /*labels.push(registro.momento_grafico);
+            /*dados.datasets[0].data.push(registro.umidade);
             dados.datasets[1].data.push(registro.temperatura);
-        }
+        }*/
 
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
@@ -252,7 +258,7 @@
             config
         );
 
-        setTimeout(() => atualizarGrafico(/*idAquario,*/ dados, myChart), 2000);
+       // setTimeout(() => atualizarGrafico(/*idAquario, dados, myChart), 2000);
     }
 
 
@@ -261,7 +267,7 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(idAquario, dados, myChart) {
+   /* function atualizarGrafico(idAquario, dados, myChart) {
 
 
 
@@ -315,5 +321,5 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
 
-    }
+    }*/
 </script>
