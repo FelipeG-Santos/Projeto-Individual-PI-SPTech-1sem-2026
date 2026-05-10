@@ -19,8 +19,8 @@ references usuario (id_usuario)
 
 create table avaliacao_livros (
 id_avaliacao_livros int primary key auto_increment,
-nome_livro varchar(45),
-nota_livro decimal(4,2),
+nome_livro varchar(45) not null,
+nota_livro decimal(2,1) not null,
 descricao varchar(100),
 fk_usuario int,
 constraint ctnota check(nota_livro between 1 and 5),
@@ -31,6 +31,8 @@ references usuario (id_usuario)
 select * from usuario;
 select * from endereco;
 select * from avaliacao_livros;
+desc avaliacao_livros;
+drop table avaliacao_livros;
 
 select 
 u.nome as 'nome do usuario',
@@ -111,12 +113,57 @@ insert into avaliacao_livros (nome_livro, nota_livro, descricao, fk_usuario) val
 
 -- selects para gerar os gráficos:
 
+-- gráfico: quantidade de avaliações por livro:
+select
+nome_livro as 'Livro',
+count(nota_livro) as 'Avaliações'
+from avaliacao_livros
+group by nome_livro;
 
+-- gráfico: ranking de livros mais bem avaliados:
 select 
-nome_livro as livro,
-nota_livro as nota
-from avaliacao_livros 
-order by ...
+nome_livro as 'livro',
+truncate(media_livro, 2) as 'media_avaliacoes'
+from (
+select 
+nome_livro,
+AVG(nota_livro) as media_livro
+from avaliacao_livros
+group by nome_livro
+) as medias
+order by media_livro desc;
+
+-- gráfico: ranking de livros mais bem avaliados utilizando score:
+-- 5.0 = m: qtd minima de avaliações necessárias para o livro se tornar confiável
+SELECT 
+    nome_livro,
+    truncate(AVG(nota_livro), 2) AS media,
+    COUNT(*) AS quantidade_avaliacoes,
+    ROUND(
+    ((COUNT(*) / (COUNT(*) + 5.0)) * AVG(nota_livro) +
+            (5.0 / (COUNT(*) + 5.0)) *
+            (SELECT AVG(nota_livro) FROM avaliacao_livros)
+        ), 2) AS score
+FROM avaliacao_livros
+GROUP BY nome_livro
+ORDER BY score DESC;
+
+-- gráfico: quantidade de usuários que leram certa quantidade de livros da série:
+select
+count(qtd_livros_lidos_por_usuario) as 'qtd_de_usuarios',
+qtd_livros_lidos_por_usuario as 'qtd_livros_lidos'
+from (
+select
+count(fk_usuario) as 'qtd_livros_lidos_por_usuario'
+from avaliacao_livros
+group by fk_usuario
+) as quantidade_por_usuario
+group by qtd_livros_lidos_por_usuario;
+
+
+
+
+
 
 -- inserts para teste: aquatech
 insert into medida (dht11_umidade, dht11_temperatura, momento, fk_aquario) values
