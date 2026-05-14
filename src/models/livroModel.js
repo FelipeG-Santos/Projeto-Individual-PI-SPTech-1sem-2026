@@ -10,6 +10,7 @@ function listar() {
 }
 
 
+// select dos livros mais avaliados:
 function buscarLivrosMaisAvaliados() {
 
     var instrucao = `
@@ -24,7 +25,30 @@ function buscarLivrosMaisAvaliados() {
     console.log("executando a instrução sql: \n" + instrucao);
 
     return database.executar(instrucao);
-    
+
+}
+
+
+// select dos livros lidos por usuario:
+function buscarLivrosLidosPorUsuario() {
+
+    var instrucao = `
+    SELECT
+          COUNT(qtd_livros_lidos_por_usuario) AS qtd_de_usuarios,
+          qtd_livros_lidos_por_usuario AS qtd_livros_lidos
+          FROM (
+             SELECT
+             COUNT(fk_usuario) AS qtd_livros_lidos_por_usuario
+             FROM avaliacao_livros
+             GROUP BY fk_usuario
+         ) AS quantidade_por_usuario
+         GROUP BY qtd_livros_lidos_por_usuario;
+    `;
+
+    console.log("executando a instrução sql: \n" + instrucao);
+
+    return database.executar(instrucao);
+
 }
 
 
@@ -42,7 +66,7 @@ function cadastrar(nome_livro, nota_livro, descricao, fk_usuario) {
 // funções para a obtenção dos dados para os gráficos:
 function buscarUltimosLivros(idLivros, limite_linhas) {
 
-// VER SELECTS PARA GERAR OS GRÁFICOS!!! 
+    // VER SELECTS PARA GERAR OS GRÁFICOS!!! 
     var instrucaoSql = `SELECT 
         nome_livro as livro,
 nota_livro as nota
@@ -72,5 +96,6 @@ from avaliacao_livros
 module.exports = {
     cadastrar,
     listar,
-    buscarLivrosMaisAvaliados
+    buscarLivrosMaisAvaliados,
+    buscarLivrosLidosPorUsuario
 };

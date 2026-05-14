@@ -43,7 +43,7 @@ console.log("BODY teste:", req.body);
 }
 
 
-
+// gráfico de barras:
 function buscarLivrosMaisAvaliados(req, res) {
 
     livroModel.buscarLivrosMaisAvaliados()
@@ -55,6 +55,24 @@ function buscarLivrosMaisAvaliados(req, res) {
 
         console.log(erro);
         console.log("Erro ao buscar livros mais avaliados");
+
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
+//gráfico de pizza:
+function buscarLivrosLidosPorUsuario(req, res) {
+
+    livroModel.buscarLivrosLidosPorUsuario()
+    .then(function(resultado) {
+
+        res.status(200).json(resultado);
+
+    }).catch(function(erro) {
+
+        console.log(erro);
+        console.log("Erro ao buscar livros lidos por usuario");
 
         res.status(500).json(erro.sqlMessage);
     });
@@ -111,5 +129,6 @@ module.exports = {
     cadastrar,
     buscarUltimosLivros,
     buscarLivrosEmTempoReal,
-    buscarLivrosMaisAvaliados
+    buscarLivrosMaisAvaliados,
+    buscarLivrosLidosPorUsuario
 }

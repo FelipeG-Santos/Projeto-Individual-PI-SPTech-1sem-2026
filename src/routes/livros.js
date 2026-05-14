@@ -29,4 +29,8 @@ router.get("/livrosMaisAvaliados", function (req, res) {
     livroController.buscarLivrosMaisAvaliados(req, res);
 });
 
+router.get("/livrosLidosPorUsuario", function (req, res) {
+    livroController.buscarLivrosLidosPorUsuario(req, res);
+});
+
 module.exports = router;
