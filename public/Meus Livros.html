@@ -9,7 +9,68 @@
 </head>
 
 <body>
+     <!--Header-------------------------------------------------------------------------------->
+   <div class="header">
+    <div class="container">
+      <img class="irmaozinho" src="assets/imgs/irmaozinho-png.png" alt="">
+      <h1 class="titulo"><span class="diario-header">Diário</span> de um Banana</h1>
+      <ul class="navbar">
+        <li>
+          <a href="index.html">Inicial</a>
+        </li><br>
+        <br>
+        <li>|</li><br>
+        <br>
+        <li>
+          <a href="#">Meus Livros</a>
+        </li><br>
+        <br>
+        <li>|</li><br>
+        <br>
+        <li>
+          <a href="login.html">Dashboard</a>
+        </li><br>
+        <br>
+        <li>|</li><br>
+        <br>
+        <li>
+          <a href="login.html">Login</a>
+        </li><br>
+        <br>
+        <li>|</li><br>
+        <br>
+        <li>
+          <a href="cadastro.html">Cadastro</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+<!--Header-------------------------------------------------------------------------------->
 
+ <!--BANNER---------------------------------------------------------------------------------> 
+  <div class="banner">
+    <div class="container">
+      <img class="familia" src="assets/imgs/image-removebg-preview.png" alt="">
+      <!--<img class="fita-adesiva fita1" src="../public/assets/imgs/fita-adesiva.png" alt="">
+       <img class="fita-adesiva fita2" src="../public/assets/imgs/fita-adesiva.png" alt=""> -->
+       
+      <img class="greg-papel" src="assets/imgs/greg-papel.jpg" alt="">
+       <img class="fita-adesiva fita3" src="assets/imgs/fita-adesiva.png" alt="">
+         <img class="fita-adesiva fita4" src="assets/imgs/fita-adesiva.png" alt="">
+      <p class="banana">Banana <br></p>
+      <p class="de_um">de um <br></p>
+      <p class="diario">DIÁRIO</p>
+    </div>
+  </div>
+    <!--BANNER--------------------------------------------------------------------------------->
+    <div class="container-cadastro-livros">
+
+        <div class="boxes">
+           
+        <div><h2 class="subtitulos">Cadastrar Livros</h2></div>
+         <div class="estrutura-titulo-conteudo">
+        
+            <div class=" card-estrutura-livros card_cadastro">
     <h1>Meus Livros "Diário de um Banana"</h1><br>
 
     <div class="formulario" id="etapa1">
@@ -35,8 +96,15 @@
 
 
     <button class="botao" onclick="Cadastrar()">Cadastrar</button><br>
+    </div>
 
-
+    <div>
+        <img class="greg-famoso" src="assets/imgs/greg-famoso.jpeg">
+    </div>
+    </div>
+</div>
+</div>
+</div>
     <br><span>Procure pelos seus livros cadastrados:</span>
     <input type="text" id="ipt_procura_livro"><br>
     <button onclick="Procurar()">Procurar</button><br>
@@ -47,7 +115,13 @@
 
     <button onclick="Remover()">Remover</button><br>
 
-
+ <!--footer inicio-------------------------------------------------------------->
+    <div class="footer">
+        <div class="container">
+             <h4>Feito por Felipe Santos, aluno SPTech-CCO 2026</h4>
+        </div>
+    </div>
+    <!--footer fim----------------------------------------------------------------->
 </body>
 <script>
     livros = []
