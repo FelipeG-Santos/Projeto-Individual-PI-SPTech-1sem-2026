@@ -48,7 +48,27 @@ function buscarLivrosLidosPorUsuario() {
     console.log("executando a instrução sql: \n" + instrucao);
 
     return database.executar(instrucao);
+}
 
+//select dos melhores avaliados:
+function buscarRanking() {
+
+    var instrucao = `
+    SELECT 
+    nome_livro,
+    ROUND(
+    ((COUNT(*) / (COUNT(*) + 5.0)) * AVG(nota_livro) +
+            (5.0 / (COUNT(*) + 5.0)) *
+            (SELECT AVG(nota_livro) FROM avaliacao_livros)
+        ), 2) AS score
+FROM avaliacao_livros
+GROUP BY nome_livro
+ORDER BY score DESC LIMIT 5;
+    `;
+
+    console.log("executando a instrução sql: \n" + instrucao);
+
+    return database.executar(instrucao);
 }
 
 
@@ -97,5 +117,6 @@ module.exports = {
     cadastrar,
     listar,
     buscarLivrosMaisAvaliados,
-    buscarLivrosLidosPorUsuario
+    buscarLivrosLidosPorUsuario,
+    buscarRanking
 };

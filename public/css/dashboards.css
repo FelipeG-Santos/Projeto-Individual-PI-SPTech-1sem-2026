@@ -372,6 +372,12 @@ body {
   padding: 20px;
 }
 
+.ranking-livros {
+  background-color: #42a5f5;
+  margin: 50px;
+padding: 50px;
+}
+
 .tituloGraficos {
   color: rgb(216, 216, 216);
   display: flex;

@@ -78,6 +78,23 @@ function buscarLivrosLidosPorUsuario(req, res) {
     });
 }
 
+// ranking de melhores avaliações:
+function buscarRanking(req, res) {
+
+    livroModel.buscarRanking()
+    .then(function(resultado) {
+
+        res.status(200).json(resultado);
+
+    }).catch(function(erro) {
+
+        console.log(erro);
+        console.log("Erro ao buscar livros lidos por usuario");
+
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 
 
 // controller para gerar os gráficos da dashboard:
@@ -130,5 +147,6 @@ module.exports = {
     buscarUltimosLivros,
     buscarLivrosEmTempoReal,
     buscarLivrosMaisAvaliados,
-    buscarLivrosLidosPorUsuario
+    buscarLivrosLidosPorUsuario,
+    buscarRanking
 }

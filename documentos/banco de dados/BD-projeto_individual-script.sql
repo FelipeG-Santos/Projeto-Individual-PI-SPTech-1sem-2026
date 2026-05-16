@@ -33,6 +33,8 @@ select * from endereco;
 select * from avaliacao_livros;
 desc avaliacao_livros;
 drop table avaliacao_livros;
+DELETE FROM avaliacao_livros where id_avaliacao_livros = 17;
+DELETE FROM avaliacao_livros where id_avaliacao_livros = 18;
 
 select 
 u.nome as 'nome do usuario',
@@ -147,15 +149,15 @@ SELECT
         ), 2) AS score
 FROM avaliacao_livros
 GROUP BY nome_livro
-ORDER BY score DESC;
+ORDER BY score DESC LIMIT 5;
 
 -- gráfico: quantidade de usuários que leram certa quantidade de livros da série:
 select
-count(qtd_livros_lidos_por_usuario) as 'qtd_de_usuarios',
-qtd_livros_lidos_por_usuario as 'qtd_livros_lidos'
+count(qtd_livros_lidos_por_usuario) as qtd_de_usuarios,
+qtd_livros_lidos_por_usuario as qtd_livros_lidos
 from (
 select
-count(fk_usuario) as 'qtd_livros_lidos_por_usuario'
+count(fk_usuario) as qtd_livros_lidos_por_usuario
 from avaliacao_livros
 group by fk_usuario
 ) as quantidade_por_usuario

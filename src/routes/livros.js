@@ -33,4 +33,9 @@ router.get("/livrosLidosPorUsuario", function (req, res) {
     livroController.buscarLivrosLidosPorUsuario(req, res);
 });
 
+router.get("/livrosRanking", function (req, res) {
+    livroController.buscarRanking(req, res);
+});
+
+
 module.exports = router;
