@@ -9,17 +9,15 @@
 </head>
 
 <body>
-     <!--Header-------------------------------------------------------------------------------->
-   <div class="header">
-    <div class="container">
+     <!--HEADER--------------------------------------------------------------------------------->
+  <div class="header">
       <img class="irmaozinho" src="assets/imgs/irmaozinho-png.png" alt="">
       <h1 class="titulo"><span class="diario-header">Diário</span> de um Banana</h1>
       <ul class="navbar">
         <li>
           <a href="index.html">Inicial</a>
         </li><br>
-        <br>
-        <li>|</li><br>
+        <br><li>|</li><br>
         <br>
         <li>
           <a href="#">Meus Livros</a>
@@ -43,24 +41,26 @@
           <a href="cadastro.html">Cadastro</a>
         </li>
       </ul>
-    </div>
   </div>
-<!--Header-------------------------------------------------------------------------------->
+    <!--HEADER--------------------------------------------------------------------------------->
 
- <!--BANNER---------------------------------------------------------------------------------> 
+  <!--BANNER---------------------------------------------------------------------------------> 
   <div class="banner">
-    <div class="container">
-      <img class="familia" src="assets/imgs/image-removebg-preview.png" alt="">
-      <!--<img class="fita-adesiva fita1" src="../public/assets/imgs/fita-adesiva.png" alt="">
-       <img class="fita-adesiva fita2" src="../public/assets/imgs/fita-adesiva.png" alt=""> -->
-       
-      <img class="greg-papel" src="assets/imgs/greg-papel.jpg" alt="">
-       <img class="fita-adesiva fita3" src="assets/imgs/fita-adesiva.png" alt="">
-         <img class="fita-adesiva fita4" src="assets/imgs/fita-adesiva.png" alt="">
+    <!-- <div class="container"> -->
+     
+      
+      <div class="posicao-letras-banner">
+        <p class="diario">DIÁRIO</p>
+        <p class="de_um">de um <br></p>
       <p class="banana">Banana <br></p>
-      <p class="de_um">de um <br></p>
-      <p class="diario">DIÁRIO</p>
-    </div>
+ </div>
+ <div >
+  <div class="posicao-letras-banner2">
+      <p >
+        Uma coleção de decisões impensáveis e momentos lendários
+       </p>
+       </div>
+        </div>
   </div>
     <!--BANNER--------------------------------------------------------------------------------->
     <div class="container-cadastro-livros">
@@ -90,9 +90,6 @@
         </div>
 
     </div>
-
-
-
 
 
     <button class="botao" onclick="Cadastrar()">Cadastrar</button><br>
@@ -193,16 +190,6 @@
     cardErro.style.display = "none";
   }
 
-
-    
-
-
-
-
-
-
-
-
     function Procurar() {
         let texto = "";
         let unidades = 0;
@@ -246,5 +233,4 @@
 
     }
 </script>
-
 </html>

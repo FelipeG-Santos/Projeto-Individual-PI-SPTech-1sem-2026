@@ -338,7 +338,7 @@ width: 30%;
   padding: 10px 0;
   flex-direction: row;
   background-color: #BB1C17;
-  border: 3px solid #000;
+  border: 5px solid #000;
   border-radius: 10px;
 }
 
@@ -428,7 +428,7 @@ width: 30%;
   padding: 10px 0;
   flex-direction: row;
   background-color: #1F3467;
-  border: 3px solid #000000;
+  border: 5px solid #688dc5;
   border-radius: 10px;
 }
 
@@ -719,7 +719,7 @@ input {
  
   flex-direction: column;
   background-color: #1F3467;
-  border: 3px solid #000;
+  border: 5px solid #688dc5;
   border-radius: 10px;
 }
 

@@ -109,9 +109,7 @@
     </div>
 
 </body>
-
 </html>
-
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
@@ -334,9 +332,6 @@
     }
 
 
-
-
-
     function obterDadosGraficoPizza() {
 
         fetch('/livros/livrosLidosPorUsuario')
@@ -382,7 +377,6 @@
             }]
         };
 
-
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGraficoPizza" e passados para "plotarGraficoPizza":')
         console.log(resposta)
@@ -426,8 +420,6 @@
 
         // setTimeout(() => atualizarGrafico(/*idAquario, dados, myChart), 2000);
     }
-
-
 
 
 
@@ -499,7 +491,6 @@ function obterDadosRanking()  {
                ${registro.score}<br>`
             }     
         }
-
     }
 
 
