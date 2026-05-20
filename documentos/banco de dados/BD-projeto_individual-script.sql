@@ -32,9 +32,6 @@ select * from usuario;
 select * from endereco;
 select * from avaliacao_livros;
 desc avaliacao_livros;
-drop table avaliacao_livros;
-DELETE FROM avaliacao_livros where id_avaliacao_livros = 17;
-DELETE FROM avaliacao_livros where id_avaliacao_livros = 18;
 
 select 
 u.nome as 'nome do usuario',
