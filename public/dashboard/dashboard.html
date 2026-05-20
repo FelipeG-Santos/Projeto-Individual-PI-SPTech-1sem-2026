@@ -73,7 +73,7 @@
 
 
     <div class="janela">
-
+<div style="color: white;" class="KPIs"><h1>teste</h1></div>
         <!--<div class="header-left">
             <h1>Diário de um Banana</h1>
 
@@ -139,23 +139,20 @@
                             <h2>Ranking dos Livros Mais Bem Avaliados</h2>
 
                             <br>
-                            <div class="posicao-numero">
-                            <h2>1°</h2>
-                            <div id="primeiro_lugar"></div><br>
-                            </div>
+                            <div class="posicao-numero" id="primeiro_lugar"></div><br>
                             <br>
 
-                            <h2>2°</h2>
-                            <div id="segundo_lugar"></div><br>
+                            
+                           <div class="posicao-numero" id="segundo_lugar"></div><br>
                             <br>
-                            <h2>3°</h2>
-                            <div id="terceiro_lugar"></div><br>
+                            
+                            <div class="posicao-numero" id="terceiro_lugar"></div><br>
                             <br>
-                            <h2>4°</h2>
-                            <div id="quarto_lugar"></div><br>
+                            
+                            <div class="posicao-numero" id="quarto_lugar"></div><br>
                             <br>
-                            <h2>5°</h2>
-                            <div id="quinto_lugar"></div><br>
+                           
+                            <div class="posicao-numero" id="quinto_lugar"></div><br>
                         </div>
 
                     </div>
@@ -524,28 +521,29 @@
 
             if (i === 0) {
                 primeiro_lugar.innerHTML = `
-               ${registro.nome_livro}<br>
-               ${registro.score}<br>`
+              <div class="posicao-nome-livro-ranking"><h2>1°</h2> <div class="altura-nome">${registro.nome_livro}</div></div>
+              <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
             }
             if (i == 1) {
                 segundo_lugar.innerHTML = `
-               ${registro.nome_livro}<br>
-               ${registro.score}<br>`
+               <div class="posicao-nome-livro-ranking"><h2>2°</h2> <div class="altura-nome">${registro.nome_livro}</div></div>
+              <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
+            
             }
             if (i == 2) {
                 terceiro_lugar.innerHTML = `
-               ${registro.nome_livro}<br>
-               ${registro.score}<br>`
+                <div class="posicao-nome-livro-ranking"><h2>3°</h2> <div class="altura-nome">${registro.nome_livro}</div></div>
+              <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
             }
             if (i == 3) {
                 quarto_lugar.innerHTML = `
-               ${registro.nome_livro}<br>
-               ${registro.score}<br>`
+               <div class="posicao-nome-livro-ranking"><h2>4°</h2> <div class="altura-nome">${registro.nome_livro}</div></div>
+              <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
             }
             if (i == 4) {
                 quinto_lugar.innerHTML = `
-               ${registro.nome_livro}<br>
-               ${registro.score}<br>`
+                <div class="posicao-nome-livro-ranking"><h2>5°</h2> <div class="altura-nome">${registro.nome_livro}</div></div>
+              <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
             }
         }
     }
