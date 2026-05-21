@@ -15,10 +15,12 @@ function buscarLivrosMaisAvaliados() {
 
     var instrucao = `
     SELECT 
-            nome_livro,
-            COUNT(id_avaliacao_livros) AS quantidade_avaliacoes
-        FROM avaliacao_livros
-        GROUP BY nome_livro
+         l.nome_livro AS titulo,
+         COUNT(a.id_avaliacao_livros) AS quantidade_avaliacoes
+            FROM livros l
+            JOIN avaliacao_livros a
+            ON l.id_livro = a.fk_livro
+        GROUP BY l.nome_livro
         ORDER BY quantidade_avaliacoes DESC;
     `;
 
@@ -55,14 +57,18 @@ function buscarRanking() {
 
     var instrucao = `
     SELECT 
-    nome_livro,
+    l.nome_livro AS titulo,
+    TRUNCATE(AVG(a.nota_livro), 2) AS media,
+    COUNT(*) AS quantidade_avaliacoes,
     ROUND(
-    ((COUNT(*) / (COUNT(*) + 5.0)) * AVG(nota_livro) +
+    ((COUNT(*) / (COUNT(*) + 5.0)) * AVG(a.nota_livro) +
             (5.0 / (COUNT(*) + 5.0)) *
-            (SELECT AVG(nota_livro) FROM avaliacao_livros)
+            (SELECT AVG(a.nota_livro) FROM avaliacao_livros a)
         ), 2) AS score
-FROM avaliacao_livros
-GROUP BY nome_livro
+FROM avaliacao_livros a
+JOIN livros l
+ON a.fk_livro = l.id_livro
+GROUP BY l.nome_livro
 ORDER BY score DESC LIMIT 5;
     `;
 

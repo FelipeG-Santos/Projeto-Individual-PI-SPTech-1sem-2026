@@ -179,16 +179,18 @@ order by media_livro desc;
 -- gráfico: ranking de livros mais bem avaliados utilizando score:
 -- 5.0 = m: qtd minima de avaliações necessárias para o livro se tornar confiável
 SELECT 
-    nome_livro,
-    truncate(AVG(nota_livro), 2) AS media,
+    l.nome_livro AS titulo,
+    TRUNCATE(AVG(a.nota_livro), 2) AS media,
     COUNT(*) AS quantidade_avaliacoes,
     ROUND(
-    ((COUNT(*) / (COUNT(*) + 5.0)) * AVG(nota_livro) +
+    ((COUNT(*) / (COUNT(*) + 5.0)) * AVG(a.nota_livro) +
             (5.0 / (COUNT(*) + 5.0)) *
-            (SELECT AVG(nota_livro) FROM avaliacao_livros)
+            (SELECT AVG(a.nota_livro) FROM avaliacao_livros a)
         ), 2) AS score
-FROM avaliacao_livros
-GROUP BY nome_livro
+FROM avaliacao_livros a
+JOIN livros l
+ON a.fk_livro = l.id_livro
+GROUP BY l.nome_livro
 ORDER BY score DESC LIMIT 5;
 
 -- gráfico: quantidade de usuários que leram certa quantidade de livros da série:

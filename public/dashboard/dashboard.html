@@ -74,41 +74,35 @@
 
     <div class="janela">
 <div class="KPIs">
-            <div class="kpi-quadrado maisAvaliados">
-                
+            <div class="kpi-quadrado maisAvaliados"> 
                 <h3>Livro Mais Avaliado</h3>
                 <p>a</p>
             </div>
 
-            <div class="kpi-quadrado maiorMedia">
-                
+            <div class="kpi-quadrado maiorMedia">   
                 <h3>Livro com a Maior Média de Notas</h3>
-                <p>b</p>
+                <div id="maiorMedia"></div>
             </div>
 
-            <div class="kpi-quadrado menorMedia">
-                
+            <div class="kpi-quadrado menorMedia">   
                 <h3>Livro com a Menor Média de Notas</h3>
                 <p>c</p>
                 <span>d</span>
             </div>
 
-            <div class="kpi-quadrado classificacao">
-                
+            <div class="kpi-quadrado classificacao">  
                 <h3>Sua Classificação para Completar a Série</h3>
                 <p>e</p>
                 <span>f</span>
             </div>
 
-             <div class="kpi-quadrado completaram">
-                
+             <div class="kpi-quadrado completaram">  
                 <h3>Usuários que Completaram a Série</h3>
                 <p>g</p>
                 <span>h</span>
             </div>
 
-             <div class="kpi-quadrado semana">
-                
+             <div class="kpi-quadrado semana"> 
                 <h3>Livro Mais Avaliado na Última Semana</h3>
                 <p>i</p>
                 <span>j</span>
@@ -371,7 +365,7 @@
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-            labels.push(registro.nome_livro);
+            labels.push(registro.titulo);
             dados.datasets[0].data.push(registro.quantidade_avaliacoes);
 
 
@@ -555,34 +549,38 @@
             var registro = resposta[i];
 
             console.log(`
-               ${registro.nome_livro}<br>
+               ${registro.titulo}<br>
                ${registro.score}<br>`);
 
 
             if (i === 0) {
+                maiorMedia.innerHTML = `<div class="posicao-nome-livro-ranking"><h2>1°</h2> <div class="altura-nome">${registro.titulo}</div></div>
+              <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
+
+
                 primeiro_lugar.innerHTML = `
-              <div class="posicao-nome-livro-ranking"><h2>1°</h2> <div class="altura-nome">${registro.nome_livro}</div></div>
+              <div class="posicao-nome-livro-ranking"><h2>1°</h2> <div class="altura-nome">${registro.titulo}</div></div>
               <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
             }
             if (i == 1) {
                 segundo_lugar.innerHTML = `
-               <div class="posicao-nome-livro-ranking"><h2>2°</h2> <div class="altura-nome">${registro.nome_livro}</div></div>
+               <div class="posicao-nome-livro-ranking"><h2>2°</h2> <div class="altura-nome">${registro.titulo}</div></div>
               <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
             
             }
             if (i == 2) {
                 terceiro_lugar.innerHTML = `
-                <div class="posicao-nome-livro-ranking"><h2>3°</h2> <div class="altura-nome">${registro.nome_livro}</div></div>
+                <div class="posicao-nome-livro-ranking"><h2>3°</h2> <div class="altura-nome">${registro.titulo}</div></div>
               <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
             }
             if (i == 3) {
                 quarto_lugar.innerHTML = `
-               <div class="posicao-nome-livro-ranking"><h2>4°</h2> <div class="altura-nome">${registro.nome_livro}</div></div>
+               <div class="posicao-nome-livro-ranking"><h2>4°</h2> <div class="altura-nome">${registro.titulo}</div></div>
               <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
             }
             if (i == 4) {
                 quinto_lugar.innerHTML = `
-                <div class="posicao-nome-livro-ranking"><h2>5°</h2> <div class="altura-nome">${registro.nome_livro}</div></div>
+                <div class="posicao-nome-livro-ranking"><h2>5°</h2> <div class="altura-nome">${registro.titulo}</div></div>
               <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
             }
         }
