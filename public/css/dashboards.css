@@ -496,14 +496,14 @@ canvas {
  
 }
 
-.kpis {
+.KPIs {
     display: flex;
     /*distância entre as KPIs */
     gap: 20px;
     margin-top: 10px;
 }
 
-.kpi-card {
+.kpi-quadrado {
   /* garante que todos os elementos dividam o mesmo espaço igualmente preenchendo tudo */
     flex: 1;
     background-color: white;
@@ -514,29 +514,38 @@ canvas {
    
 }
 
-.kpi-card h3 {
+.kpi-quadrado h3 {
     font-size: 14px;
     color: #000000;
 }
 
-.kpi-card p {
+.kpi-quadrado p {
     font-size: 26px;
     font-weight: bold;
 }
 
-.kpi-card.normal p {
-    color: #333;
-}
 
-.kpi-card.alerta p {
+.kpi-quadrado.maiorMedia p {
     color: #f1c40f;
 }
 
-.kpi-card.critico p {
+.kpi-quadrado.menorMedia p {
     color: #ff3b3b;
 }
 
-.kpi-card.otimo p {
+.kpi-quadrado.classificacao p {
+    color: #ff3b3b;
+}
+
+.kpi-quadrado.completaram p {
+    color: #ff3b3b;
+}
+
+.kpi-quadrado.semana p {
+    color: #ff3b3b;
+}
+
+.kpi-quadrado.maisAvaliados p {
     color: rgb(96, 226, 96);
 }
 
