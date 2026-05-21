@@ -19,19 +19,32 @@ references usuario (id_usuario)
 
 create table avaliacao_livros (
 id_avaliacao_livros int primary key auto_increment,
-nome_livro varchar(45) not null,
+fk_livro int,
 nota_livro decimal(2,1) not null,
 descricao varchar(100),
 fk_usuario int,
 constraint ctnota check(nota_livro between 1 and 5),
 constraint ctfk_usuario_avaliacao foreign key (fk_usuario)
-references usuario (id_usuario)
+references usuario (id_usuario),
+constraint ctfk_livro foreign key (fk_livro)
+references livros (id_livro)
+);
+
+
+
+
+create table livros (
+id_livro int primary key auto_increment,
+nome_livro varchar(50),
+imagem_livro varchar(200)
 );
 
 select * from usuario;
 select * from endereco;
 select * from avaliacao_livros;
+select * from livros;
 desc avaliacao_livros;
+
 
 select 
 u.nome as 'nome do usuario',
@@ -109,15 +122,45 @@ insert into avaliacao_livros (nome_livro, nota_livro, descricao, fk_usuario) val
 ('Diário de um Banana 8', 5, 'Simplesmente cinema', 7),
 ('Diário de um Banana 10', 4.8, 'Só não dou 10 por causa do pai chato', 7);
 
+-- inserts imagens 
+insert into livros (nome_livro, imagem_livro) values
+('Diário de um Banana 1', 'assets/imgs/diario-1.jpg'),
+('Diário de um Banana 2: Rodrick é o Cara', 'assets/imgs/diario-2.jpg'),
+('Diário de um Banana 3: A Gota D’Água', 'assets/imgs/diario-3.jpg'),
+('Diário de um Banana 4: Dias de Cão', 'assets/imgs/diario-4.jpg'),
+('Diário de um Banana 5: A Verdade Nua e Crua', 'assets/imgs/diario-5.jpg'),
+('Diário de um Banana 6: Casa dos Horrores', 'assets/imgs/diario-6.jpg'),
+('Diário de um Banana 7: Segurando Vela', 'assets/imgs/diario-7.jpg'),
+('Diário de um Banana 8: Maré de Azar', 'assets/imgs/diario-8.jpg'),
+('Diário de um Banana 9: Caindo na Estrada', 'assets/imgs/diario-9.jpg'),
+('Diário de um Banana 10: Bons Tempos', 'assets/imgs/diario-10.jpg'),
+('Diário de um Banana 11: Vai ou Racha', 'assets/imgs/diario-11.jpg'),
+('Diário de um Banana 12: Apertem os Cintos', 'assets/imgs/diario-12.jpg'),
+('Diário de um Banana 13: Batalha Neval', 'assets/imgs/diario-13.jpg'),
+('Diário de um Banana 14: Quebra Tudo', 'assets/imgs/diario-14.jpg'),
+('Diário de um Banana 15: Vai Fundo', 'assets/imgs/diario-15.jpg'),
+('Diário de um Banana 16: Bola Fora', 'assets/imgs/diario-16.jpg'),
+('Diário de um Banana 17: Fräwda Megaxeia', 'assets/imgs/diario-17.jpg'),
+('Diário de um Banana 18: Cabeça Oca', 'assets/imgs/diario-18.jpg'),
+('Diário de um Banana 19: Baita Lambança', 'assets/imgs/diario-19.jpg'),
+('Diário de um Banana 20: Festa Insana', 'assets/imgs/diario-20.jpg');
+
+
+
+
+
+
 
 -- selects para gerar os gráficos:
 
 -- gráfico: quantidade de avaliações por livro:
 select
-nome_livro,
-count(id_avaliacao_livros) as qtd_avaliacoes
-from avaliacao_livros
-group by nome_livro
+l.nome_livro,
+count(a.id_avaliacao_livros) as qtd_avaliacoes
+from livros l
+join avaliacao_livros a
+on l.id_livro = a.fk_livro
+group by l.nome_livro
 order by qtd_avaliacoes desc;
 
 -- gráfico: ranking de livros mais bem avaliados:

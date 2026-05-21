@@ -78,7 +78,29 @@
 
         <div class="campo">
             <span>Nome do livro:</span>
-            <input type="text" id="ipt_nome_livro" placeholder="digite o nome do livro">
+            <select name="diarios" id="diarios">
+              <option value="1">Diário de um Banana 1</option>
+              <option value="2">Diário de um Banana 2: Rodrick é o Cara</option>
+              <option value="3">Diário de um Banana 3: A Gota D’Água</option>
+              <option value="4">Diário de um Banana 4: Dias de Cão</option>
+              <option value="5">Diário de um Banana 5: A Verdade Nua e Crua</option>
+              <option value="6">Diário de um Banana 6: Casa dos Horrores</option>
+              <option value="7">Diário de um Banana 7: Segurando Vela</option>
+              <option value="8">Diário de um Banana 8: Maré de Azar</option>
+              <option value="9">Diário de um Banana 9: Caindo na Estrada</option>
+              <option value="10">Diário de um Banana 10: Bons Tempos</option>
+              <option value="11">Diário de um Banana 11: Vai ou Racha</option>
+              <option value="12">Diário de um Banana 12: Apertem os Cintos</option>
+              <option value="13">Diário de um Banana 13: Batalha Neval</option>
+              <option value="14">Diário de um Banana 14: Quebra Tudo</option>
+              <option value="15">Diário de um Banana 15: Vai Fundo</option>
+              <option value="16">Diário de um Banana 16: Bola Fora</option>
+              <option value="17">Diário de um Banana 17: Fräwda Megaxeia</option>
+              <option value="18">Diário de um Banana 18: Cabeça Oca</option>
+              <option value="19">Diário de um Banana 19: Baita Lambança</option>
+              <option value="20">Diário de um Banana 20: Festa Insana</option>
+            </select>
+            <!-- <input type="text" id="ipt_nome_livro" placeholder="digite o nome do livro"> -->
         </div>
         <div class="campo">
             <br><span>Nota do livro:</span>
@@ -129,7 +151,7 @@
     function Cadastrar() {
 
         // Agora vá para o método fetch logo abaixo
-        var nome_livroVar = ipt_nome_livro.value;
+        var fk_livroVar = Number(diarios.value);
         var nota_livroVar = ipt_nota_livro.value;
         var descricaoVar = ipt_descricao.value;
 
@@ -147,7 +169,7 @@
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
-        nome_livroServer: nome_livroVar,
+        fk_livroServer: fk_livroVar,
         nota_livroServer: nota_livroVar,
         descricaoServer: descricaoVar,
         // pega o id salvo temporariamente como sessionStorage

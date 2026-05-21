@@ -16,20 +16,18 @@ function cadastrar(req, res) {
 
 console.log("BODY teste:", req.body);
 
-    var nome_livro = req.body.nome_livroServer;
+    var fk_livro = req.body.fk_livroServer;
     var nota_livro = req.body.nota_livroServer;
     var descricao = req.body.descricaoServer;
     var fk_usuario = req.body.fk_usuarioServer;
 
-    if (nome_livro == undefined) {
-        res.status(400).send("O nome do livro está indefinido!");
-    } else if (nota_livro == undefined) {
+     if (nota_livro == undefined) {
         res.status(400).send("A nota do livro está indefinida!");
     } else if (descricao == undefined) {
         res.status(400).send("A descrição do livro está indefinida!");
     }else {
 
-    livroModel.cadastrar(nome_livro, nota_livro, descricao, fk_usuario)
+    livroModel.cadastrar(fk_livro, nota_livro, descricao, fk_usuario)
     .then(function (resposta) {
         res.status(200).send("livro registrado com sucesso");
     }).catch(function (erro) {

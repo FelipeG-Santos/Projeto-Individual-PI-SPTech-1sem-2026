@@ -73,10 +73,10 @@ ORDER BY score DESC LIMIT 5;
 
 
 // comando de inserção dos dados no banco:
-function cadastrar(nome_livro, nota_livro, descricao, fk_usuario) {
+function cadastrar(fk_livro, nota_livro, descricao, fk_usuario) {
     var instrucao = `
-        INSERT INTO avaliacao_livros (nome_livro, nota_livro, descricao, fk_usuario) VALUES 
-        ('${nome_livro}', '${nota_livro}', '${descricao}', ${fk_usuario});
+        INSERT INTO avaliacao_livros (fk_livro, nota_livro, descricao, fk_usuario) VALUES 
+        ('${fk_livro}', '${nota_livro}', '${descricao}', ${fk_usuario});
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
