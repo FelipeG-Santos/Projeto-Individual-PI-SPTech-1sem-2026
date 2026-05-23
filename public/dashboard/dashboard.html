@@ -76,7 +76,7 @@
 <div class="KPIs">
             <div class="kpi-quadrado maisAvaliados"> 
                 <h3>Livro Mais Avaliado</h3>
-                <p>a</p>
+                <div id="maisAvaliado"></div>
             </div>
 
             <div class="kpi-quadrado maiorMedia">   
@@ -86,26 +86,26 @@
 
             <div class="kpi-quadrado menorMedia">   
                 <h3>Livro com a Menor Média de Notas</h3>
-                <p>c</p>
-                <span>d</span>
+                <div id="menorMedia"></div>
+                
             </div>
 
             <div class="kpi-quadrado classificacao">  
                 <h3>Sua Classificação para Completar a Série</h3>
-                <p>e</p>
-                <span>f</span>
+                <div id="classificacao"></div>
+               
             </div>
 
              <div class="kpi-quadrado completaram">  
                 <h3>Usuários que Completaram a Série</h3>
-                <p>g</p>
-                <span>h</span>
+                <div id="completaramSerie"></div>
+                
             </div>
 
              <div class="kpi-quadrado semana"> 
                 <h3>Livro Mais Avaliado na Última Semana</h3>
-                <p>i</p>
-                <span>j</span>
+                <div id="ultimaSemana"></div>
+                
             </div>
         </div>
         <!--<div class="header-left">
@@ -193,6 +193,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 
 </body>
@@ -206,6 +207,7 @@
         obterDadosGrafico();
         obterDadosGraficoPizza();
         obterDadosRanking();
+        obterDadosKpis();
     }
 
 
@@ -537,8 +539,6 @@
         console.log('iniciando plotagem do ranking...');
 
 
-        /*let ranking = []
-        let medias = []*/
 
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
@@ -585,6 +585,54 @@
             }
         }
     }
+
+
+
+    function obterDadosKpis() {
+
+        fetch('/kpis/kpisDash')
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        plotarKpis(resposta);
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarKpis(resposta) {
+
+        console.log('iniciando plotagem do ranking...');
+
+
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            console.log(`
+               ${registro.titulo}<br>
+               ${registro.imagem}<br>`);
+
+            
+                maisAvaliado.innerHTML = `<div class="posicao-nome-livro-ranking"><div class="altura-nome">${registro.titulo}</div></div>
+              <div class="posicao-media-livro-ranking"><div class="altura-media"><img src="${registro.imagem}" alt=""></div></div><br>`
+            
+            }
+        }
+    
 
 
 

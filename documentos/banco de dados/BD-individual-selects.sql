@@ -155,3 +155,4 @@ group by fk_usuario
 having qtd = 3;
 
 -- livro mais avaliado na última semana:
+
