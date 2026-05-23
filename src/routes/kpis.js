@@ -9,8 +9,17 @@ router.get("/listar", function (req, res) {
     kpisController.listar(req, res);
 });
 
-router.get("/kpisDash", function (req, res) {
-    kpisController.buscarKpis(req, res);
+router.get("/maisAvaliados", function (req, res) {
+    kpisController.buscarMaisAvaliado(req, res);
 });
+
+router.get("/MaiorNota", function (req, res) {
+    kpisController.buscarMaiorNota(req, res);
+});
+
+router.get("/MenorNota", function (req, res) {
+    kpisController.buscarMenorNota(req, res);
+});
+
 
 module.exports = router;

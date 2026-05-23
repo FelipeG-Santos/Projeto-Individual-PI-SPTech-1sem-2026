@@ -8,7 +8,7 @@ function listar() {
     return database.executar(instrucao);
 }
 
-function buscarKpis() {
+function buscarMaisAvaliado() {
 
     var instrucao = `
     SELECT 
@@ -24,10 +24,61 @@ function buscarKpis() {
     console.log("executando a instrução sql: \n" + instrucao);
 
     return database.executar(instrucao);
+};
+
+
+function buscarMaiorNota() {
+
+    var instrucao = `
+    SELECT 
+    l.nome_livro AS titulo,
+    l.imagem_livro AS imagem,
+    ROUND(
+    ((COUNT(*) / (COUNT(*) + 5.0)) * AVG(a.nota_livro) +
+            (5.0 / (COUNT(*) + 5.0)) *
+            (SELECT AVG(a.nota_livro) FROM avaliacao_livros a)
+        ), 2) AS score
+FROM avaliacao_livros a
+JOIN livros l
+ON a.fk_livro = l.id_livro
+GROUP BY l.nome_livro, l.imagem_livro
+ORDER BY score DESC LIMIT 1;
+    `;
+
+    console.log("executando a instrução sql: \n" + instrucao);
+
+    return database.executar(instrucao);
+
+};
+
+
+function buscarMenorNota() {
+
+    var instrucao = `
+    SELECT 
+    l.nome_livro AS titulo,
+    l.imagem_livro AS imagem,
+    ROUND(
+    ((COUNT(*) / (COUNT(*) + 5.0)) * AVG(a.nota_livro) +
+            (5.0 / (COUNT(*) + 5.0)) *
+            (SELECT AVG(a.nota_livro) FROM avaliacao_livros a)
+        ), 2) AS score
+FROM avaliacao_livros a
+JOIN livros l
+ON a.fk_livro = l.id_livro
+GROUP BY l.nome_livro, l.imagem_livro
+ORDER BY score LIMIT 1;
+    `;
+
+    console.log("executando a instrução sql: \n" + instrucao);
+
+    return database.executar(instrucao);
 
 };
 
 module.exports = {
     listar,
-    buscarKpis
+    buscarMaisAvaliado,
+    buscarMaiorNota,
+    buscarMenorNota
 };

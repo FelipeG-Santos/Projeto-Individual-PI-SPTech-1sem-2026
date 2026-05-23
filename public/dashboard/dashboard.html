@@ -207,7 +207,12 @@
         obterDadosGrafico();
         obterDadosGraficoPizza();
         obterDadosRanking();
-        obterDadosKpis();
+        obterDadosMaisAvaliado();
+        obterDadosMaiorNota();
+        obterDadosMenorNota();
+        /*obterDadosClassificacao();
+        obterDadosCompletaram();
+        obterDadosUltimaSemana();*/
     }
 
 
@@ -554,9 +559,7 @@
 
 
             if (i === 0) {
-                maiorMedia.innerHTML = `<div class="posicao-nome-livro-ranking"><h2>1°</h2> <div class="altura-nome">${registro.titulo}</div></div>
-              <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
-
+               
 
                 primeiro_lugar.innerHTML = `
               <div class="posicao-nome-livro-ranking"><h2>1°</h2> <div class="altura-nome">${registro.titulo}</div></div>
@@ -587,16 +590,16 @@
     }
 
 
+// função KPI livro mais avaliado: ----------------------------------------------------------------------------------------------------------------------
+    function obterDadosMaisAvaliado() {
 
-    function obterDadosKpis() {
-
-        fetch('/kpis/kpisDash')
+        fetch('/kpis/maisAvaliados')
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                        plotarKpis(resposta);
+                        plotarMaisAvaliado(resposta);
 
                     });
                 } else {
@@ -608,7 +611,7 @@
             });
     }
 
-    function plotarKpis(resposta) {
+    function plotarMaisAvaliado(resposta) {
 
         console.log('iniciando plotagem do ranking...');
 
@@ -627,8 +630,100 @@
                ${registro.imagem}<br>`);
 
             
-                maisAvaliado.innerHTML = `<div class="posicao-nome-livro-ranking"><div class="altura-nome">${registro.titulo}</div></div>
+                maisAvaliado.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.titulo}</div></div>
               <div class="posicao-media-livro-ranking"><div class="altura-media"><img src="${registro.imagem}" alt=""></div></div><br>`
+            
+            }
+        }
+
+
+        // função KPI livro com maior nota: ----------------------------------------------------------------------------------------------------------------------
+    function  obterDadosMaiorNota() {
+
+        fetch('/kpis/maiorNota')
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        plotarMaiorNota(resposta);
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarMaiorNota(resposta) {
+
+        console.log('iniciando plotagem do ranking...');
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            console.log(`
+               ${registro.titulo}<br>
+               ${registro.imagem}<br>
+               ${registro.score}<br>`);
+
+            
+                maiorMedia.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.titulo}</div></div>
+              <div class="posicao-media-livro-ranking"><div class="altura-media"><img src="${registro.imagem}" alt=""></div></div><br>
+              <div>${registro.score}</div>`
+            
+            }
+        }
+    
+
+         // função KPI livro com menor nota: ----------------------------------------------------------------------------------------------------------------------
+    function  obterDadosMenorNota() {
+
+        fetch('/kpis/MenorNota')
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        plotarMenorNota(resposta);
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarMenorNota(resposta) {
+
+        console.log('iniciando plotagem do ranking...');
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            console.log(`
+               ${registro.titulo}<br>
+               ${registro.imagem}<br>
+               ${registro.score}<br>`);
+
+            
+                menorMedia.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.titulo}</div></div>
+              <div class="posicao-media-livro-ranking"><div class="altura-media"><img src="${registro.imagem}" alt=""></div></div><br>
+              <div>${registro.score}</div>`
             
             }
         }
