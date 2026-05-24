@@ -426,8 +426,10 @@ padding: 20px;
   margin-top: 20%;
 }
 
-.altura-media {
-margin-top: 35%;
+.altura-media img {
+margin-top: 10%;
+height: 80%;
+width: 50%;
 }
 
 .posicao-media-livro-ranking {
@@ -511,6 +513,7 @@ canvas {
     border-radius: 12px;
     display: flex;
     flex-direction: column;
+    border: 3px solid rgb(255, 255, 255);
    
 }
 
@@ -525,28 +528,28 @@ canvas {
 }
 
 
-.kpi-quadrado.maiorMedia p {
-    color: #f1c40f;
+.kpi-quadrado.maiorMedia {
+    background-color: #88fcb0;
 }
 
-.kpi-quadrado.menorMedia p {
-    color: #ff3b3b;
+.kpi-quadrado.menorMedia  {
+    background-color: #ffa597;
 }
 
-.kpi-quadrado.classificacao p {
-    color: #ff3b3b;
+.kpi-quadrado.classificacao  {
+    background-color: #f5f9a6;
 }
 
-.kpi-quadrado.completaram p {
-    color: #ff3b3b;
+.kpi-quadrado.completaram  {
+    background-color: #65bd53;
 }
 
-.kpi-quadrado.semana p {
-    color: #ff3b3b;
+.kpi-quadrado.semana  {
+    background-color: #fad760;
 }
 
-.kpi-quadrado.maisAvaliados p {
-    color: rgb(96, 226, 96);
+.kpi-quadrado.maisAvaliados  {
+   background-color: #6842dd;
 }
 
 

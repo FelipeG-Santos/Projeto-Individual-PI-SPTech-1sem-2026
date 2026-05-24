@@ -145,3 +145,15 @@ HAVING COUNT(fk_livro) = 20
 
 
 -- livro mais avaliado na última semana:
+select 
+l.nome_livro as titulo,
+l.imagem_livro as imagem
+from livros l
+join avaliacao_livros a
+on l.id_livro = a.fk_livro
+-- curdate pega a data atual e subtrai um intervalo de 7 dias
+where a.data_avaliacao >= curdate() - interval 7 day
+group by a.fk_livro, l.nome_livro, l.imagem_livro
+order by count(a.fk_livro) desc
+limit 1;
+

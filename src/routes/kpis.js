@@ -29,5 +29,9 @@ router.get("/Completaram", function (req, res) {
     kpisController.buscarCompletaram(req, res);
 });
 
+router.get("/UltimaSemana", function (req, res) {
+    kpisController.buscarUltimaSemana(req, res);
+});
+
 
 module.exports = router;

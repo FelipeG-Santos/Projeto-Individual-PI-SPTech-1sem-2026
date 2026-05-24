@@ -212,7 +212,7 @@
         obterDadosMenorNota();
         obterDadosClassificacao();
         obterDadosCompletaram();
-        /*obterDadosUltimaSemana();*/
+        obterDadosUltimaSemana();
     }
 
 
@@ -677,7 +677,7 @@
             
                 maiorMedia.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.titulo}</div></div>
               <div class="posicao-media-livro-ranking"><div class="altura-media"><img src="${registro.imagem}" alt=""></div></div><br>
-              <div>${registro.score}</div>`
+              <div>Média: ${registro.score}</div>`
             
             }
         }
@@ -723,7 +723,7 @@
             
                 menorMedia.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.titulo}</div></div>
               <div class="posicao-media-livro-ranking"><div class="altura-media"><img src="${registro.imagem}" alt=""></div></div><br>
-              <div>${registro.score}</div>`
+              <div>Média: ${registro.score}</div>`
             
             }
         }
@@ -831,13 +831,58 @@ classificacao.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="
                let PorcentagemCompletaram = (registro.usuarios_completaram * 100) / registro.total_usuarios
 
             
-                completaramSerie.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${PorcentagemCompletaram} dos usuários
+                completaramSerie.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${PorcentagemCompletaram.toFixed(1)}% dos usuários
                     já leram todos os livros da série!</div></div>`
             
             }
         }
 
 
+// função KPI livro mais avaliado da última semana: ----------------------------------------------------------------------------------------------------------------------
+    function obterDadosUltimaSemana() {
+
+        fetch('/kpis/UltimaSemana')
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        plotarUltimaSemana(resposta);
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarUltimaSemana(resposta) {
+
+        console.log('iniciando plotagem do ranking...');
+
+
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            console.log(`
+               ${registro.titulo}<br>
+               ${registro.imagem}<br>`);
+
+            
+                ultimaSemana.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.titulo}</div></div>
+              <div class="posicao-media-livro-ranking"><div class="altura-media"><img src="${registro.imagem}" alt=""></div></div><br>`
+            
+            }
+        }
 
 
 

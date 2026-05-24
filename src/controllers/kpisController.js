@@ -91,11 +91,28 @@ function buscarCompletaram(req, res) {
     });
 };
 
+function buscarUltimaSemana(req, res) {
+
+    kpisModel.buscarUltimaSemana()
+    .then(function(resultado) {
+
+        res.status(200).json(resultado);
+
+    }).catch(function(erro) {
+
+        console.log(erro);
+        console.log("Erro ao buscar livros mais avaliados");
+
+        res.status(500).json(erro.sqlMessage);
+    });
+};
+
 module.exports = {
     listar,
    buscarMaisAvaliado,
    buscarMaiorNota,
    buscarMenorNota,
    buscarClassificacao,
-   buscarCompletaram
+   buscarCompletaram,
+   buscarUltimaSemana
 };
