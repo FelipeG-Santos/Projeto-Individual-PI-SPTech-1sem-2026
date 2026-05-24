@@ -73,12 +73,51 @@ ORDER BY score LIMIT 1;
     console.log("executando a instrução sql: \n" + instrucao);
 
     return database.executar(instrucao);
+};
 
+function buscarClassificacao(id_usuario) {
+
+    var instrucao = `
+    SELECT
+u.nome AS usuario,
+COUNT(a.fk_usuario) AS qtd_lidos
+FROM usuario u
+JOIN avaliacao_livros a
+ON u.id_usuario = a.fk_usuario
+WHERE u.id_usuario = '${id_usuario}'
+GROUP BY a.fk_usuario;
+    `;
+
+    console.log("executando a instrução sql: \n" + instrucao);
+
+    return database.executar(instrucao);
+};
+
+function  buscarCompletaram() {
+
+    var instrucao = `
+   SELECT(
+SELECT COUNT(*)
+FROM usuario) AS total_usuarios,
+COUNT(*) AS usuarios_completaram
+FROM (
+SELECT fk_usuario
+FROM avaliacao_livros
+GROUP BY fk_usuario
+HAVING COUNT(fk_livro) = 2
+) AS usuarios_completos;
+    `;
+
+    console.log("executando a instrução sql: \n" + instrucao);
+
+    return database.executar(instrucao);
 };
 
 module.exports = {
     listar,
     buscarMaisAvaliado,
     buscarMaiorNota,
-    buscarMenorNota
+    buscarMenorNota,
+    buscarClassificacao,
+    buscarCompletaram
 };

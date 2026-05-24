@@ -126,40 +126,22 @@ count(a.fk_usuario) as qtd_lidos
 from usuario u
 join avaliacao_livros a
 on u.id_usuario = a.fk_usuario
-where u.id_usuario = "colocar o id pego no login através do sessionstorage"
+where u.id_usuario = 1
 group by a.fk_usuario;
 
 -- Usuarios que completaram a série:
 -- pesquisar formas de retornar a qtd de usuarios junto com os que completaram a serie
 -- ou fazer outra rota puxando somente a qtd de usuarios no site e tirar a porcentagem no js
-select
-count(u.nome) as usuario_que_completaram,
-count(a.fk_usuario) as qtd_lidos
-from usuario u
-join avaliacao_livros a
-on u.id_usuario = a.fk_usuario
-group by a.fk_usuario, u.nome
-having count(a.fk_usuario) = 2;
+SELECT(
+SELECT COUNT(*)
+FROM usuario) AS total_usuarios,
+COUNT(*) AS usuarios_completaram
+FROM (
+SELECT fk_usuario
+FROM avaliacao_livros
+GROUP BY fk_usuario
+HAVING COUNT(fk_livro) = 20
+) AS usuarios_completos;
 
 
 -- livro mais avaliado na última semana:
-update livros set imagem_livro = '../assets/imgs/diario-3.jpg' where id_livro = 3;
-update livros set imagem_livro = '../assets/imgs/diario-1.jpg' where id_livro = 1;
-update livros set imagem_livro = '../assets/imgs/diario-2.jpg' where id_livro = 2;
-update livros set imagem_livro = '../assets/imgs/diario-4.jpg' where id_livro = 4;
-update livros set imagem_livro = '../assets/imgs/diario-5.jpg' where id_livro = 5;
-update livros set imagem_livro = '../assets/imgs/diario-6.jpg' where id_livro = 6;
-update livros set imagem_livro = '../assets/imgs/diario-7.jpg' where id_livro = 7;
-update livros set imagem_livro = '../assets/imgs/diario-8.jpg' where id_livro = 8;
-update livros set imagem_livro = '../assets/imgs/diario-9.jpg' where id_livro = 9;
-update livros set imagem_livro = '../assets/imgs/diario-10.jpg' where id_livro = 10;
-update livros set imagem_livro = '../assets/imgs/diario-11.jpg' where id_livro = 11;
-update livros set imagem_livro = '../assets/imgs/diario-12.jpg' where id_livro = 12;
-update livros set imagem_livro = '../assets/imgs/diario-13.jpg' where id_livro = 13;
-update livros set imagem_livro = '../assets/imgs/diario-14.jpg' where id_livro = 14;
-update livros set imagem_livro = '../assets/imgs/diario-15.jpg' where id_livro = 15;
-update livros set imagem_livro = '../assets/imgs/diario-16.jpg' where id_livro = 16;
-update livros set imagem_livro = '../assets/imgs/diario-17.jpg' where id_livro = 17;
-update livros set imagem_livro = '../assets/imgs/diario-18.jpg' where id_livro = 18;
-update livros set imagem_livro = '../assets/imgs/diario-19.jpg' where id_livro = 19;
-update livros set imagem_livro = '../assets/imgs/diario-20.jpg' where id_livro = 20;

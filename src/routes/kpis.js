@@ -21,5 +21,13 @@ router.get("/MenorNota", function (req, res) {
     kpisController.buscarMenorNota(req, res);
 });
 
+router.get("/Classificacao", function (req, res) {
+    kpisController.buscarClassificacao(req, res);
+});
+
+router.get("/Completaram", function (req, res) {
+    kpisController.buscarCompletaram(req, res);
+});
+
 
 module.exports = router;

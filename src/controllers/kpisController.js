@@ -57,10 +57,45 @@ function buscarMenorNota(req, res) {
     });
 };
 
+function buscarClassificacao(req, res) {
+
+    var id_usuario = req.query.id_usuario
+
+    kpisModel.buscarClassificacao(id_usuario)
+    .then(function(resultado) {
+
+        res.status(200).json(resultado);
+
+    }).catch(function(erro) {
+
+        console.log(erro);
+        console.log("Erro ao buscar id para a classificação");
+
+        res.status(500).json(erro.sqlMessage);
+    });
+};
+
+function buscarCompletaram(req, res) {
+
+    kpisModel.buscarCompletaram()
+    .then(function(resultado) {
+
+        res.status(200).json(resultado);
+
+    }).catch(function(erro) {
+
+        console.log(erro);
+        console.log("Erro ao buscar livros mais avaliados");
+
+        res.status(500).json(erro.sqlMessage);
+    });
+};
 
 module.exports = {
     listar,
    buscarMaisAvaliado,
    buscarMaiorNota,
-   buscarMenorNota
+   buscarMenorNota,
+   buscarClassificacao,
+   buscarCompletaram
 };

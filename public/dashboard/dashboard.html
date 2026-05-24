@@ -210,9 +210,9 @@
         obterDadosMaisAvaliado();
         obterDadosMaiorNota();
         obterDadosMenorNota();
-        /*obterDadosClassificacao();
+        obterDadosClassificacao();
         obterDadosCompletaram();
-        obterDadosUltimaSemana();*/
+        /*obterDadosUltimaSemana();*/
     }
 
 
@@ -731,9 +731,111 @@
 
 
 
+ // função KPI porcentagem para completar a série: ----------------------------------------------------------------------------------------------------------------------
+    function  obterDadosClassificacao() {
+
+         console.log("id que vai ser enviada:", sessionStorage.ID_USUARIO);
+
+         // pega o id pelo sessionStorage e transforma em query parameter, onde o controller recebe como req.query.id_usuario
+         // é uma informação extra a ser enviada junto com o fetch
+        fetch(`/kpis/Classificacao?id_usuario=${sessionStorage.ID_USUARIO}`)
+
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        plotarClassificacao(resposta);
+
+                    });  
+            }
+    });
+}
+
+    function plotarClassificacao(resposta) {
+
+        console.log('iniciando plotagem do ranking...');
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
 
 
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
 
+            console.log(`
+               ${registro.usuario}<br>
+               ${registro.qtd_lidos}<br>
+              `);
+
+            
+            
+if(registro.qtd_lidos <= 0){
+classificacao.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.usuario} você já leu 0% da série!  </div></div>
+              <div class="posicao-media-livro-ranking"><div class="altura-media"><h3>Cuidado: Quando vai abrir seu primerio diário de um banana?.</h3></div></div><br>`
+}else if(registro.qtd_lidos <= 4){
+classificacao.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.usuario} você já leu entre 5% e 20% da série!  </div></div>
+              <div class="posicao-media-livro-ranking"><div class="altura-media"><h3>Cuidado: o hábito da leitura está surgindo.</h3></div></div><br>`
+}else if(registro.qtd_lidos <= 9){
+classificacao.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.usuario} você já leu entre 25% e 45% da série! </div></div>
+              <div class="posicao-media-livro-ranking"><div class="altura-media"><h3>Você já é quase da família Heffley</h3></div></div><br>`
+}else if(registro.qtd_lidos <= 14){
+classificacao.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.usuario} você já leu entre 50% e 70% da série!  </div></div>
+              <div class="posicao-media-livro-ranking"><div class="altura-media"><h3>Você oficialmente entrou para o clube dos leitores Banana</h3></div></div><br>`
+}else if(registro.qtd_lidos <= 19){
+classificacao.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.usuario} você já leu entre 75% e 90% da série! </div></div>
+              <div class="posicao-media-livro-ranking"><div class="altura-media"><h3>Seu nível de Banana está incrivelmente alto</h3></div></div><br>`
+}else if(registro.qtd_lidos <= 20){
+classificacao.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.usuario} Parabéns! você leu 100% da série! </div></div>
+              <div class="posicao-media-livro-ranking"><div class="altura-media"><h3>Poucos chegam até aqui… você entrou para a elite Banana</h3></div></div><br>`
+}      
+            }
+        }
+
+      // função KPI usuarios que completaram a série: ----------------------------------------------------------------------------------------------------------------------
+    function  obterDadosCompletaram() {
+
+        fetch('/kpis/Completaram')
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        plotarCompletaram(resposta);
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarCompletaram(resposta) {
+
+        console.log('iniciando plotagem do ranking...');
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+
+            console.log(`
+               ${registro.total_usuarios}<br>
+               ${registro.usuarios_completaram}<br>`);
+
+               let PorcentagemCompletaram = (registro.usuarios_completaram * 100) / registro.total_usuarios
+
+            
+                completaramSerie.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${PorcentagemCompletaram} dos usuários
+                    já leram todos os livros da série!</div></div>`
+            
+            }
+        }
 
 
 
