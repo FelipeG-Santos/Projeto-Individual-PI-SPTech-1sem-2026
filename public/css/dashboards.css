@@ -414,30 +414,26 @@ padding: 20px;
   width: 80%;
 }
 
-.posicao-nome-livro-ranking {
+.conteudo-kpi {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin-bottom: 0%;
-
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
 }
 
-.altura-nome{
-  margin-top: 20%;
+.info-livro h4 {
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  margin: 0;
 }
 
-.altura-media img {
-margin-top: 10%;
-height: 80%;
-width: 50%;
-}
-
-.posicao-media-livro-ranking {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin-bottom: 0%;
-
+.conteudo-kpi img {
+  width: 90px;
+  height: 130px;
+  /*object-fit: corta a imagem para encaixar certinho no espaço */
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #000000;
 }
 
 
@@ -500,20 +496,31 @@ canvas {
 
 .KPIs {
     display: flex;
-    /*distância entre as KPIs */
-    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    
     margin-top: 10px;
 }
 
+.kpis-trio {
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+/*distância entre as KPIs */
+    gap: 20px;
+margin-bottom: 20px;
+}
 .kpi-quadrado {
   /* garante que todos os elementos dividam o mesmo espaço igualmente preenchendo tudo */
     flex: 1;
-    background-color: white;
+    
     padding: 20px;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
-    border: 3px solid rgb(255, 255, 255);
+   height: 150px;
+   width: 330px;
+    background-color: #dbe6ff;
    
 }
 
@@ -529,28 +536,36 @@ canvas {
 
 
 .kpi-quadrado.maiorMedia {
-    background-color: #88fcb0;
+   
+     border: 5px solid #D7201A;
 }
 
-.kpi-quadrado.menorMedia  {
-    background-color: #ffa597;
+.kpi-quadrado.menorMedia {
+   
+     border: 5px solid #D7201A;
 }
 
-.kpi-quadrado.classificacao  {
-    background-color: #f5f9a6;
+.kpi-quadrado.classificacao {
+   
+     border: 5px solid #D7201A;
 }
 
-.kpi-quadrado.completaram  {
-    background-color: #65bd53;
+.kpi-quadrado.completaram {
+   
+     border: 5px solid #D7201A;
 }
 
-.kpi-quadrado.semana  {
-    background-color: #fad760;
+.kpi-quadrado.semana {
+    
+     border: 5px solid #D7201A;
 }
 
-.kpi-quadrado.maisAvaliados  {
-   background-color: #6842dd;
+.kpi-quadrado.maisAvaliados {
+    
+     border: 5px solid #D7201A;
 }
+
+
 
 
 

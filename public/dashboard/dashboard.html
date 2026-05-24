@@ -73,40 +73,48 @@
 
 
     <div class="janela">
-<div class="KPIs">
-            <div class="kpi-quadrado maisAvaliados"> 
-                <h3>Livro Mais Avaliado</h3>
-                <div id="maisAvaliado"></div>
+        <div class="KPIs">
+
+            <div class="kpis-trio">
+
+                <div class="kpi-quadrado maisAvaliados">
+                    <h3>Livro Mais Avaliado</h3>
+                    <div id="maisAvaliado"></div>
+                </div>
+
+                <div class="kpi-quadrado maiorMedia">
+                    <h3>Livro com a Maior Média de Notas</h3>
+                    <div id="maiorMedia"></div>
+                </div>
+
+                <div class="kpi-quadrado classificacao">
+                    <h3>Sua Classificação para Completar a Série</h3>
+                    <div id="classificacao"></div>
+                </div>
             </div>
 
-            <div class="kpi-quadrado maiorMedia">   
-                <h3>Livro com a Maior Média de Notas</h3>
-                <div id="maiorMedia"></div>
+            <div class="kpis-trio">
+                <div class="kpi-quadrado semana">
+                    <h3>Livro Mais Avaliado na Última Semana</h3>
+                    <div id="ultimaSemana"></div>
+
+                </div>
+
+                <div class="kpi-quadrado menorMedia">
+                    <h3>Livro com a Menor Média de Notas</h3>
+                    <div id="menorMedia"></div>
+
+                </div>
+
+
+
+                <div class="kpi-quadrado completaram">
+                    <h3>Usuários que Completaram a Série</h3>
+                    <div id="completaramSerie"></div>
+
+                </div>
             </div>
 
-            <div class="kpi-quadrado menorMedia">   
-                <h3>Livro com a Menor Média de Notas</h3>
-                <div id="menorMedia"></div>
-                
-            </div>
-
-            <div class="kpi-quadrado classificacao">  
-                <h3>Sua Classificação para Completar a Série</h3>
-                <div id="classificacao"></div>
-               
-            </div>
-
-             <div class="kpi-quadrado completaram">  
-                <h3>Usuários que Completaram a Série</h3>
-                <div id="completaramSerie"></div>
-                
-            </div>
-
-             <div class="kpi-quadrado semana"> 
-                <h3>Livro Mais Avaliado na Última Semana</h3>
-                <div id="ultimaSemana"></div>
-                
-            </div>
         </div>
         <!--<div class="header-left">
             <h1>Diário de um Banana</h1>
@@ -176,16 +184,16 @@
                             <div class="posicao-numero" id="primeiro_lugar"></div><br>
                             <br>
 
-                            
-                           <div class="posicao-numero" id="segundo_lugar"></div><br>
+
+                            <div class="posicao-numero" id="segundo_lugar"></div><br>
                             <br>
-                            
+
                             <div class="posicao-numero" id="terceiro_lugar"></div><br>
                             <br>
-                            
+
                             <div class="posicao-numero" id="quarto_lugar"></div><br>
                             <br>
-                           
+
                             <div class="posicao-numero" id="quinto_lugar"></div><br>
                         </div>
 
@@ -193,7 +201,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
 </body>
@@ -559,7 +567,7 @@
 
 
             if (i === 0) {
-               
+
 
                 primeiro_lugar.innerHTML = `
               <div class="posicao-nome-livro-ranking"><h2>1°</h2> <div class="altura-nome">${registro.titulo}</div></div>
@@ -569,7 +577,7 @@
                 segundo_lugar.innerHTML = `
                <div class="posicao-nome-livro-ranking"><h2>2°</h2> <div class="altura-nome">${registro.titulo}</div></div>
               <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
-            
+
             }
             if (i == 2) {
                 terceiro_lugar.innerHTML = `
@@ -590,7 +598,7 @@
     }
 
 
-// função KPI livro mais avaliado: ----------------------------------------------------------------------------------------------------------------------
+    // função KPI livro mais avaliado: ----------------------------------------------------------------------------------------------------------------------
     function obterDadosMaisAvaliado() {
 
         fetch('/kpis/maisAvaliados')
@@ -629,16 +637,15 @@
                ${registro.titulo}<br>
                ${registro.imagem}<br>`);
 
-            
-                maisAvaliado.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.titulo}</div></div>
-              <div class="posicao-media-livro-ranking"><div class="altura-media"><img src="${registro.imagem}" alt=""></div></div><br>`
-            
-            }
+
+            maisAvaliado.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.titulo}</h4></div>
+<img src="${registro.imagem}" alt=""></div>`;
         }
+    }
 
 
-        // função KPI livro com maior nota: ----------------------------------------------------------------------------------------------------------------------
-    function  obterDadosMaiorNota() {
+    // função KPI livro com maior nota: ----------------------------------------------------------------------------------------------------------------------
+    function obterDadosMaiorNota() {
 
         fetch('/kpis/maiorNota')
             .then(function (response) {
@@ -674,17 +681,17 @@
                ${registro.imagem}<br>
                ${registro.score}<br>`);
 
-            
-                maiorMedia.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.titulo}</div></div>
-              <div class="posicao-media-livro-ranking"><div class="altura-media"><img src="${registro.imagem}" alt=""></div></div><br>
-              <div>Média: ${registro.score}</div>`
-            
-            }
-        }
-    
 
-         // função KPI livro com menor nota: ----------------------------------------------------------------------------------------------------------------------
-    function  obterDadosMenorNota() {
+            maiorMedia.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.titulo}</h4><h4>Média: ${registro.score}</h4></div>
+<img src="${registro.imagem}" alt=""></div>`;
+
+
+        }
+    }
+
+
+    // função KPI livro com menor nota: ----------------------------------------------------------------------------------------------------------------------
+    function obterDadosMenorNota() {
 
         fetch('/kpis/MenorNota')
             .then(function (response) {
@@ -720,24 +727,23 @@
                ${registro.imagem}<br>
                ${registro.score}<br>`);
 
-            
-                menorMedia.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.titulo}</div></div>
-              <div class="posicao-media-livro-ranking"><div class="altura-media"><img src="${registro.imagem}" alt=""></div></div><br>
-              <div>Média: ${registro.score}</div>`
-            
-            }
+
+            menorMedia.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.titulo}</h4><h4>Média: ${registro.score}</h4></div>
+<img src="${registro.imagem}" alt=""></div>`;
+
         }
-    
+    }
 
 
 
- // função KPI porcentagem para completar a série: ----------------------------------------------------------------------------------------------------------------------
-    function  obterDadosClassificacao() {
 
-         console.log("id que vai ser enviada:", sessionStorage.ID_USUARIO);
+    // função KPI porcentagem para completar a série: ----------------------------------------------------------------------------------------------------------------------
+    function obterDadosClassificacao() {
 
-         // pega o id pelo sessionStorage e transforma em query parameter, onde o controller recebe como req.query.id_usuario
-         // é uma informação extra a ser enviada junto com o fetch
+        console.log("id que vai ser enviada:", sessionStorage.ID_USUARIO);
+
+        // pega o id pelo sessionStorage e transforma em query parameter, onde o controller recebe como req.query.id_usuario
+        // é uma informação extra a ser enviada junto com o fetch
         fetch(`/kpis/Classificacao?id_usuario=${sessionStorage.ID_USUARIO}`)
 
             .then(function (response) {
@@ -747,10 +753,10 @@
 
                         plotarClassificacao(resposta);
 
-                    });  
-            }
-    });
-}
+                    });
+                }
+            });
+    }
 
     function plotarClassificacao(resposta) {
 
@@ -768,32 +774,32 @@
                ${registro.qtd_lidos}<br>
               `);
 
-            
-            
-if(registro.qtd_lidos <= 0){
-classificacao.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.usuario} você já leu 0% da série!  </div></div>
-              <div class="posicao-media-livro-ranking"><div class="altura-media"><h3>Cuidado: Quando vai abrir seu primerio diário de um banana?.</h3></div></div><br>`
-}else if(registro.qtd_lidos <= 4){
-classificacao.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.usuario} você já leu entre 5% e 20% da série!  </div></div>
-              <div class="posicao-media-livro-ranking"><div class="altura-media"><h3>Cuidado: o hábito da leitura está surgindo.</h3></div></div><br>`
-}else if(registro.qtd_lidos <= 9){
-classificacao.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.usuario} você já leu entre 25% e 45% da série! </div></div>
-              <div class="posicao-media-livro-ranking"><div class="altura-media"><h3>Você já é quase da família Heffley</h3></div></div><br>`
-}else if(registro.qtd_lidos <= 14){
-classificacao.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.usuario} você já leu entre 50% e 70% da série!  </div></div>
-              <div class="posicao-media-livro-ranking"><div class="altura-media"><h3>Você oficialmente entrou para o clube dos leitores Banana</h3></div></div><br>`
-}else if(registro.qtd_lidos <= 19){
-classificacao.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.usuario} você já leu entre 75% e 90% da série! </div></div>
-              <div class="posicao-media-livro-ranking"><div class="altura-media"><h3>Seu nível de Banana está incrivelmente alto</h3></div></div><br>`
-}else if(registro.qtd_lidos <= 20){
-classificacao.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.usuario} Parabéns! você leu 100% da série! </div></div>
-              <div class="posicao-media-livro-ranking"><div class="altura-media"><h3>Poucos chegam até aqui… você entrou para a elite Banana</h3></div></div><br>`
-}      
+
+
+            if (registro.qtd_lidos <= 0) {
+                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.usuario} você já leu 0% da série!
+                </h4><h3>Quando vai abrir seu primerio diário de um banana?</h3></div></div><br>`;
+            } else if (registro.qtd_lidos <= 4) {
+                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.usuario} você
+                     já leu entre 5% e 20% da série!</h4><h3>Cuidado: o hábito da leitura está surgindo.</h3></div></div><br>`;
+            } else if (registro.qtd_lidos <= 9) {
+                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.usuario} você já leu entre 25% e 45% da série!
+                </h4><h3>Você já é quase da família Heffley</h3></div></div><br>`
+            } else if (registro.qtd_lidos <= 14) {
+                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.usuario} você já leu entre 50% e 70% da série!
+                </h4><h3>Você oficialmente entrou para o clube dos leitores Banana</h3></div></div><br>`
+            } else if (registro.qtd_lidos <= 19) {
+                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.usuario} você já leu entre 75% e 90% da série!
+                </h4><h3>Seu nível de Banana está incrivelmente alto</h3></div></div><br>`
+            } else if (registro.qtd_lidos <= 20) {
+                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.usuario} Parabéns! você leu 100% da série!
+                </h4><h3>Poucos chegam até aqui… você entrou para a elite Banana</h3></div></div><br>`
             }
         }
+    }
 
-      // função KPI usuarios que completaram a série: ----------------------------------------------------------------------------------------------------------------------
-    function  obterDadosCompletaram() {
+    // função KPI usuarios que completaram a série: ----------------------------------------------------------------------------------------------------------------------
+    function obterDadosCompletaram() {
 
         fetch('/kpis/Completaram')
             .then(function (response) {
@@ -828,17 +834,18 @@ classificacao.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="
                ${registro.total_usuarios}<br>
                ${registro.usuarios_completaram}<br>`);
 
-               let PorcentagemCompletaram = (registro.usuarios_completaram * 100) / registro.total_usuarios
+            let PorcentagemCompletaram = (registro.usuarios_completaram * 100) / registro.total_usuarios
+
 
             
-                completaramSerie.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${PorcentagemCompletaram.toFixed(1)}% dos usuários
-                    já leram todos os livros da série!</div></div>`
-            
-            }
+
+                    completaramSerie.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${PorcentagemCompletaram.toFixed(1)}% dos usuários
+                    já leram todos os livros da série!</h4></div></div><br>`
         }
+    }
 
 
-// função KPI livro mais avaliado da última semana: ----------------------------------------------------------------------------------------------------------------------
+    // função KPI livro mais avaliado da última semana: ----------------------------------------------------------------------------------------------------------------------
     function obterDadosUltimaSemana() {
 
         fetch('/kpis/UltimaSemana')
@@ -877,12 +884,12 @@ classificacao.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="
                ${registro.titulo}<br>
                ${registro.imagem}<br>`);
 
-            
-                ultimaSemana.innerHTML = `<div class="posicao-nome-livro-ranking"> <div class="altura-nome">${registro.titulo}</div></div>
-              <div class="posicao-media-livro-ranking"><div class="altura-media"><img src="${registro.imagem}" alt=""></div></div><br>`
-            
-            }
+
+            ultimaSemana.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.titulo}</h4></div>
+<img src="${registro.imagem}" alt=""></div>`;
+
         }
+    }
 
 
 
