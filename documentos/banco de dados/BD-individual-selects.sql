@@ -4,7 +4,9 @@ select * from endereco;
 select * from avaliacao_livros;
 select * from livros;
 
-
+drop table usuario;
+drop table endereco;
+drop table avaliacao_livros;
 
 select 
 u.nome as 'nome do usuario',
@@ -157,3 +159,19 @@ group by a.fk_livro, l.nome_livro, l.imagem_livro
 order by count(a.fk_livro) desc
 limit 1;
 
+
+-- select para o pesquisar da página meus livros:
+select
+l.nome_livro as titulo,
+l.imagem_livro as imagem,
+u.nome as usuario,
+a.nota_livro as nota,
+a.descricao as descricao,
+a.data_avaliacao
+from livros l
+join avaliacao_livros a
+on l.id_livro = a.fk_livro
+join usuario u
+on a.fk_usuario = u.id_usuario
+where l.nome_livro = 'Diário de um Banana 1'
+order by a.data_avaliacao desc limit 3;

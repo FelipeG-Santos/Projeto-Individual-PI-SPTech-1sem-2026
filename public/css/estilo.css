@@ -21,8 +21,7 @@ body {
   margin: 0;
   padding: 0;
   
-  /* fonte importada do google.fonts
-   font-family: "Schoolbell", cursive; */
+  /* fonte importada do google.fonts */
 font-family: "Patrick Hand", cursive;
   background-color: rgb(0, 0, 0);                               
 }
@@ -33,15 +32,6 @@ font-family: "Patrick Hand", cursive;
   font-weight: 400;
   font-style: normal;
 }
-
-/*outra fonte para teste*/
-/*.schoolbell-regular {
-  font-family: "Schoolbell", cursive;
-  font-weight: 400;
-  font-style: normal;
-}*/
-
-
 
 
 :root {
@@ -73,15 +63,6 @@ font-family: "Patrick Hand", cursive;
   margin: auto;
 }
 
-/*.header .container {
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
-  display: flex;
-  width: 100%;
-  margin: auto;
-}*/
-
 .irmaozinho {
   position: absolute;
   left: 20px;
@@ -93,7 +74,6 @@ font-family: "Patrick Hand", cursive;
   text-decoration: none;
   color: #3A75B7;
 }
-
 
 .navbar {
   font-weight: 800;
@@ -134,12 +114,10 @@ font-family: "Patrick Hand", cursive;
   background-position: center;
   background-color: #1F3467;
    justify-content: space-around;
- /* height: 60%;*/
   display: flex;
   flex-direction: row;
   position: relative;
 }
-
 
 .banner .banana {
   color: #BB1C17;
@@ -155,9 +133,6 @@ margin-top: 2px;
   font-size: 40px;
   margin-bottom: 2px;
   margin-top: 2px;
- 
-  
-
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: rgb(255, 255, 255)
 }
@@ -167,11 +142,6 @@ margin-top: 2px;
   font-size: 80px;
   font-family: Georgia, serif;
   margin-bottom: 2px;
-  /*
-  margin-top: 320px;
-  margin-bottom: 500px;*/
-  /*display: flex;*/
-  /*gap: 10px;*/
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black
 }
@@ -198,7 +168,6 @@ width: 30%;
   text-align:center;
 }
 
-
 .posicao-letras-banner2 p {
   font-size: 24px;
   color: #000000;
@@ -208,12 +177,9 @@ width: 30%;
 
 
 .familia {
- /* position: absolute;*/
- /* left: 30px;*/
   height: 400px;
   width: 500px;
   margin-top: 100px;
- /* top: 150px;*/
   border: 3px solid #adadad;
   border-radius: 10px;
 }
@@ -295,11 +261,8 @@ width: 30%;
 }
 
 .greg-famoso {
- /* right: 10px;*/
   height: 400px;
   width: 500px;
-  /*top: 20px;
-  margin-top: 20px;*/
 }
 
 .fita5 {
@@ -315,8 +278,6 @@ width: 30%;
 .subtitulos {
   color: #F7D827;
   font-size: 50px;
-  /*-webkit-text-stroke-width: 0px;
-  -webkit-text-stroke-color: rgb(0, 0, 0)*/
 }
 
 /* SOBRE MIM -------------------------------------------------------------------------------------------*/
@@ -352,62 +313,24 @@ width: 30%;
 
 
 .clube-livros {
-  /*right: 10px;*/
   height: 200px;
   width: 400px;
-  /*top: 20px;
-  border: 3px solid #adadad;
-  border-radius: 10px;*/
 }
 
 .minha-foto {
-  right: 10px;
-  height: 320px;
-  width: 250px;
-  top: 20px;
-  border: 3px solid #adadad;
-  border-radius: 10px;
-  margin-top: 60px;
+
+  height: 400px;
+  width: 350px;
+
 }
 
 .rodrick-bateria {
-  right: 10px;
-  height: 280px;
-  width: 300px;
-  top: 20px;
-  border: 3px solid #adadad;
-  border-radius: 10px;
+  height: 380px;
+  width: 400px;
 }
 
-.fita7 {
-  right: 460px;
-  top: 1680px;
-}
 
-.fita8 {
-  right: 170px;
-  top: 1840px;
-}
 
-.fita9 {
-  right: 200px;
-  top: 1960px;
-}
-
-.fita10 {
-  right: 400px;
-  top: 2270px;
-}
-
-.fita11 {
-  left: 170px;
-  top: 2000px;
-}
-
-.fita12 {
-  left: 450px;
-  top: 2250px;
-}
 
 /* CURIOSIDADES -------------------------------------------------------------------------------------------*/
 .container-curiosidades {
@@ -467,13 +390,13 @@ width: 30%;
 }
 
 .fita13 {
-  right: 150px;
-  top: 3000px;
+  right: 160px;
+  top: 2080px;
 }
 
 .fita14 {
   right: 450px;
-  top: 3180px;
+  top: 3150px;
 }
 
 .fita15 {
@@ -506,8 +429,6 @@ width: 30%;
   background-color: #431551;
   background-size: cover;
   height: 600px;
-
-
 }
 
 .login .container {

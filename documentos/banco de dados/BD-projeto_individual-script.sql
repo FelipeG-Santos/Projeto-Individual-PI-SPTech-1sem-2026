@@ -23,7 +23,7 @@ id_avaliacao_livros int primary key auto_increment,
 fk_livro int,
 nota_livro decimal(2,1) not null,
 descricao varchar(100),
-data_avaliacao date,
+data_avaliacao date default (current_date),
 fk_usuario int,
 constraint ctnota check(nota_livro between 1 and 5),
 constraint ctfk_usuario_avaliacao foreign key (fk_usuario)

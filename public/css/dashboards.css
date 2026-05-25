@@ -13,6 +13,18 @@ body {
   background-color: #5c6bc0;
 }
 
+.janela {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1F3467;;
+  /* width: 100vw; */
+  height: 300vh;
+ 
+}
+
+/*KPIS---------------------------------------------------------------------------------------------*/
+
 .Kpis {
   display: flex;
   flex-direction: row;
@@ -30,8 +42,6 @@ body {
   padding-inline: 10px;
   padding-bottom: 10px;
 }
-
-
 
 .mais_avaliado {
   background-color: #883E8E;
@@ -58,15 +68,105 @@ body {
 }
 
 .diarios {
-
   height: 130px;
   width: 100px;
-
   border: 1px solid #ffffff;
-
-
 }
 
+.conteudo-kpi {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
+
+.info-livro h4 {
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  margin: 0;
+}
+
+.conteudo-kpi img {
+  width: 90px;
+  height: 130px;
+  /*object-fit: corta a imagem para encaixar certinho no espaço */
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #000000;
+}
+
+.KPIs {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin-top: 10px;
+}
+
+.kpis-trio {
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+/*distância entre as KPIs */
+    gap: 20px;
+margin-bottom: 20px;
+}
+
+.kpi-quadrado {
+  /* garante que todos os elementos dividam o mesmo espaço igualmente preenchendo tudo */
+    flex: 1;
+    
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+   height: 150px;
+   width: 330px;
+    background-color: #dbe6ff;
+   
+}
+
+.kpi-quadrado h3 {
+    font-size: 14px;
+    color: #000000;
+}
+
+.kpi-quadrado p {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+
+.kpi-quadrado.maiorMedia {
+   
+     border: 5px solid #D7201A;
+}
+
+.kpi-quadrado.menorMedia {
+   
+     border: 5px solid #D7201A;
+}
+
+.kpi-quadrado.classificacao {
+   
+     border: 5px solid #D7201A;
+}
+
+.kpi-quadrado.completaram {
+   
+     border: 5px solid #D7201A;
+}
+
+.kpi-quadrado.semana {
+    
+     border: 5px solid #D7201A;
+}
+
+.kpi-quadrado.maisAvaliados {
+    
+     border: 5px solid #D7201A;
+}
+
+/*GRÁFICOS ------------------------------------------------------------------------------------*/
 
 .posicao-graficos {
   display: flex;
@@ -81,18 +181,76 @@ body {
 }
 
 .tamanho-grafico-barras {
-
   width: 500px;
   height: 300px;
   margin-bottom: 20px;
 }
 
+.dash {
+  width: 100%;
+  background-color: #1F3467;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.barras {
+  width: 80%;
+  height: 70%;
+}
+
+.pizza {
+  width: 50%;
+  height: 50%;
+}
+
+.graph-barras {
+  width: 100%;
+  margin: 50px;
+  padding-top: 10px;
+  border: 3px solid white;
+  border-radius: 20px;
+  padding: 20px;
+  
+}
+
+.graph-pizza {
+  width: 100%;
+  margin: 50px;
+  padding-top: 10px;
+  border: 3px solid white;
+  border-radius: 20px;
+  padding: 20px;
+}
 
 
 
+.ranking-livros {
+  background-color: #42a5f5;
+  margin: 50px;
+padding: 20px;
+ border: 3px solid white;
+  border-radius: 20px;
+  width: 80%;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgb(0, 0, 0)
+}
 
+.tituloGraficos {
+  color: rgb(216, 216, 216);
+  display: flex;
+  justify-content: space-between;
+}
 
+.posicao-numero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+}
 
+/* FIM GRÁFICOS ------------------------------------------------------------------------------------*/
 .label-captura {
   display: flex;
   justify-content: center;
@@ -194,37 +352,13 @@ body {
   margin-left: 30px;
 }
 
-/* pagina graficos */
-
 .dash-header {
   background-color: #212124;
 }
 
-.dash {
-  width: 100%;
-  /*position: relative;*/
-  /*top: 0;
-  left: 20%;*/
-  background-color: #1F3467;
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
 
-  /*overflow: auto;*/
-}
 
-.barras {
-  width: 80%;
-  height: 70%;
-  
-}
 
-.pizza {
-  width: 50%;
-  height: 50%;
-  
-}
 
 .area-parametros-alerta {
   /* border: 2px solid pink; */
@@ -369,73 +503,6 @@ body {
   padding: 0 30% 0 30%;
 }
 
-.graph-barras {
-  width: 100%;
-  margin: 50px;
-  padding-top: 10px;
-  border: 3px solid white;
-  border-radius: 20px;
-  padding: 20px;
-  
-}
-
-.graph-pizza {
-  width: 100%;
-  margin: 50px;
-  padding-top: 10px;
-  border: 3px solid white;
-  border-radius: 20px;
-  padding: 20px;
-}
-
-
-
-.ranking-livros {
-  background-color: #42a5f5;
-  margin: 50px;
-padding: 20px;
- border: 3px solid white;
-  border-radius: 20px;
-  width: 80%;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: rgb(0, 0, 0)
-}
-
-.tituloGraficos {
-  color: rgb(216, 216, 216);
-  display: flex;
-  justify-content: space-between;
-}
-
-.posicao-numero {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 80%;
-}
-
-.conteudo-kpi {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 40px;
-}
-
-.info-livro h4 {
-  color: rgb(0, 0, 0);
-  font-size: 18px;
-  margin: 0;
-}
-
-.conteudo-kpi img {
-  width: 90px;
-  height: 130px;
-  /*object-fit: corta a imagem para encaixar certinho no espaço */
-  object-fit: cover;
-  border-radius: 8px;
-  border: 2px solid #000000;
-}
-
 
 .btn-chart {
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -481,94 +548,6 @@ canvas {
   width: 100% !important;
   height: 100% !important;
 }
-
-/* PAGINA DOS GRÁFICOS 2023 */
-
-.janela {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #1F3467;;
-  /* width: 100vw; */
-  height: 300vh;
- 
-}
-
-.KPIs {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-    margin-top: 10px;
-}
-
-.kpis-trio {
-display: flex;
-flex-direction: row;
-justify-content: space-evenly;
-/*distância entre as KPIs */
-    gap: 20px;
-margin-bottom: 20px;
-}
-.kpi-quadrado {
-  /* garante que todos os elementos dividam o mesmo espaço igualmente preenchendo tudo */
-    flex: 1;
-    
-    padding: 20px;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-   height: 150px;
-   width: 330px;
-    background-color: #dbe6ff;
-   
-}
-
-.kpi-quadrado h3 {
-    font-size: 14px;
-    color: #000000;
-}
-
-.kpi-quadrado p {
-    font-size: 26px;
-    font-weight: bold;
-}
-
-
-.kpi-quadrado.maiorMedia {
-   
-     border: 5px solid #D7201A;
-}
-
-.kpi-quadrado.menorMedia {
-   
-     border: 5px solid #D7201A;
-}
-
-.kpi-quadrado.classificacao {
-   
-     border: 5px solid #D7201A;
-}
-
-.kpi-quadrado.completaram {
-   
-     border: 5px solid #D7201A;
-}
-
-.kpi-quadrado.semana {
-    
-     border: 5px solid #D7201A;
-}
-
-.kpi-quadrado.maisAvaliados {
-    
-     border: 5px solid #D7201A;
-}
-
-
-
-
-
 
 
 .header-left a {

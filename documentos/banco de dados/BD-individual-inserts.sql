@@ -28,7 +28,9 @@ insert into usuario (nome, email, senha) values
 ('Mirela Osvaldo', 'mirelaos@gmail.com', '777776'),
 ('Marcos de Jesus', 'marcosj@gmail.com', '777779'),
 ('Carlos Mota', 'carlosm@gmail.com', '777778'),
-('Luiza Sanches', 'luizas@gmail.com', '777770');
+('Luiza Sanches', 'luizas@gmail.com', '777770'),
+('Guilherme Sanches', 'gsanches@gmail.com', '777744'),
+('Beatriz Alves', 'bia@gmail.com', '777999');
 
 
 -- inserts iniciais:
