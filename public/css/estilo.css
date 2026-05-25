@@ -372,42 +372,16 @@ width: 30%;
 }
 
 .punicao-mae {
-  right: 10px;
-  height: 200px;
-  width: 320px;
-  top: 20px;
-  border: 3px solid #adadad;
-  border-radius: 10px;
+  height: 280px;
+  width: 400px;
 }
 
 .manny-jogo {
-  right: 10px;
-  height: 200px;
-  width: 320px;
-  top: 20px;
-  border: 3px solid #adadad;
-  border-radius: 10px;
+  height: 300px;
+  width: 450px;
 }
 
-.fita13 {
-  right: 160px;
-  top: 2080px;
-}
 
-.fita14 {
-  right: 450px;
-  top: 3150px;
-}
-
-.fita15 {
-  right: 470px;
-  top: 3490px;
-}
-
-.fita16 {
-  right: 170px;
-  top: 3680px;
-}
 /* FOOTER-------------------------------------------------------------------------------------------*/
 
 .footer {

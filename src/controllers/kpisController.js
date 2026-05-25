@@ -1,5 +1,6 @@
 var kpisModel = require("../models/kpisModel");
 
+// FUNÇÃO LISTAR - VEM JUNTO NA HORA DE FAZER A ROTA ---------------------------------------------
 function listar(req, res) {
     kpisModel.listar().then(function (resultado) {
         // precisamos informar que o resultado voltará para o front-end como uma resposta em json
@@ -9,6 +10,7 @@ function listar(req, res) {
     })
 }
 
+// FUNÇÃO BUSCAR LIVROS MAIS AVALIADOS -----------------------------------------------------------------
 function buscarMaisAvaliado(req, res) {
 
     kpisModel.buscarMaisAvaliado()
@@ -25,6 +27,7 @@ function buscarMaisAvaliado(req, res) {
     });
 };
 
+// FUNÇÃO BUSCAR LIVROS COM MAIORES NOTAS -----------------------------------------------------------------
 function buscarMaiorNota(req, res) {
 
     kpisModel.buscarMaiorNota()
@@ -41,6 +44,7 @@ function buscarMaiorNota(req, res) {
     });
 };
 
+// FUNÇÃO BUSCAR LIVROS COM MENORES NOTAS -----------------------------------------------------------------
 function buscarMenorNota(req, res) {
 
     kpisModel.buscarMenorNota()
@@ -57,6 +61,7 @@ function buscarMenorNota(req, res) {
     });
 };
 
+// FUNÇÃO BUSCAR CLASSIFICAÇÃO DO USUÁRIO PARA COMPLETAR A SÉRIE -----------------------------------------
 function buscarClassificacao(req, res) {
 
     var id_usuario = req.query.id_usuario
@@ -75,6 +80,7 @@ function buscarClassificacao(req, res) {
     });
 };
 
+// FUNÇÃO BUSCAR USUÁRIOS QUE COMPLETARAM A SÉRIE ----------------------------------------------
 function buscarCompletaram(req, res) {
 
     kpisModel.buscarCompletaram()
@@ -91,6 +97,7 @@ function buscarCompletaram(req, res) {
     });
 };
 
+// FUNÇÃO BUSCAR LIVROS MAIS AVALIADOS DA ÚLTIMA SEMANA -----------------------------------------------------
 function buscarUltimaSemana(req, res) {
 
     kpisModel.buscarUltimaSemana()
@@ -107,6 +114,7 @@ function buscarUltimaSemana(req, res) {
     });
 };
 
+// EXPORTANDO FUNÇÕES PARA PERMITIR QUE SEJAM VISTAR POR OUTROS ARQUIVOS --------------------------------------
 module.exports = {
     listar,
    buscarMaisAvaliado,

@@ -71,6 +71,7 @@
     </div>
     <!--HEADER--------------------------------------------------------------------------------->
 
+     <!--BODY--------------------------------------------------------------------------------->
 
     <div class="janela">
         <div class="KPIs">
@@ -106,48 +107,17 @@
 
                 </div>
 
-
-
                 <div class="kpi-quadrado completaram">
                     <h3>Usuários que Completaram a Série</h3>
                     <div id="completaramSerie"></div>
 
                 </div>
             </div>
-
         </div>
-        <!--<div class="header-left">
-            <h1>Diário de um Banana</h1>
-
-            
-
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Livros</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-
-                <h3>Gráficos</h3>
-
-            </div>
-
-             <div class="btn-nav-white"> 
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
-        </div>-->
 
         <!-- parte da página sem o menu: -->
         <div class="dash">
-            <!-- <div id="alerta"></div> -->
+           
 
             <!-- <div class="btns-dash" id="btnAquario"> 
                  O gráfico é chamado de acordo com o id (fk_aquario) do banco 
@@ -174,8 +144,6 @@
             </div>
             <div>
                 <div id="graficos">
-
-
                     <div class="graph-ranking">
                         <div class="ranking-livros">
                             <h2>Ranking dos Livros Mais Bem Avaliados</h2>
@@ -183,7 +151,6 @@
                             <br>
                             <div class="posicao-numero" id="primeiro_lugar"></div><br>
                             <br>
-
 
                             <div class="posicao-numero" id="segundo_lugar"></div><br>
                             <br>
@@ -196,18 +163,15 @@
 
                             <div class="posicao-numero" id="quinto_lugar"></div><br>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
 </body>
-
 </html>
 <script>
+    // Faz aparecer o nome do usuário na página
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     //renderização de gráficos:
@@ -222,7 +186,6 @@
         obterDadosCompletaram();
         obterDadosUltimaSemana();
     }
-
 
     /* let proximaAtualizacao;*/
 
@@ -306,7 +269,7 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function obterDadosGrafico(/*idLivros*//*idAquario*/) {
+    function obterDadosGrafico(/*idAquario*/) {
 
         /*alterarTitulo(idAquario)*/
 
@@ -372,7 +335,6 @@
             }]
         };*/
 
-
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
@@ -382,7 +344,6 @@
             var registro = resposta[i];
             labels.push(registro.titulo);
             dados.datasets[0].data.push(registro.quantidade_avaliacoes);
-
 
             /*labels.push(registro.momento_grafico);
             /*dados.datasets[0].data.push(registro.umidade);
@@ -434,6 +395,7 @@
         // setTimeout(() => atualizarGrafico(/*idAquario, dados, myChart), 2000);
     }
 
+    /*GRAFICO DE PIZZA -------------------------------------------------------------------------*/
 
     function obterDadosGraficoPizza() {
 
@@ -524,10 +486,9 @@
         // setTimeout(() => atualizarGrafico(/*idAquario, dados, myChart), 2000);
     }
 
-
+/* GRAFICO RANKING ------------------------------------------------------------------------------------*/
 
     function obterDadosRanking() {
-
 
         fetch('/livros/livrosRanking')
             .then(function (response) {
@@ -550,9 +511,6 @@
     function plotarRanking(resposta) {
 
         console.log('iniciando plotagem do ranking...');
-
-
-
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
@@ -567,8 +525,6 @@
 
 
             if (i === 0) {
-
-
                 primeiro_lugar.innerHTML = `
               <div class="posicao-nome-livro-ranking"><h2>1°</h2> <div class="altura-nome">${registro.titulo}</div></div>
               <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
@@ -622,9 +578,6 @@
     function plotarMaisAvaliado(resposta) {
 
         console.log('iniciando plotagem do ranking...');
-
-
-
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
@@ -672,7 +625,6 @@
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
-
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
 
@@ -684,8 +636,6 @@
 
             maiorMedia.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.titulo}</h4><h4>Média: ${registro.score}</h4></div>
 <img src="${registro.imagem}" alt=""></div>`;
-
-
         }
     }
 
@@ -710,7 +660,6 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
     }
-
     function plotarMenorNota(resposta) {
 
         console.log('iniciando plotagem do ranking...');
@@ -734,9 +683,6 @@
         }
     }
 
-
-
-
     // função KPI porcentagem para completar a série: ----------------------------------------------------------------------------------------------------------------------
     function obterDadosClassificacao() {
 
@@ -757,7 +703,6 @@
                 }
             });
     }
-
     function plotarClassificacao(resposta) {
 
         console.log('iniciando plotagem do ranking...');
@@ -771,9 +716,7 @@
 
             console.log(`
                ${registro.usuario}<br>
-               ${registro.qtd_lidos}<br>
-              `);
-
+               ${registro.qtd_lidos}<br> `);
 
 
             if (registro.qtd_lidos <= 0) {
@@ -826,7 +769,6 @@
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
-
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
 
@@ -867,8 +809,6 @@
 
         console.log('iniciando plotagem do ranking...');
 
-
-
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
@@ -883,14 +823,9 @@
 
 
             ultimaSemana.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.titulo}</h4></div>
-<img src="${registro.imagem}" alt=""></div>`;
-
+            <img src="${registro.imagem}" alt=""></div>`;
         }
     }
-
-
-
-
 
 
     // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
@@ -900,8 +835,7 @@
     //     Para ajustar o "select", ajuste o comando sql em src/models
     /* function atualizarGrafico(idAquario, dados, myChart) {
  
- 
- 
+
          fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
              if (response.ok) {
                  response.json().then(function (novoRegistro) {
@@ -951,6 +885,5 @@
              .catch(function (error) {
                  console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
              });
- 
      }*/
 </script>

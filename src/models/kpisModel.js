@@ -8,6 +8,7 @@ function listar() {
     return database.executar(instrucao);
 }
 
+// busca os livros mais avaliados ---------------------------------------------------------------------
 function buscarMaisAvaliado() {
 
     var instrucao = `
@@ -26,7 +27,7 @@ function buscarMaisAvaliado() {
     return database.executar(instrucao);
 };
 
-
+// busca os livros com maiores notas ---------------------------------------------------------------------
 function buscarMaiorNota() {
 
     var instrucao = `
@@ -51,7 +52,7 @@ ORDER BY score DESC LIMIT 1;
 
 };
 
-
+// busca os livros com menores notas ---------------------------------------------------------------------
 function buscarMenorNota() {
 
     var instrucao = `
@@ -75,6 +76,7 @@ ORDER BY score LIMIT 1;
     return database.executar(instrucao);
 };
 
+// busca a classificação do usuário para completar a série ---------------------------------------------------------------------
 function buscarClassificacao(id_usuario) {
 
     var instrucao = `
@@ -93,6 +95,7 @@ GROUP BY a.fk_usuario;
     return database.executar(instrucao);
 };
 
+// busca os usuários que completaram a série ---------------------------------------------------------------------
 function  buscarCompletaram() {
 
     var instrucao = `
@@ -113,6 +116,7 @@ HAVING COUNT(fk_livro) = 2
     return database.executar(instrucao);
 };
 
+// busca os livros mais avaliados na última semana ---------------------------------------------------------------------
 function buscarUltimaSemana() {
 
     var instrucao = `

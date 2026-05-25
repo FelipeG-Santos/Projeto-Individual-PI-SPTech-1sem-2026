@@ -11,7 +11,7 @@ function listar(req, res) {
     })
 }
 
-
+// FUNÇÃO CADASTRAR LIVROS -----------------------------------------------------------------
 function cadastrar(req, res) {
 
 console.log("BODY teste:", req.body);
@@ -118,6 +118,7 @@ function buscarUltimosLivros(req, res) {
 }
 
 
+// não utilizo
 function buscarLivrosEmTempoReal(req, res) {
 
     var idLivros = req.params.idLivros;
@@ -137,6 +138,7 @@ function buscarLivrosEmTempoReal(req, res) {
     });
 }
 
+// busca os livros pesquisados na página de "meus livros"
 function buscarPesquisar(req, res) {
 
     var titulo = req.query.titulo
@@ -154,8 +156,6 @@ function buscarPesquisar(req, res) {
         res.status(500).json(erro.sqlMessage);
     });
 };
-
-
 
 
 module.exports = {

@@ -4,7 +4,7 @@ autenticar,
 
 var usuarioModel = require("../models/usuarioModel");
 
-
+// autenticando no login
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
@@ -23,22 +23,21 @@ function autenticar(req, res) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
                    
 
-                    if (resultadoAutenticar.length == 1) {
+            if (resultadoAutenticar.length == 1) {
                       
-                                    res.json({
-                                        id: resultadoAutenticar[0].id_usuario,
-                                        email: resultadoAutenticar[0].email,
-                                        nome: resultadoAutenticar[0].nome,
-                                        senha: resultadoAutenticar[0].senha,
-                                        fk_usuario: resultadoAutenticar[0].fk_usuario
-                                        
-                                    });
+                             res.json({
+                                 id: resultadoAutenticar[0].id_usuario,
+                                 email: resultadoAutenticar[0].email,
+                                 nome: resultadoAutenticar[0].nome,
+                                 senha: resultadoAutenticar[0].senha,
+                                 fk_usuario: resultadoAutenticar[0].fk_usuario            
+                            });
                                
-                    } else if (resultadoAutenticar.length == 0) {
+                } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    }
+                } else {
+                         res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                }
                 }
             ).catch(
                 function (erro) {
@@ -48,21 +47,18 @@ function autenticar(req, res) {
                 }
             );
     }
-
 }
 
+// função para cadastrar o usuário
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
-
     var estado = req.body.estadoServer;
     var cidade = req.body.cidadeServer;
     var bairro = req.body.bairroServer;
-
- 
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -77,8 +73,6 @@ function cadastrar(req, res) {
         res.status(400).send("Sua cidade está indefinida!");
         } else if (bairro == undefined) {
         res.status(400).send("Seu bairro está indefinido!");
-    
-    
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
