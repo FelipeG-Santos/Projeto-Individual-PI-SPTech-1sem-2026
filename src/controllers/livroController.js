@@ -137,6 +137,25 @@ function buscarLivrosEmTempoReal(req, res) {
     });
 }
 
+function buscarPesquisar(req, res) {
+
+    var titulo = req.query.titulo
+
+    livroModel.buscarPesquisar(titulo)
+    .then(function(resultado) {
+
+        res.status(200).json(resultado);
+
+    }).catch(function(erro) {
+
+        console.log(erro);
+        console.log("Erro ao buscar livros mais avaliados");
+
+        res.status(500).json(erro.sqlMessage);
+    });
+};
+
+
 
 
 module.exports = {
@@ -146,5 +165,6 @@ module.exports = {
     buscarLivrosEmTempoReal,
     buscarLivrosMaisAvaliados,
     buscarLivrosLidosPorUsuario,
-    buscarRanking
+    buscarRanking,
+    buscarPesquisar
 }

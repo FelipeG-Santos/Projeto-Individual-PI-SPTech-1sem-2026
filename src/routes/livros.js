@@ -37,5 +37,9 @@ router.get("/livrosRanking", function (req, res) {
     livroController.buscarRanking(req, res);
 });
 
+router.get("/livrosPesquisar", function (req, res) {
+    livroController.buscarPesquisar(req, res);
+});
+
 
 module.exports = router;

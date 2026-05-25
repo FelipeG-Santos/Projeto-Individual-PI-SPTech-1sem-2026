@@ -46,9 +46,7 @@
 
   <!--BANNER---------------------------------------------------------------------------------> 
   <div class="banner">
-    <!-- <div class="container"> -->
-     
-      
+    
       <div class="posicao-letras-banner">
         <p class="diario">DIÁRIO</p>
         <p class="de_um">de um <br></p>
@@ -66,14 +64,20 @@
     <div class="container-cadastro-livros">
 
         <div class="boxes">
+
+           <div class="alerta_erro">
+      <div class="card_erro" id="cardErro">
+        <span id="mensagem_erro"></span>
+      </div>
+    </div>
            
-        <div><h2 class="subtitulos">Cadastrar Livros</h2></div>
+        <div><h2 class="subtitulos">Avaliar Livros</h2></div>
          <div class="estrutura-titulo-conteudo">
         
             <div class=" card-estrutura-livros card_cadastroLivro">
     <h1>Meus Livros "Diário de um Banana"</h1><br>
 
-    <div class="formulario" id="etapa1">
+    <div class="formulario">
 
 
         <div class="campo">
@@ -100,7 +104,7 @@
               <option value="19">Diário de um Banana 19: Baita Lambança</option>
               <option value="20">Diário de um Banana 20: Festa Insana</option>
             </select>
-            <!-- <input type="text" id="ipt_nome_livro" placeholder="digite o nome do livro"> -->
+          
         </div>
         <div class="campo">
             <br><span>Nota do livro:</span>
@@ -118,21 +122,54 @@
     </div>
 
     <div>
-        <img class="greg-famoso" src="assets/imgs/greg-famoso.jpeg">
+        <img class="familia-piscina" src="assets/imgs/piscina-banana.png">
     </div>
     </div>
 </div>
+
 </div>
 </div>
-    <br><span>Procure pelos seus livros cadastrados:</span>
-    <input type="text" id="ipt_procura_livro"><br>
-    <button onclick="Procurar()">Procurar</button><br>
 
+<div class="container-cadastro-livros">
+  <div class="boxes-livros">
+<div><h2 class="subtitulos">Veja as últimas avaliações dos livros!</h2></div>
+ 
+<div class="formulario-livros">
+     <div class="campo">
+            <span>Nome do livro:</span>
+            <select name="diarios" id="ipt_procura_livro">
+              <option value="1">Diário de um Banana 1</option>
+              <option value="2">Diário de um Banana 2: Rodrick é o Cara</option>
+              <option value="3">Diário de um Banana 3: A Gota D’Água</option>
+              <option value="4">Diário de um Banana 4: Dias de Cão</option>
+              <option value="5">Diário de um Banana 5: A Verdade Nua e Crua</option>
+              <option value="6">Diário de um Banana 6: Casa dos Horrores</option>
+              <option value="7">Diário de um Banana 7: Segurando Vela</option>
+              <option value="8">Diário de um Banana 8: Maré de Azar</option>
+              <option value="9">Diário de um Banana 9: Caindo na Estrada</option>
+              <option value="10">Diário de um Banana 10: Bons Tempos</option>
+              <option value="11">Diário de um Banana 11: Vai ou Racha</option>
+              <option value="12">Diário de um Banana 12: Apertem os Cintos</option>
+              <option value="13">Diário de um Banana 13: Batalha Neval</option>
+              <option value="14">Diário de um Banana 14: Quebra Tudo</option>
+              <option value="15">Diário de um Banana 15: Vai Fundo</option>
+              <option value="16">Diário de um Banana 16: Bola Fora</option>
+              <option value="17">Diário de um Banana 17: Fräwda Megaxeia</option>
+              <option value="18">Diário de um Banana 18: Cabeça Oca</option>
+              <option value="19">Diário de um Banana 19: Baita Lambança</option>
+              <option value="20">Diário de um Banana 20: Festa Insana</option>
+            </select>
+          </div>
+            <button class="botao" onclick="Procurar()">Procurar</button><br>
+        </div>
 
-    <br><span>Remover livro:</span>
-    <input type="text" id="ipt_remover_livro"><br>
+    <div>
+      <div id="resposta_pesquisar"></div>
+    </div>
+  
+     </div>
+</div>
 
-    <button onclick="Remover()">Remover</button><br>
 
  <!--footer inicio-------------------------------------------------------------->
     <div class="footer">
@@ -143,10 +180,7 @@
     <!--footer fim----------------------------------------------------------------->
 </body>
 <script>
-    livros = []
-
-    var procura_livro = ipt_procura_livro.value;
-    var remover_livro = ipt_remover_livro.value;
+    
 
     function Cadastrar() {
 
@@ -189,9 +223,9 @@
 
           mensagem_erro.innerHTML =
             "Livro cadastrado com sucesso";
-         
+
+        setTimeout(sumirMensagem, 3000);
           
-          limparFormulario();
           
         } else {
           throw "Houve um erro ao tentar cadastrar o livro!";
@@ -213,46 +247,144 @@
   }
 
     function Procurar() {
-        let texto = "";
-        let unidades = 0;
 
-        for (let i = 0; i < livros.length; i++) {
-            if (livros[i] == procura_livro.value) {
-                unidades++
+      let procura_livro = ipt_procura_livro.value
+      let titulo = ""
 
-            } else {
-                texto = `Não encontramos o item ${procura_livro.value}!`
-            }
-        }
+      console.log(procura_livro);
+      
 
-        if (unidades > 0) {
-            texto = `Temos o item ${procura_livro.value} e há ${unidades} unidade(s) dele`
-        }
+      if(procura_livro == 1){
+titulo = "Diário de um Banana 1"
+        console.log(titulo);
+      } else if(procura_livro == 2){
+titulo = "Diário de um Banana 2: Rodrick é o Cara"
+        console.log(titulo);
+      } if(procura_livro == 3){
+titulo = "Diário de um Banana 3: A Gota D’Água"
+        console.log(titulo);
+      } if(procura_livro == 4){
+titulo = "Diário de um Banana 4: Dias de Cão"
+        console.log(titulo);
+      } if(procura_livro == 5){
+titulo = "Diário de um Banana 5: A Verdade Nua e Crua"
+        console.log(titulo);
+      } if(procura_livro == 6){
+titulo = "Diário de um Banana 6: Casa dos Horrores"
+        console.log(titulo);
+      } if(procura_livro == 7){
+titulo = "Diário de um Banana 7: Segurando Vela"
+        console.log(titulo);
+      } if(procura_livro == 8){
+titulo = "Diário de um Banana 8: Maré de Azar"
+        console.log(titulo);
+      } if(procura_livro == 9){
+titulo = "Diário de um Banana 9: Caindo na Estrada"
+        console.log(titulo);
+      } if(procura_livro == 10){
+titulo = "Diário de um Banana 10: Bons Tempos"
+        console.log(titulo);
+      } if(procura_livro == 11){
+titulo = "Diário de um Banana 11: Vai ou Racha"
+        console.log(titulo);
+      } if(procura_livro == 12){
+titulo = "Diário de um Banana 12: Apertem os Cintos"
+        console.log(titulo);
+      } if(procura_livro == 13){
+titulo = "Diário de um Banana 13: Batalha Neval"
+        console.log(titulo);
+      } if(procura_livro == 14){
+titulo = "Diário de um Banana 14: Quebra Tudo"
+        console.log(titulo);
+      } if(procura_livro == 15){
+titulo = "Diário de um Banana 15: Vai Fundo"
+        console.log(titulo);
+      } if(procura_livro == 16){
+titulo = "Diário de um Banana 16: Bola Fora"
+        console.log(titulo);
+      } if(procura_livro == 17){
+titulo = "Diário de um Banana 17: Fräwda Megaxeia"
+        console.log(titulo);
+      } if(procura_livro == 18){
+titulo = "Diário de um Banana 18: Cabeça Oca"
+        console.log(titulo);
+      } if(procura_livro == 19){
+titulo = "Diário de um Banana 19: Baita Lambança"
+        console.log(titulo);
+      } if(procura_livro == 20){
+titulo = "Diário de um Banana 20: Festa Insana"
+        console.log(titulo);
+      }
 
-        mensagem.innerHTML = `${texto}`
+
+      
+        fetch(`/livros/livrosPesquisar?titulo=${titulo}`)
+
+            .then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        plotarlivrosPesquisar(resposta);
+
+                    });
+                }
+            });
     }
 
-    function Remover() {
-        let texto = "";
-        let contador = 0;
+    function plotarlivrosPesquisar(resposta) {
 
-        for (let i = 0; i < livros.length; i++) {
-            if (livros[i] == remover_livro.value) {
-                livros.splice(i, 1);
-                i--;
-                contador++
+        console.log('iniciando plotagem do ranking...');
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        var registro = []
+        for (i = 0; i < resposta.length; i++) {
+
+          console.log(resposta[i]);
+            
+            registro.push(resposta[i])
             }
-        }
 
-        if (contador > 0) {
-            texto = `O item '${remover_livro.value}' foi removido do estoque`
-        } else {
-            texto = `O item '${remover_livro.value}' não está no estoque`
-        }
-        console.log(`${livros}`);
+            console.log(`
+               ${registro.titulo}<br>
+               ${registro.imagem}<br>
+               ${registro.nota}<br>
+               ${registro.descricao}<br>`);
 
-        mensagem.innerHTML = `${texto}`
+console.log(registro);
+            resposta_pesquisar.innerHTML = `
+    <div class="div-livro">
 
-    }
+        <div class="livro-imagem">
+            <img src="${registro[0].imagem}" alt="">
+        </div>
+
+        <div class="avaliacoes">
+
+            <div class="avaliacao">
+                <h4>${registro[0].usuario}</h4>
+                <span> ${registro[0].nota}</span>
+                <p>${registro[0].descricao}</p>
+            </div>
+
+            <div class="avaliacao">
+                <h4>${registro[1].usuario}</h4>
+                <span> ${registro[1].nota}</span>
+                <p>${registro[1].descricao}</p>
+            </div>
+
+            <div class="avaliacao">
+                <h4>${registro[2].usuario}</h4>
+                <span> ${registro[2].nota}</span>
+                <p>${registro[2].descricao}</p>
+            </div>
+        </div>
+    </div>`;
+ }
+    
+
+
 </script>
 </html>

@@ -114,7 +114,29 @@ from avaliacao_livros
     return database.executar(instrucaoSql);
 }
 
+function buscarPesquisar(titulo) {
 
+    var instrucao = `
+    select
+l.nome_livro as titulo,
+l.imagem_livro as imagem,
+u.nome as usuario,
+a.nota_livro as nota,
+a.descricao as descricao,
+a.data_avaliacao
+from livros l
+join avaliacao_livros a
+on l.id_livro = a.fk_livro
+join usuario u
+on a.fk_usuario = u.id_usuario
+where l.nome_livro = '${titulo}'
+order by a.data_avaliacao desc limit 3;
+    `;
+
+    console.log("executando a instrução sql: \n" + instrucao);
+
+    return database.executar(instrucao);
+};
 
 
 
@@ -124,5 +146,6 @@ module.exports = {
     listar,
     buscarLivrosMaisAvaliados,
     buscarLivrosLidosPorUsuario,
-    buscarRanking
+    buscarRanking,
+     buscarPesquisar
 };
