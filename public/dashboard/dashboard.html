@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="kpi-quadrado classificacao">
-                    <h3>Sua Classificação para Completar a Série</h3>
+                    <h3>Sua Classificação para Completar a Série:</h3>
                     <div id="classificacao"></div>
                 </div>
             </div>
@@ -128,7 +128,7 @@
                     <!-- quadrado onde está o grafico de barras: -->
                     <div class="graph-barras">
                         <!-- O grafico em si: -->
-                        <canvas id="graficoBarras"></canvas>
+                        <canvas class="fundo-graficos" id="graficoBarras"></canvas>
                     </div>
                 </div>
 
@@ -724,7 +724,7 @@
                 </h4><h3>Quando vai abrir seu primerio diário de um banana?</h3></div></div><br>`;
             } else if (registro.qtd_lidos <= 4) {
                 classificacao.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.usuario} você
-                     já leu entre 5% e 20% da série!</h4><h3>Cuidado: o hábito da leitura está surgindo.</h3></div></div><br>`;
+                     já leu entre 5% e 20% da série!</h4><h3>O hábito da leitura está surgindo</h3></div></div><br>`;
             } else if (registro.qtd_lidos <= 9) {
                 classificacao.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.usuario} você já leu entre 25% e 45% da série!
                 </h4><h3>Você já é quase da família Heffley</h3></div></div><br>`
