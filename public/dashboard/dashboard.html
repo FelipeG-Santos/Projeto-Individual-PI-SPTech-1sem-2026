@@ -71,7 +71,7 @@
     </div>
     <!--HEADER--------------------------------------------------------------------------------->
 
-     <!--BODY--------------------------------------------------------------------------------->
+    <!--BODY--------------------------------------------------------------------------------->
 
     <div class="janela">
         <div class="KPIs">
@@ -117,7 +117,7 @@
 
         <!-- parte da página sem o menu: -->
         <div class="dash">
-           
+
 
             <!-- <div class="btns-dash" id="btnAquario"> 
                  O gráfico é chamado de acordo com o id (fk_aquario) do banco 
@@ -148,20 +148,25 @@
                         <div class="ranking-livros">
                             <h2>Ranking dos Livros Mais Bem Avaliados</h2>
 
-                            <br>
-                            <div class="posicao-numero" id="primeiro_lugar"></div><br>
-                            <br>
+                            <div class="div_posicao-ranking">
+                                <div>
+                                    <br>
+                                    <div class="posicao-numero" id="primeiro_lugar"></div><br>
+                                    <br>
 
-                            <div class="posicao-numero" id="segundo_lugar"></div><br>
-                            <br>
+                                    <div class="posicao-numero" id="segundo_lugar"></div><br>
+                                    <br>
 
-                            <div class="posicao-numero" id="terceiro_lugar"></div><br>
-                            <br>
+                                    <div class="posicao-numero" id="terceiro_lugar"></div><br>
+                                    <br>
+                                </div>
+                                <div>
+                                    <div class="posicao-numero" id="quarto_lugar"></div><br>
+                                    <br>
 
-                            <div class="posicao-numero" id="quarto_lugar"></div><br>
-                            <br>
-
-                            <div class="posicao-numero" id="quinto_lugar"></div><br>
+                                    <div class="posicao-numero" id="quinto_lugar"></div><br>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -169,6 +174,7 @@
         </div>
     </div>
 </body>
+
 </html>
 <script>
     // Faz aparecer o nome do usuário na página
@@ -186,6 +192,8 @@
         obterDadosCompletaram();
         obterDadosUltimaSemana();
     }
+
+
 
     /* let proximaAtualizacao;*/
 
@@ -312,9 +320,9 @@
             datasets: [{
                 label: 'Quantidade de avaliações',
                 data: [],
-                backgroundColor: '#e6005a',
-                borderColor: '#ffffff',
-                borderWidth: 2
+                backgroundColor: '#D7201A',
+                borderColor: 'black',
+                borderWidth: 1
             }]
         };
         /*let dados = {
@@ -366,19 +374,17 @@
                 plugins: {
                     legend: {
                         labels: {
-                            color: 'white'
+                            color: '#D7201A'
                         }
                     }
                 },
                 scales: {
                     x: {
-                        ticks: {
-                            color: 'white'
-                        }
+                        ticks: false
                     },
                     y: {
                         ticks: {
-                            color: 'white'
+                            color: '#D7201A'
                         }
                     }
                 }
@@ -486,7 +492,7 @@
         // setTimeout(() => atualizarGrafico(/*idAquario, dados, myChart), 2000);
     }
 
-/* GRAFICO RANKING ------------------------------------------------------------------------------------*/
+    /* GRAFICO RANKING ------------------------------------------------------------------------------------*/
 
     function obterDadosRanking() {
 
@@ -778,7 +784,7 @@
 
             let PorcentagemCompletaram = (registro.usuarios_completaram * 100) / registro.total_usuarios
 
-                    completaramSerie.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${PorcentagemCompletaram.toFixed(1)}% dos usuários
+            completaramSerie.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${PorcentagemCompletaram.toFixed(1)}% dos usuários
                     já leram todos os livros da série!</h4></div></div><br>`
         }
     }

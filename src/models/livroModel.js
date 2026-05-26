@@ -21,7 +21,7 @@ function buscarLivrosMaisAvaliados() {
             JOIN avaliacao_livros a
             ON l.id_livro = a.fk_livro
         GROUP BY l.nome_livro
-        ORDER BY quantidade_avaliacoes DESC;
+        ORDER BY quantidade_avaliacoes DESC LIMIT 15;
     `;
 
     console.log("executando a instrução sql: \n" + instrucao);
