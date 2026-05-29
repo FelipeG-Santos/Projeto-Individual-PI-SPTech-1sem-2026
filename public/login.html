@@ -11,7 +11,6 @@
     <script src="./js/sessao.js"></script>
 
     <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
@@ -22,7 +21,7 @@
       <h1 class="titulo"><span class="diario-header">Diário</span> de um Banana</h1>
       <ul class="navbar">
         <li>
-          <a href="index.html">Inicial</a>
+          <a href="index.html">Início</a>
         </li><br>
         <br><li>|</li><br>
         <br>
@@ -53,18 +52,20 @@
 
 <!--login-------------------------------------------------------------------------------->
     <div class="login">
+
         <div class="alerta_erro">
             <div class="card_erro" id="cardErro">
                 <span id="mensagem_erro"></span>
             </div>
         </div>
+
         <div class="container">
             <div class="card card_login">
                 <h2>Realize o login para ter acesso as demais páginas!</h2>
                 <div class="formulario">
                     <div class="campo">
                         <span>E-mail:</span>
-                        <input id="email_input" type="text" placeholder="Login">
+                        <input id="email_input" type="text" placeholder="gregemail@banana.com">
                     </div>
                     <div class="campo">
                         <span>Senha:</span>
@@ -72,8 +73,6 @@
                     </div>
                     <button class="botao" onclick="entrar()">Entrar</button>
                 </div>
-
-                <div id="div_erros_login"></div>
             </div>
         </div>
     </div>
@@ -91,7 +90,6 @@
 <script>
 // função para conferir os dados e permitir o login
     function entrar() {
-      /*  aguardar();*/
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
@@ -99,17 +97,14 @@
         //Verificando se está vazio
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-           /* finalizarAguardar();*/
+            mensagem_erro.innerHTML = "Preencha todos os campos!";
+           
             return false;
         }
         else {
             setInterval(sumirMensagem, 2000)
         }
 
-        //console
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
 
 //Enviando o valor dos inputs
 //rota:
@@ -123,14 +118,14 @@
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
+          
 
             if (resposta.ok) {
                 console.log(resposta);
 
                 resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
+                   /* console.log(json);
+                    console.log(JSON.stringify(json));*/
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     // pega o id para posterior salvamento na página de cadastro de livros
@@ -139,7 +134,7 @@
                   
                     setTimeout(function () {
                         window.location = "./dashboard/dashboard.html";
-                    }, 2000); // apenas para exibir o loading
+                    }, 2000); 
 
                 });
 
@@ -149,7 +144,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
+                   /* finalizarAguardar(texto);*/
                 });
             }
 

@@ -10,7 +10,6 @@
   <script src="./js/sessao.js"></script>
 
   <link rel="stylesheet" href="./css/estilo.css" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
 <body>
@@ -21,7 +20,7 @@
       <h1 class="titulo"><span class="diario-header">Diário</span> de um Banana</h1>
       <ul class="navbar">
         <li>
-          <a href="index.html">Inicial</a>
+          <a href="index.html">Início</a>
         </li><br>
         <br><li>|</li><br>
         <br>
@@ -51,6 +50,7 @@
     <!--HEADER--------------------------------------------------------------------------------->
   <!--PÁGINA DE CADASTRO----------------------------------------------------------------------------------------------->
   <div class="cadastro">
+
     <div class="alerta_erro">
       <div class="card_erro" id="cardErro">
         <span id="mensagem_erro"></span>
@@ -66,56 +66,51 @@
 
           <div class="campo">
             <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome" />
+            <input id="nome_input" type="text" placeholder="Seu nome"/>
           </div>
           <div class="campo">
             <span>E-mail:</span>
-            <input id="email_input" type="text" placeholder="gregemail@banana.com" />
+            <input id="email_input" type="text" placeholder="gregemail@banana.com"/>
           </div>
           <div class="campo">
             <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******" />
+            <input id="senha_input" type="password" placeholder="******"/>
           </div>
           <div class="campo">
             <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" />
+            <input id="confirmacao_senha_input" type="password" placeholder="******"/>
           </div>
 
         </div>
 
-        <div id="div_erros_login"></div>
-
         <!--ETAPA 2----------------------------------------------------------------------------------------------->
+        <!-- o style inicia essa etapa como none -->
         <div class="formulario" id="etapa2" style="display: none;">
 
           <div class="campo">
             <span>Estado que você mora:</span>
-            <input id="estado_input" type="text" placeholder="somente a sigla, ex: SP" />
+            <input id="estado_input" type="text" placeholder="somente a sigla, ex: SP"/>
           </div>
           <div class="campo">
             <span>Cidade:</span>
-            <input id="cidade_input" type="text" placeholder="cidade" />
+            <input id="cidade_input" type="text" placeholder="cidade"/>
           </div>
           <div class="campo">
             <span>Bairro:</span>
-            <input id="bairro_input" type="text" placeholder="bairro" />
+            <input id="bairro_input" type="text" placeholder="bairro"/>
           </div>
-
 
         </div>
         <button class="botao" id="botao_etapa" onclick="proximaEtapa()">Continuar</button>
 
-        <div id="div_erros_login"></div>
       </div>
     </div>
-
   </div>
 
   <!--footer inicio-------------------------------------------------------------------->
   <div class="footer">
     <div class="container">
       <h4>Feito por Felipe Santos, aluno SPTech-CCO 2026</h4>
-
     </div>
   </div>
   <!--footer fim----------------------------------------------------------------------->
@@ -124,7 +119,7 @@
 </html>
 <script>
 
-  // Atribui a etapa como 1
+  // Atribui a etapa como 1 inicialmente
   let etapaAtual_botao = 1;
   // essa função valida os itens cadastrados na etapa 1 e chama a função "cadastrar"
   function proximaEtapa() {
@@ -136,14 +131,17 @@
     let confirmacaoSenhaVar = confirmacao_senha_input.value;
 
     // VALIDAÇÕES:
+
+    //localiza em qual posição tem @ e .com, se não tiver é -1
     let indice_arroba = emailVar.indexOf("@");
     let indice_com = emailVar.indexOf(".com");
-
+    
+    
     if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
 
       //Mensagem de erro pois está vazio:
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+      mensagem_erro.innerHTML = "Preencha todos os campos!";
 
       // imterrompe a função, impedindo o cadastro:
       /* return false: para a função inteira
@@ -153,28 +151,27 @@
     } else if (indice_arroba == -1 || indice_com == -1) {
 
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Mensagem de erro para email errado)";
+      mensagem_erro.innerHTML = "Insira um email válido!";
 
       return false;
 
     } else if (senhaVar.length < 6) {
 
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Mensagem de erro para senha curta)";
+      mensagem_erro.innerHTML = "Digite pelo menos 6 dígitos";
 
       return false;
 
     } else if (senhaVar != confirmacaoSenhaVar) {
 
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Mensagem de erro para senha incorreta)";
+      mensagem_erro.innerHTML = "A senha está incorreta!";
 
       return false;
 
     } else {
       //Se todos os campos estiverem preenchidos, sumir com a mensagem de erro:
       setTimeout(sumirMensagem, 1000);
-
 
       // muda a etapa e muda o titulo do formulario e do botão
       if (etapaAtual_botao === 1) {
@@ -198,7 +195,7 @@
 // aqui cadastra os dados
   function cadastrar() {
 
-    //Recupere o valor da nova input pelo nome do id
+    //transforma em variavel denovo
     // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
@@ -214,25 +211,24 @@
 
       //Mensagem de erro pois está vazio:
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+      mensagem_erro.innerHTML = "Preencha todos os campos!";
 
       // imterrompe a função, impedindo o cadastro:
       return false;
     } else if (estadoVar.length > 2) {
 
-
       cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Mensagem de erro para estado muito grande)";
+      mensagem_erro.innerHTML = "Insira somente a sigla!";
 
       return false;
 
     } else {
       //Se todos os campos estiverem preenchidos, sumir com a mensagem de erro:
-      setTimeout(sumirMensagem, 5000);
+      setTimeout(sumirMensagem, 1000);
     }
 
 
-    // Enviando o valor da nova input
+    // Envia o valor da input
     //rota:
     fetch("/usuarios/cadastrar", {
       //POST: enviar dados para salvar
@@ -241,7 +237,7 @@
       headers: {
         "Content-Type": "application/json",
       },
-      //transforma em json
+      //transforma em json para poder transitar entre os arquivos
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
@@ -262,16 +258,16 @@
 
         //Caso a resposta esteja ok:
         if (resposta.ok) {
-          cardErro.style.display = "block";
 
+          // aparece o card erro mas com outra mensagem
+          cardErro.style.display = "block";
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
           //espera 2 segundos e redireciona para a tela de login
           setTimeout(() => {
             window.location = "login.html";
           }, "2000");
-
-          limparFormulario();
 
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
@@ -287,6 +283,7 @@
     return false;
   }
 
+  // deixa o card de erro como "none", ou seja, desaparece
   function sumirMensagem() {
     cardErro.style.display = "none";
   }
