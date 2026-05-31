@@ -72,7 +72,7 @@ insert into avaliacao_livros (fk_livro, nota_livro, descricao, data_avaliacao, f
 (3, 4.5, 'Gostei muito da parte da viagem','2026-02-03', 2), 
 (4, 5, 'Muito bom','2026-02-18', 2), 
 (3, 1.5, 'Esse é chato','2026-03-07', 3), 
-(3, 2, 'Não gostei','2026-03-10', 4), 
+(3, 2, 'Não gostei','2026-05-30', 4), 
 (10, 4.8, 'meu favorito','2026-03-21', 4),
 (8, 3.4, 'O irmão é muito engraçado','2026-04-02', 4),
 (8, 4.1, 'Achei que foi um dos mais legais','2026-04-11', 5),

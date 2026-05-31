@@ -9,6 +9,11 @@
 </head>
 
 <body>
+  <div class="alerta_erro">
+    <div class="card_erro" id="cardErro">
+      <span id="mensagem_erro"></span>
+    </div>
+  </div>
   <!--HEADER--------------------------------------------------------------------------------->
   <div class="header">
     <img class="irmaozinho" src="assets/imgs/irmaozinho-png.png" alt="">
@@ -62,15 +67,14 @@
     </div>
   </div>
   <!--BANNER--------------------------------------------------------------------------------->
+
+
   <div class="container-cadastro-livros">
+
 
     <div class="boxes">
 
-      <div class="alerta_erro">
-        <div class="card_erro" id="cardErro">
-          <span id="mensagem_erro"></span>
-        </div>
-      </div>
+
 
       <div>
         <h2 class="subtitulos">Avaliar Livros</h2>
@@ -188,6 +192,18 @@
     var nota_livroVar = ipt_nota_livro.value;
     var descricaoVar = ipt_descricao.value;
 
+    if (fk_livroVar == 0 || nota_livroVar == "" || descricaoVar == "") {
+
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "Preencha todos os campos para avaliar!";
+    }else if(nota_livroVar < 1 || nota_livroVar > 5 ){
+
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "Insira a nota de 1 a 5!";
+    } else {
+      setTimeout(sumirMensagem, 2000);
+    }
+
     // Enviando o valor da nova input
     //rota:
     fetch("/livros/cadastrar", {
@@ -215,11 +231,19 @@
 
         //Caso a resposta esteja ok:
         if (resposta.ok) {
-          cardErro.style.display = "block";
+          console.log("entrei");
 
-          mensagem_erro.innerHTML =
-            "Livro cadastrado com sucesso";
-          setTimeout(sumirMensagem, 3000);
+
+
+          cardErro.style.display = "block";
+          mensagem_erro.innerHTML = "O Livro foi cadastrado!";
+
+
+          setTimeout(sumirMensagem, 2000);
+
+          sumirFormulario()
+
+
 
         } else {
           throw "Houve um erro ao tentar cadastrar o livro!";
@@ -235,10 +259,18 @@
   }
 
 
+  /* funções de desaparecer ---------------------------------------------------------------- */
   function sumirMensagem() {
     cardErro.style.display = "none";
   }
 
+  function sumirFormulario() {
+    diarios.value = 1;
+    ipt_nota_livro.value = "";
+    ipt_descricao.value = "";
+  }
+
+  /* função de procura de livros --------------------------------------------------------------*/
 
   function Procurar() {
 
@@ -311,7 +343,7 @@
     //envia para a rota junto com o titulo do livro para verificação
     fetch(`/livros/livrosPesquisar?titulo=${titulo}`)
 
-    //executa quando a API responde
+      //executa quando a API responde
       .then(function (response) {
         if (response.ok) {
           response.json().then(function (resposta) {
@@ -370,4 +402,5 @@
     </div>`
   }
 </script>
+
 </html>

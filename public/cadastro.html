@@ -200,8 +200,8 @@
       if (resposta.ok) {
         console.log(resposta);
 
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "Cadastro Realizado com sucesso!"
+        /*cardErro.style.display = "block";
+        mensagem_erro.innerHTML = "Cadastro Realizado com sucesso!"*/
 
         // muda a etapa e muda o titulo do formulario e do botão
         if (etapaAtual_botao === 1) {
@@ -310,10 +310,14 @@
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
+            //some a mensagem de cadastro realizado
+             setTimeout(sumirMensagem, 3000);
           //espera 3 segundos e redireciona para a tela de login
           setTimeout(() => {
             window.location = "login.html";
           }, "3000");
+
+          setTimeout(sumirMensagem, 8000);
 
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
