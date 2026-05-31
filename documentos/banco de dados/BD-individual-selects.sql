@@ -52,7 +52,9 @@ SELECT
     TRUNCATE(AVG(a.nota_livro), 2) AS media,
     COUNT(*) AS quantidade_avaliacoes,
     ROUND(
+    -- porcentagem de confiança nas avaliações
     ((COUNT(*) / (COUNT(*) + 5.0)) * AVG(a.nota_livro) +
+    -- mais a porcentagem 
             (5.0 / (COUNT(*) + 5.0)) *
             (SELECT AVG(a.nota_livro) FROM avaliacao_livros a)
         ), 2) AS score
@@ -175,3 +177,8 @@ join usuario u
 on a.fk_usuario = u.id_usuario
 where l.nome_livro = 'Diário de um Banana 1'
 order by a.data_avaliacao desc limit 3;
+
+
+-- emails iguais:
+select email
+from usuario;

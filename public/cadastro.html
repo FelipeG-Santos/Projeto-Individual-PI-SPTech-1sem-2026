@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,41 +14,42 @@
 </head>
 
 <body>
-   <!--HEADER--------------------------------------------------------------------------------->
+  <!--HEADER--------------------------------------------------------------------------------->
   <div class="header">
-    
-      <img class="irmaozinho" src="assets/imgs/irmaozinho-png.png" alt="">
-      <h1 class="titulo"><span class="diario-header">Diário</span> de um Banana</h1>
-      <ul class="navbar">
-        <li>
-          <a href="index.html">Início</a>
-        </li><br>
-        <br><li>|</li><br>
-        <br>
-        <li>
-          <a href="Meus Livros.html">Meus Livros</a>
-        </li><br>
-        <br>
-        <li>|</li><br>
-        <br>
-        <li>
-          <a href="login.html">Dashboard</a>
-        </li><br>
-        <br>
-        <li>|</li><br>
-        <br>
-        <li>
-          <a href="login.html">Login</a>
-        </li><br>
-        <br>
-        <li>|</li><br>
-        <br>
-        <li>
-          <a href="#">Cadastro</a>
-        </li>
-      </ul>
+
+    <img class="irmaozinho" src="assets/imgs/irmaozinho-png.png" alt="">
+    <h1 class="titulo"><span class="diario-header">Diário</span> de um Banana</h1>
+    <ul class="navbar">
+      <li>
+        <a href="index.html">Início</a>
+      </li><br>
+      <br>
+      <li>|</li><br>
+      <br>
+      <li>
+        <a href="Meus Livros.html">Meus Livros</a>
+      </li><br>
+      <br>
+      <li>|</li><br>
+      <br>
+      <li>
+        <a href="login.html">Dashboard</a>
+      </li><br>
+      <br>
+      <li>|</li><br>
+      <br>
+      <li>
+        <a href="login.html">Login</a>
+      </li><br>
+      <br>
+      <li>|</li><br>
+      <br>
+      <li>
+        <a href="#">Cadastro</a>
+      </li>
+    </ul>
   </div>
-    <!--HEADER--------------------------------------------------------------------------------->
+  <!--HEADER--------------------------------------------------------------------------------->
   <!--PÁGINA DE CADASTRO----------------------------------------------------------------------------------------------->
   <div class="cadastro">
 
@@ -66,19 +68,19 @@
 
           <div class="campo">
             <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome"/>
+            <input id="nome_input" type="text" placeholder="Seu nome" />
           </div>
           <div class="campo">
             <span>E-mail:</span>
-            <input id="email_input" type="text" placeholder="gregemail@banana.com"/>
+            <input id="email_input" type="text" placeholder="gregemail@banana.com" />
           </div>
           <div class="campo">
             <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******"/>
+            <input id="senha_input" type="password" placeholder="******" />
           </div>
           <div class="campo">
             <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******"/>
+            <input id="confirmacao_senha_input" type="password" placeholder="******" />
           </div>
 
         </div>
@@ -89,15 +91,15 @@
 
           <div class="campo">
             <span>Estado que você mora:</span>
-            <input id="estado_input" type="text" placeholder="somente a sigla, ex: SP"/>
+            <input id="estado_input" type="text" placeholder="somente a sigla, ex: SP" />
           </div>
           <div class="campo">
             <span>Cidade:</span>
-            <input id="cidade_input" type="text" placeholder="cidade"/>
+            <input id="cidade_input" type="text" placeholder="cidade" />
           </div>
           <div class="campo">
             <span>Bairro:</span>
-            <input id="bairro_input" type="text" placeholder="bairro"/>
+            <input id="bairro_input" type="text" placeholder="bairro" />
           </div>
 
         </div>
@@ -116,34 +118,33 @@
   <!--footer fim----------------------------------------------------------------------->
 
 </body>
+
 </html>
 <script>
 
   // Atribui a etapa como 1 inicialmente
   let etapaAtual_botao = 1;
-  // essa função valida os itens cadastrados na etapa 1 e chama a função "cadastrar"
+
+  // essa função valida os itens cadastrados na etapa 1 e chama a função de confirmar emails -----------------------------------------------
   function proximaEtapa() {
 
-    // pegando inputs
     let nomeVar = nome_input.value;
     let emailVar = email_input.value;
     let senhaVar = senha_input.value;
     let confirmacaoSenhaVar = confirmacao_senha_input.value;
 
-    // VALIDAÇÕES:
 
+    // VALIDAÇÕES:
     //localiza em qual posição tem @ e .com, se não tiver é -1
     let indice_arroba = emailVar.indexOf("@");
     let indice_com = emailVar.indexOf(".com");
-    
-    
+
     if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
 
       //Mensagem de erro pois está vazio:
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "Preencha todos os campos!";
 
-      // imterrompe a função, impedindo o cadastro:
       /* return false: para a função inteira
       break: para somente o loop */
       return false;
@@ -170,29 +171,76 @@
       return false;
 
     } else {
-      //Se todos os campos estiverem preenchidos, sumir com a mensagem de erro:
-      setTimeout(sumirMensagem, 1000);
-
-      // muda a etapa e muda o titulo do formulario e do botão
-      if (etapaAtual_botao === 1) {
-
-        etapa1.style.display = "none";
-        etapa2.style.display = "block";
-
-        titulo_formulario.innerHTML = "Está quase lá!";
-
-        botao_etapa.innerHTML = "Cadastrar"
-
-        etapaAtual_botao = 2;
-
-      } else {
-        // chama a execução da outra função:
-        cadastrar()
-      }
+      //chama a função caso tudo esteja correto:
+      confirmarEmailsIguais()
     }
   }
 
-// aqui cadastra os dados
+
+  // função para verificar emails iguais: ------------------------------------------------------------------------------------------------
+  function confirmarEmailsIguais() {
+
+    var emailVar = email_input.value;
+
+    // envia a verificação para a rota
+    fetch("/usuarios/EmailsIguais", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // o que vai ser enviado:
+      body: JSON.stringify({
+        emailServer: emailVar
+
+      })
+      //executa quando a API responde:
+    }).then(function (resposta) {
+
+      // caso a resposta esteja ok:
+      if (resposta.ok) {
+        console.log(resposta);
+
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = "Cadastro Realizado com sucesso!"
+
+        // muda a etapa e muda o titulo do formulario e do botão
+        if (etapaAtual_botao === 1) {
+
+          etapa1.style.display = "none";
+          etapa2.style.display = "block";
+
+          titulo_formulario.innerHTML = "Está quase lá!";
+
+          botao_etapa.innerHTML = "Cadastrar"
+
+          etapaAtual_botao = 2;
+
+        } else {
+          // chama a execução da função de cadastro:
+          cadastrar()
+        }
+        // executa caso o email seja repetido:
+      } else {
+
+        console.log("Houve um erro ao tentar realizar o cadastro!");
+
+        // retorna a resposta do controller:
+        resposta.text().then(texto => {
+          console.error(texto);
+          cardErro.style.display = "block";
+          mensagem_erro.innerHTML = texto;
+        });
+      }
+
+      // chama a exibição do erro no console:
+    }).catch(function (erro) {
+      console.log(erro);
+    })
+    return false;
+  }
+
+
+  // função de cadastro: ---------------------------------------------------------------------------------
   function cadastrar() {
 
     //transforma em variavel denovo
@@ -204,7 +252,6 @@
     let estadoVar = estado_input.value;
     let cidadeVar = cidade_input.value;
     let bairroVar = bairro_input.value;
-
 
     // Verificando se há algum campo em branco
     if (estadoVar == "" || cidadeVar == "" || bairroVar == "") {
@@ -248,7 +295,6 @@
         estadoServer: estadoVar,
         cidadeServer: cidadeVar,
         bairroServer: bairroVar
-
       }),
     })
 
@@ -259,15 +305,15 @@
         //Caso a resposta esteja ok:
         if (resposta.ok) {
 
-          // aparece o card erro mas com outra mensagem
+          // aparece o card erro mas com a mensagem de sucesso
           cardErro.style.display = "block";
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
-          //espera 2 segundos e redireciona para a tela de login
+          //espera 3 segundos e redireciona para a tela de login
           setTimeout(() => {
             window.location = "login.html";
-          }, "2000");
+          }, "3000");
 
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
@@ -283,7 +329,8 @@
     return false;
   }
 
-  // deixa o card de erro como "none", ou seja, desaparece
+
+  // deixa o card de erro como "none", desaparecendo: --------------------------------------------------------------------------------
   function sumirMensagem() {
     cardErro.style.display = "none";
   }

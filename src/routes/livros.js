@@ -14,15 +14,20 @@ router.get("/listar", function (req, res) {
     livroController.listar(req, res);
 });
 
+router.get("/livrosPesquisar", function (req, res) {
+    livroController.buscarPesquisar(req, res);
+});
+
+
 
 // rota para gerar os gráficos:
-router.get("/ultimos/:idLivros", function (req, res) {
+/*router.get("/ultimos/:idLivros", function (req, res) {
     livroController.buscarUltimosLivros(req, res);
 });
 
 router.get("/tempo-real/:idLivros", function (req, res) {
     livroController.buscarLivrosEmTempoReal(req, res);
-});
+});*/
 
 
 router.get("/livrosMaisAvaliados", function (req, res) {
@@ -37,9 +42,6 @@ router.get("/livrosRanking", function (req, res) {
     livroController.buscarRanking(req, res);
 });
 
-router.get("/livrosPesquisar", function (req, res) {
-    livroController.buscarPesquisar(req, res);
-});
 
 
 module.exports = router;

@@ -188,7 +188,6 @@
     var nota_livroVar = ipt_nota_livro.value;
     var descricaoVar = ipt_descricao.value;
 
-    console.log("fk que vai ser enviada:", sessionStorage.ID_USUARIO);
     // Enviando o valor da nova input
     //rota:
     fetch("/livros/cadastrar", {
@@ -220,7 +219,6 @@
 
           mensagem_erro.innerHTML =
             "Livro cadastrado com sucesso";
-
           setTimeout(sumirMensagem, 3000);
 
         } else {
@@ -233,7 +231,6 @@
         console.log(`#ERRO: ${resposta}`);
 
       });
-
     return false;
   }
 
@@ -242,14 +239,13 @@
     cardErro.style.display = "none";
   }
 
+
   function Procurar() {
 
     let procura_livro = ipt_procura_livro.value
     let titulo = ""
 
-    console.log(procura_livro);
-
-
+    //verifica qual livro foi escolhido para atribuir o titulo
     if (procura_livro == 1) {
       titulo = "Diário de um Banana 1"
       console.log(titulo);
@@ -312,8 +308,10 @@
       console.log(titulo);
     }
 
+    //envia para a rota junto com o titulo do livro para verificação
     fetch(`/livros/livrosPesquisar?titulo=${titulo}`)
 
+    //executa quando a API responde
       .then(function (response) {
         if (response.ok) {
           response.json().then(function (resposta) {
@@ -326,11 +324,9 @@
       });
   }
 
+
   function plotarlivrosPesquisar(resposta) {
 
-    console.log('iniciando plotagem do ranking...');
-    console.log('----------------------------------------------')
-    console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
     console.log(resposta)
 
     var registro = []
@@ -341,13 +337,8 @@
       registro.push(resposta[i])
     }
 
-    console.log(`
-               ${registro.titulo}<br>
-               ${registro.imagem}<br>
-               ${registro.nota}<br>
-               ${registro.descricao}<br>`);
-
     console.log(registro);
+    //exibição na tela:
     resposta_pesquisar.innerHTML = `
     <div class="div-livro">
 
@@ -374,8 +365,9 @@
                 <span> ${registro[2].nota}</span>
                 <p>${registro[2].descricao}</p>
             </div>
+            
         </div>
-    </div>`;
+    </div>`
   }
 </script>
 </html>

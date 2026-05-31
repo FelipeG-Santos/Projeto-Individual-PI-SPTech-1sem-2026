@@ -23,7 +23,6 @@ function buscarMaisAvaliado() {
     `;
 
     console.log("executando a instrução sql: \n" + instrucao);
-
     return database.executar(instrucao);
 };
 
@@ -47,7 +46,6 @@ ORDER BY score DESC LIMIT 1;
     `;
 
     console.log("executando a instrução sql: \n" + instrucao);
-
     return database.executar(instrucao);
 
 };
@@ -72,7 +70,6 @@ ORDER BY score LIMIT 1;
     `;
 
     console.log("executando a instrução sql: \n" + instrucao);
-
     return database.executar(instrucao);
 };
 
@@ -91,12 +88,11 @@ GROUP BY a.fk_usuario;
     `;
 
     console.log("executando a instrução sql: \n" + instrucao);
-
     return database.executar(instrucao);
 };
 
 // busca os usuários que completaram a série ---------------------------------------------------------------------
-function  buscarCompletaram() {
+function buscarCompletaram() {
 
     var instrucao = `
    SELECT(
@@ -107,12 +103,11 @@ FROM (
 SELECT fk_usuario
 FROM avaliacao_livros
 GROUP BY fk_usuario
-HAVING COUNT(fk_livro) = 2
+HAVING COUNT(fk_livro) = 20
 ) AS usuarios_completos;
     `;
 
     console.log("executando a instrução sql: \n" + instrucao);
-
     return database.executar(instrucao);
 };
 
@@ -133,10 +128,8 @@ limit 1;
     `;
 
     console.log("executando a instrução sql: \n" + instrucao);
-
     return database.executar(instrucao);
 };
-
 
 module.exports = {
     listar,

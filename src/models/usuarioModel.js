@@ -10,6 +10,7 @@ function autenticar(email, senha) {
     return database.executar(instrucaoUsuario);
 }
 
+
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 function cadastrar(nome, email, senha, estado, cidade, bairro) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha, estado, cidade, bairro);
@@ -30,14 +31,21 @@ function cadastrar(nome, email, senha, estado, cidade, bairro) {
 
             var instrucaoEndereco = `
                 INSERT INTO endereco (estado, cidade, bairro, fk_usuario)
-                VALUES ('${estado}', '${cidade}', '${bairro}', ${idUsuario});
-            `;
-
+                VALUES ('${estado}', '${cidade}', '${bairro}', ${idUsuario});`;
             return database.executar(instrucaoEndereco);
         });
         }
 
+        function EmailsIguais(email) {
+        
+            var instrucao =  `SELECT email FROM usuario WHERE email = '${email}';`;
+        
+            console.log("executando a instrução sql: \n" + instrucao);
+            return database.executar(instrucao);
+        };
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    EmailsIguais
 };

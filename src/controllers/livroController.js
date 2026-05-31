@@ -14,8 +14,6 @@ function listar(req, res) {
 // FUNÇÃO CADASTRAR LIVROS -----------------------------------------------------------------
 function cadastrar(req, res) {
 
-console.log("BODY teste:", req.body);
-
     var fk_livro = req.body.fk_livroServer;
     var nota_livro = req.body.nota_livroServer;
     var descricao = req.body.descricaoServer;
@@ -93,66 +91,22 @@ function buscarRanking(req, res) {
     });
 }
 
-
-
-// controller para gerar os gráficos da dashboard:
-function buscarUltimosLivros(req, res) {
-
-    const limite_linhas = 7;
-
-    var idLivros = req.params.idLivros;
-
-    console.log(`Recuperando os ultimos ${limite_linhas} livros`);
-
-    livroModel.buscarUltimosLivros(idLivros, limite_linhas).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar os ultimos livros.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
-}
-
-
-// não utilizo
-function buscarLivrosEmTempoReal(req, res) {
-
-    var idLivros = req.params.idLivros;
-
-    console.log(`Recuperando livros em tempo real`);
-
-    livroModel.buscarLivrosEmTempoReal(idLivros).then(function (resultado) {
-        if (resultado.length > 0) {
-            res.status(200).json(resultado);
-        } else {
-            res.status(204).send("Nenhum resultado encontrado!")
-        }
-    }).catch(function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar os ultimos livros.", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
-}
-
 // busca os livros pesquisados na página de "meus livros"
 function buscarPesquisar(req, res) {
 
+    // recebe o titulo enviado no fetch
     var titulo = req.query.titulo
 
     livroModel.buscarPesquisar(titulo)
     .then(function(resultado) {
 
+        // caso encontre o livro pesquisado:
         res.status(200).json(resultado);
 
     }).catch(function(erro) {
 
         console.log(erro);
-        console.log("Erro ao buscar livros mais avaliados");
-
+        console.log("Erro ao buscar últimas avaliações");
         res.status(500).json(erro.sqlMessage);
     });
 };
@@ -161,8 +115,6 @@ function buscarPesquisar(req, res) {
 module.exports = {
     listar,
     cadastrar,
-    buscarUltimosLivros,
-    buscarLivrosEmTempoReal,
     buscarLivrosMaisAvaliados,
     buscarLivrosLidosPorUsuario,
     buscarRanking,

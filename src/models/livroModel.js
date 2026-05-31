@@ -90,7 +90,7 @@ function cadastrar(fk_livro, nota_livro, descricao, fk_usuario) {
 
 
 // funções para a obtenção dos dados para os gráficos:
-function buscarUltimosLivros(idLivros, limite_linhas) {
+/*function buscarUltimosLivros(idLivros, limite_linhas) {
 
     // VER SELECTS PARA GERAR OS GRÁFICOS!!! 
     var instrucaoSql = `SELECT 
@@ -112,7 +112,7 @@ from avaliacao_livros
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
-}
+}*/
 
 function buscarPesquisar(titulo) {
 

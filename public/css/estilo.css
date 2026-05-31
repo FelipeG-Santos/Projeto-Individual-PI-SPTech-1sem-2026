@@ -460,14 +460,15 @@ body {
 
 .card_erro {
   display: none;
-  background-color: #fff;
+  background-color: #f3d162;
   color: black;
   width: 230px;
   position: fixed;
   border-radius: 4px;
-  border: #ED145B 3px solid;
+  border: #fffb1c 3px solid;
   padding: 10px;
   margin-right: 10%;
+  z-index: 9999;
 }
 
 .card_erro #mensagem_erro {
@@ -487,32 +488,6 @@ input {
   border-radius: 10px;
 }
 
-/*
-.btn {
-  font-family: "Barlow", sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: white;
-  background-color: #ED145B;
-  width: 120px;
-  align-self: center;
-  margin-top: 5px;
-}*/
-
-/*
-.loading-div {
-  width: 50px;
-  margin: auto;
-  display: none;
-}
-
-.loading-div img {
-  height: 50px;
-  width: 50px;
-}*/
 
 /*CADASTRO LIVROS --------------------------------------------------------------------------------------*/
 .container-cadastro-livros {
