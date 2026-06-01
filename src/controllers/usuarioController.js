@@ -4,7 +4,7 @@ autenticar,
 
 var usuarioModel = require("../models/usuarioModel");
 
-// autenticando no login
+// autenticando no login: ----------------------------------------------------------
 function autenticar(req, res) {
     // recebe as variáveis enviadas pela rota
     var email = req.body.emailServer;
@@ -50,7 +50,7 @@ function autenticar(req, res) {
     }
 }
 
-// função para cadastrar o usuário
+// função para cadastrar o usuário: -------------------------------------------------
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
@@ -95,6 +95,7 @@ function cadastrar(req, res) {
     }
 }
 
+// verifica se o email já tem no banco: ------------------------------------------------
 function EmailsIguais(req, res) {
 
     var email = req.body.emailServer;

@@ -4,7 +4,6 @@ var livroModel = require("../models/livroModel");
 
 function listar(req, res) {
     livroModel.listar().then(function (resultado) {
-        // precisamos informar que o resultado voltará para o front-end como uma resposta em json
         res.status(200).json(resultado);
     }).catch(function (erro) {
         res.status(500).json(erro.sqlMessage);
@@ -14,6 +13,7 @@ function listar(req, res) {
 // FUNÇÃO CADASTRAR LIVROS -----------------------------------------------------------------
 function cadastrar(req, res) {
 
+    // variáveis pegas na tela de avaliacao de livros
     var fk_livro = req.body.fk_livroServer;
     var nota_livro = req.body.nota_livroServer;
     var descricao = req.body.descricaoServer;
@@ -30,7 +30,7 @@ function cadastrar(req, res) {
         res.status(200).send("livro registrado com sucesso");
     }).catch(function (erro) {
         console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        "\nHouve um erro ao realizar a avaliação do livro! Erro: ",
                         erro.sqlMessage
                     );
         res.status(500).json(erro.sqlMessage);
@@ -39,7 +39,7 @@ function cadastrar(req, res) {
 }
 
 
-// gráfico de barras:
+// gráfico de barras: --------------------------------------------------------
 function buscarLivrosMaisAvaliados(req, res) {
 
     livroModel.buscarLivrosMaisAvaliados()
@@ -57,7 +57,7 @@ function buscarLivrosMaisAvaliados(req, res) {
 }
 
 
-//gráfico de pizza:
+//gráfico de pizza: ------------------------------------------------------
 function buscarLivrosLidosPorUsuario(req, res) {
 
     livroModel.buscarLivrosLidosPorUsuario()
@@ -74,7 +74,7 @@ function buscarLivrosLidosPorUsuario(req, res) {
     });
 }
 
-// ranking de melhores avaliações:
+// ranking de melhores avaliações: ---------------------------------------
 function buscarRanking(req, res) {
 
     livroModel.buscarRanking()
@@ -85,16 +85,16 @@ function buscarRanking(req, res) {
     }).catch(function(erro) {
 
         console.log(erro);
-        console.log("Erro ao buscar livros lidos por usuario");
+        console.log("Erro ao buscar ranking");
 
         res.status(500).json(erro.sqlMessage);
     });
 }
 
-// busca os livros pesquisados na página de "meus livros"
+// busca os livros pesquisados na página de "meus livros" --------------------------
 function buscarPesquisar(req, res) {
 
-    // recebe o titulo enviado no fetch
+    // recebe o titulo enviado no fetch selecionado pelo usuário
     var titulo = req.query.titulo
 
     livroModel.buscarPesquisar(titulo)
@@ -106,7 +106,7 @@ function buscarPesquisar(req, res) {
     }).catch(function(erro) {
 
         console.log(erro);
-        console.log("Erro ao buscar últimas avaliações");
+        console.log("Erro ao buscar o livro pesquisado");
         res.status(500).json(erro.sqlMessage);
     });
 };

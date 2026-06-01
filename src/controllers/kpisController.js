@@ -3,7 +3,6 @@ var kpisModel = require("../models/kpisModel");
 // FUNÇÃO LISTAR - VEM JUNTO NA HORA DE FAZER A ROTA ---------------------------------------------
 function listar(req, res) {
     kpisModel.listar().then(function (resultado) {
-        // precisamos informar que o resultado voltará para o front-end como uma resposta em json
         res.status(200).json(resultado);
     }).catch(function (erro) {
         res.status(500).json(erro.sqlMessage);
@@ -38,7 +37,7 @@ function buscarMaiorNota(req, res) {
     }).catch(function(erro) {
 
         console.log(erro);
-        console.log("Erro ao buscar livros mais avaliados");
+        console.log("Erro ao buscar livros com maiores notas");
 
         res.status(500).json(erro.sqlMessage);
     });
@@ -55,7 +54,7 @@ function buscarMenorNota(req, res) {
     }).catch(function(erro) {
 
         console.log(erro);
-        console.log("Erro ao buscar livros mais avaliados");
+        console.log("Erro ao buscar livros com menores notas");
 
         res.status(500).json(erro.sqlMessage);
     });
@@ -64,6 +63,7 @@ function buscarMenorNota(req, res) {
 // FUNÇÃO BUSCAR CLASSIFICAÇÃO DO USUÁRIO PARA COMPLETAR A SÉRIE -----------------------------------------
 function buscarClassificacao(req, res) {
 
+    // declaração para envio do id pego pelo sessionStorage
     var id_usuario = req.query.id_usuario
 
     kpisModel.buscarClassificacao(id_usuario)
@@ -74,7 +74,7 @@ function buscarClassificacao(req, res) {
     }).catch(function(erro) {
 
         console.log(erro);
-        console.log("Erro ao buscar id para a classificação");
+        console.log("Erro ao buscar classificação");
 
         res.status(500).json(erro.sqlMessage);
     });
@@ -91,7 +91,7 @@ function buscarCompletaram(req, res) {
     }).catch(function(erro) {
 
         console.log(erro);
-        console.log("Erro ao buscar livros mais avaliados");
+        console.log("Erro ao buscar usuários que completaram a série");
 
         res.status(500).json(erro.sqlMessage);
     });
@@ -108,7 +108,7 @@ function buscarUltimaSemana(req, res) {
     }).catch(function(erro) {
 
         console.log(erro);
-        console.log("Erro ao buscar livros mais avaliados");
+        console.log("Erro ao buscar livros mais avaliados na última semana");
 
         res.status(500).json(erro.sqlMessage);
     });

@@ -10,7 +10,7 @@ function listar() {
 }
 
 
-// select dos livros mais avaliados:
+// select dos livros mais avaliados: ------------------------------------------------
 function buscarLivrosMaisAvaliados() {
 
     var instrucao = `
@@ -30,7 +30,7 @@ function buscarLivrosMaisAvaliados() {
 }
 
 
-// select dos livros lidos por usuario:
+// select dos livros lidos por usuario:----------------------------------------
 function buscarLivrosLidosPorUsuario() {
 
     var instrucao = `
@@ -51,7 +51,7 @@ function buscarLivrosLidosPorUsuario() {
     return database.executar(instrucao);
 }
 
-//select dos melhores avaliados:
+//select dos melhores avaliados:-------------------------------------------------------
 function buscarRanking() {
 
     var instrucao = `
@@ -79,7 +79,7 @@ ORDER BY score DESC LIMIT 5;
 }
 
 
-// comando de inserção dos dados no banco:
+// inserção dos dados de cadastro no banco:-----------------------------------------------
 function cadastrar(fk_livro, nota_livro, descricao, fk_usuario) {
     var instrucao = `
         INSERT INTO avaliacao_livros (fk_livro, nota_livro, descricao, fk_usuario) VALUES 
@@ -90,24 +90,24 @@ function cadastrar(fk_livro, nota_livro, descricao, fk_usuario) {
 }
 
 
-// funçãp para pesquisar as ultimas avaliações:
+// funçãp para pesquisar as ultimas avaliações:-------------------------------------
 function buscarPesquisar(titulo) {
 
     var instrucao = `
-    select
-l.nome_livro as titulo,
-l.imagem_livro as imagem,
-u.nome as usuario,
-a.nota_livro as nota,
-a.descricao as descricao,
+    SELECT
+l.nome_livro AS titulo,
+l.imagem_livro AS imagem,
+u.nome AS usuario,
+a.nota_livro AS nota,
+a.descricao AS descricao,
 a.data_avaliacao
-from livros l
-join avaliacao_livros a
-on l.id_livro = a.fk_livro
-join usuario u
-on a.fk_usuario = u.id_usuario
-where l.nome_livro = '${titulo}'
-order by a.data_avaliacao desc limit 3;
+FROM livros l
+JOIN avaliacao_livros a
+ON l.id_livro = a.fk_livro
+JOIN usuario u
+ON a.fk_usuario = u.id_usuario
+WHERE l.nome_livro = '${titulo}'
+ORDER BY a.data_avaliacao DESC LIMIT 3;
     `;
 
     console.log("executando a instrução sql: \n" + instrucao);
@@ -116,7 +116,7 @@ order by a.data_avaliacao desc limit 3;
 };
 
 
-// torna possível que outros arquivos vejam esse arquivo:
+// torna possível que outros arquivos vejam esse arquivo:---------------------------
 module.exports = {
     cadastrar,
     listar,

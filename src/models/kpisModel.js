@@ -123,16 +123,15 @@ HAVING COUNT(fk_livro) = 20
 function buscarUltimaSemana() {
 
     var instrucao = `
-    select 
-l.nome_livro as titulo,
-l.imagem_livro as imagem
-from livros l
-join avaliacao_livros a
-on l.id_livro = a.fk_livro
-where a.data_avaliacao >= curdate() - interval 7 day
-group by a.fk_livro, l.nome_livro, l.imagem_livro
-order by count(a.fk_livro) desc
-limit 1;
+    SELECT
+l.nome_livro AS titulo,
+l.imagem_livro AS imagem
+FROM livros l
+JOIN avaliacao_livros a
+ON l.id_livro = a.fk_livro
+WHERE a.data_avaliacao >= CURDATE() - INTERVAL 7 DAY
+GROUP BY a.fk_livro, l.nome_livro, l.imagem_livro
+ORDER BY COUNT(a.fk_livro) DESC LIMIT 1;
     `;
 
     console.log("executando a instrução sql: \n" + instrucao);
