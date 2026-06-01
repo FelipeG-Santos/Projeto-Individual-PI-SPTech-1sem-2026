@@ -30,14 +30,18 @@ function buscarMaisAvaliado() {
 function buscarMaiorNota() {
 
     var instrucao = `
-    SELECT 
+   SELECT 
     l.nome_livro AS titulo,
     l.imagem_livro AS imagem,
-    ROUND(
-    ((COUNT(*) / (COUNT(*) + 5.0)) * AVG(a.nota_livro) +
-            (5.0 / (COUNT(*) + 5.0)) *
-            (SELECT AVG(a.nota_livro) FROM avaliacao_livros a)
-        ), 2) AS score
+   ROUND(
+    (((select avg(nota_livro) 
+    from avaliacao_livros) * 5)
+    + 
+    (avg(a.nota_livro) 
+    * count(*)))
+    /
+    (5 + count(*)), 
+    2) AS score
 FROM avaliacao_livros a
 JOIN livros l
 ON a.fk_livro = l.id_livro
@@ -58,10 +62,14 @@ function buscarMenorNota() {
     l.nome_livro AS titulo,
     l.imagem_livro AS imagem,
     ROUND(
-    ((COUNT(*) / (COUNT(*) + 5.0)) * AVG(a.nota_livro) +
-            (5.0 / (COUNT(*) + 5.0)) *
-            (SELECT AVG(a.nota_livro) FROM avaliacao_livros a)
-        ), 2) AS score
+    (((select avg(nota_livro) 
+    from avaliacao_livros) * 5)
+    + 
+    (avg(a.nota_livro) 
+    * count(*)))
+    /
+    (5 + count(*)), 
+    2) AS score
 FROM avaliacao_livros a
 JOIN livros l
 ON a.fk_livro = l.id_livro

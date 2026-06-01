@@ -33,7 +33,7 @@
       <li>|</li><br>
       <br>
       <li>
-        <a href="login.html">Dashboard</a>
+        <a href="dashboard/dashboard.html">Dashboard</a>
       </li><br>
       <br>
       <li>|</li><br>
@@ -46,7 +46,13 @@
       <br>
       <li>
         <a href="#">Cadastro</a>
-      </li>
+      </li><br>
+            <br>
+            <li>|</li><br>
+            <br>
+            <li class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </li>
     </ul>
   </div>
   <!--HEADER--------------------------------------------------------------------------------->
@@ -121,6 +127,12 @@
 
 </html>
 <script>
+
+  if(sessionStorage.NOME_USUARIO == undefined){
+  b_usuario.innerHTML = "Visitante"
+}else {
+b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+}
 
   // Atribui a etapa como 1 inicialmente
   let etapaAtual_botao = 1;

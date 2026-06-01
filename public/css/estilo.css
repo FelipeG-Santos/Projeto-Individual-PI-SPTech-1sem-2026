@@ -414,6 +414,41 @@ body {
   margin-top: 20px;
 }
 
+.botao-irCadastro {
+  cursor: pointer;
+  font-family: "Barlow", sans-serif;
+  border: 2px solid #000;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #000000;
+  background-color: #F7D827;
+  width: 120px;
+  height: 50px;
+  align-self: center;
+  margin-top: 20px;
+}
+
+.hello {
+  /*width: 20%;*/
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-end;
+  
+}
+
+.hello h3 {
+  color: #D7201A;
+  font-weight: 300;
+  font-size: 1.2rem;
+  
+}
+
+.hello h3 span {
+  font-weight: 800;
+  
+}
+
 .loading-div {
   width: 50px;
   display: none;

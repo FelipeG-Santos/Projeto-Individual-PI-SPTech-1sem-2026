@@ -12,9 +12,7 @@
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
-    <script src="./../js/alerta.js"></script>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
@@ -47,7 +45,7 @@
             <li>|</li><br>
             <br>
             <li>
-                <a href="../login.html">Dashboard</a>
+                <a href="#">Dashboard</a>
             </li><br>
             <br>
             <li>|</li><br>
@@ -177,6 +175,8 @@
 
 </html>
 <script>
+    validarSessao()
+   
     // Faz aparecer o nome do usuário na página
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
@@ -393,6 +393,7 @@
 
         // Adicionando gráfico criado em div na tela
         // aqui tinha isso o: document.getElementById(`myChartCanvas'${idAquario}`),
+        console.log("Criando gráfico");
         let myChart = new Chart(
             document.getElementById(`graficoBarras`),
             config
@@ -692,7 +693,7 @@
     // função KPI porcentagem para completar a série: ----------------------------------------------------------------------------------------------------------------------
     function obterDadosClassificacao() {
 
-        console.log("id que vai ser enviada:", sessionStorage.ID_USUARIO);
+        console.log("id que vai ser enviadaaaaaaaaaaaaaaaaaAAA:", sessionStorage.ID_USUARIO);
 
         // pega o id pelo sessionStorage e transforma em query parameter, onde o controller recebe como req.query.id_usuario
         // é uma informação extra a ser enviada junto com o fetch
@@ -711,18 +712,14 @@
     }
     function plotarClassificacao(resposta) {
 
-        console.log('iniciando plotagem do ranking...');
+        console.log('iniciando plotagem da classificação...');
         console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosClassificação" e passados para "plotarClassificação":')
         console.log(resposta)
 
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
-
-            console.log(`
-               ${registro.usuario}<br>
-               ${registro.qtd_lidos}<br> `);
 
 
             if (registro.qtd_lidos <= 0) {

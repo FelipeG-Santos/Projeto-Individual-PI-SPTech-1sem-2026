@@ -32,7 +32,7 @@
         <li>|</li><br>
         <br>
         <li>
-          <a href="#">Dashboard</a>
+          <a href="dashboard/dashboard.html">Dashboard</a>
         </li><br>
         <br>
         <li>|</li><br>
@@ -45,7 +45,13 @@
         <br>
         <li>
           <a href="cadastro.html">Cadastro</a>
-        </li>
+        </li><br>
+            <br>
+            <li>|</li><br>
+            <br>
+            <li class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </li>
       </ul>
   </div>
     <!--HEADER--------------------------------------------------------------------------------->
@@ -72,6 +78,7 @@
                         <input id="senha_input" type="password" placeholder="******">
                     </div>
                     <button class="botao" onclick="entrar()">Entrar</button>
+                     <button class="botao-irCadastro" onclick="irCadastro()">Não tem uma conta?</button>
                 </div>
             </div>
         </div>
@@ -88,6 +95,13 @@
 </body>
 </html>
 <script>
+
+if(sessionStorage.NOME_USUARIO == undefined){
+  b_usuario.innerHTML = "Visitante"
+}else {
+b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+}
+
 // função para conferir os dados e permitir o login
     function entrar() {
 
@@ -136,7 +150,7 @@
                    
                   
                     setTimeout(function () {
-                        window.location = "./dashboard/dashboard.html";
+                        window.location = "index.html";
                     }, 2000); 
 
                 });
@@ -158,6 +172,12 @@
 
         return false;
     }
+
+   function irCadastro(){
+ window.location = "cadastro.html"
+
+
+   }
 
     function sumirMensagem() {
         cardErro.style.display = "none"

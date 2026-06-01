@@ -56,16 +56,21 @@ function buscarLivrosLidosPorUsuario() {
 function buscarRanking() {
 
     var instrucao = `
-    SELECT 
+   SELECT 
     l.nome_livro AS titulo,
     ROUND(
-    ((COUNT(*) / (COUNT(*) + 5.0)) * AVG(a.nota_livro) +
-            (5.0 / (COUNT(*) + 5.0)) * (SELECT AVG(a.nota_livro) 
-            FROM avaliacao_livros a)), 2) AS score
+    (((select avg(nota_livro) 
+    from avaliacao_livros) * 5) 
+    + 
+    (avg(a.nota_livro)
+    * count(*))) 
+    / 
+    (5 + count(*)), 
+    2) AS score
 FROM avaliacao_livros a
 JOIN livros l
 ON a.fk_livro = l.id_livro
-GROUP BY l.nome_livro
+GROUP BY l.nome_livro, l.id_livro
 ORDER BY score DESC LIMIT 5;
     `;
 
@@ -86,30 +91,6 @@ function cadastrar(fk_livro, nota_livro, descricao, fk_usuario) {
 }
 
 
-// funções para a obtenção dos dados para os gráficos:
-/*function buscarUltimosLivros(idLivros, limite_linhas) {
-
-    // VER SELECTS PARA GERAR OS GRÁFICOS!!! 
-    var instrucaoSql = `SELECT 
-        nome_livro as livro,
-nota_livro as nota
-from avaliacao_livros`;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
-
-function buscarLivrosEmTempoReal(idLivros) {
-
-    var instrucaoSql = `SELECT 
-        nome_livro as livro,
-nota_livro as nota
-from avaliacao_livros 
-                    ORDER BY id DESC LIMIT 1`;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}*/
 
 function buscarPesquisar(titulo) {
 
