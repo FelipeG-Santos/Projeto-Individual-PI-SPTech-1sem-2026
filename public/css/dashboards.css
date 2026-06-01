@@ -25,13 +25,13 @@ body {
 
 /*KPIS---------------------------------------------------------------------------------------------*/
 
-.Kpis {
+/*.Kpis {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding-top: 20px;
   padding-bottom: 20px;
-}
+}*/
 
 .kpis-individual {
   border-radius: 10px;
@@ -43,7 +43,7 @@ body {
   padding-bottom: 10px;
 }
 
-.mais_avaliado {
+/*.mais_avaliado {
   background-color: #883E8E;
 }
 
@@ -65,7 +65,7 @@ body {
 
 .completou_serie {
   background-color: #ffee58;
-}
+}*/
 
 .diarios {
   height: 130px;
@@ -114,7 +114,6 @@ margin-bottom: 20px;
 .kpi-quadrado {
   /* garante que todos os elementos dividam o mesmo espaço igualmente preenchendo tudo */
     flex: 1;
-    
     padding: 10px;
     border-radius: 12px;
     display: flex;
@@ -122,8 +121,7 @@ margin-bottom: 20px;
    height: 150px;
    width: 340px;
     background-color: #dbe6ff;
-    
-   
+     border: 5px solid #D7201A;
 }
 
 .kpi-quadrado h3 {
@@ -138,36 +136,6 @@ margin-bottom: 20px;
     font-weight: bold;
 }
 
-
-.kpi-quadrado.maiorMedia {
-   
-     border: 5px solid #D7201A;
-}
-
-.kpi-quadrado.menorMedia {
-   
-     border: 5px solid #D7201A;
-}
-
-.kpi-quadrado.classificacao {
-   
-     border: 5px solid #D7201A;
-}
-
-.kpi-quadrado.completaram {
-   
-     border: 5px solid #D7201A;
-}
-
-.kpi-quadrado.semana {
-    
-     border: 5px solid #D7201A;
-}
-
-.kpi-quadrado.maisAvaliados {
-    
-     border: 5px solid #D7201A;
-}
 
 /*GRÁFICOS ------------------------------------------------------------------------------------*/
 
@@ -199,14 +167,14 @@ margin-bottom: 20px;
 }
 
 .barras {
-  width: 80%;
-  height: 70%;
+  width: 500px;
+  height: 400px;
   
 }
 
 .pizza {
-  width: 50%;
-  height: 50%;
+  width: 400px;
+  height: 400px;
  
 }
 
@@ -226,9 +194,10 @@ margin-bottom: 20px;
   margin: 50px;
   margin-top: 0px;
   padding-top: 10px;
-  border: 3px solid white;
+  border: 3px solid #D7201A;
   border-radius: 20px;
   padding: 20px;
+  background-color: #dbe6ff;
 }
 
 .ranking-livros h2 {
@@ -240,7 +209,7 @@ margin-bottom: 20px;
   background-color: #dbe6ff;
   margin: 50px;
 padding: 20px;
- border: 3px solid white;
+ border: 3px solid #D7201A;
   border-radius: 20px;
   width: 80%;
   display: flex;
@@ -264,17 +233,13 @@ padding: 20px;
     
 }
 
+
 .fundo-graficos {
   background-color: #dbe6ff;
 }
 
+/* posição do titulo do livro no ranking */
 .altura-nome {
-   font-size: 18px;
-     -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: rgb(0, 0, 0)
-}
-
-.altura-media {
    font-size: 18px;
      -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: rgb(0, 0, 0)

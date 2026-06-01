@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
-    
+
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
@@ -23,8 +23,6 @@
     <!--FONT AWESOME-->
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
-
-<!-- <body onload=" atualizarFeed()"> -->
 
 <body>
     <!--HEADER--------------------------------------------------------------------------------->
@@ -71,7 +69,9 @@
 
     <!--BODY--------------------------------------------------------------------------------->
 
+    <!-- divide a tela em kpis e dashboard  -->
     <div class="janela">
+        <!-- divide as kpis em coluna -->
         <div class="KPIs">
 
             <div class="kpis-trio">
@@ -117,12 +117,10 @@
         <div class="dash">
 
 
-            <!-- <div class="btns-dash" id="btnAquario"> 
-                 O gráfico é chamado de acordo com o id (fk_aquario) do banco 
-            </div> -->
-            <div>
-                <div class="barras" id="graficos">
 
+            <!-- separa os graficos de coluna e pizza do de ranking -->
+            <div>
+                <div class="barras">
                     <!-- quadrado onde está o grafico de barras: -->
                     <div class="graph-barras">
                         <!-- O grafico em si: -->
@@ -131,8 +129,7 @@
                 </div>
 
                 <!-- Parte superior onde está o gráfico de barras: -->
-                <div class="pizza" id="graficos">
-
+                <div class="pizza">
                     <!-- quadrado onde está o grafico de barras: -->
                     <div class="graph-pizza">
                         <!-- O grafico em si: -->
@@ -141,7 +138,7 @@
                 </div>
             </div>
             <div>
-                <div id="graficos">
+                <div>
                     <div class="graph-ranking">
                         <div class="ranking-livros">
                             <h2>Ranking dos Livros Mais Bem Avaliados</h2>
@@ -176,7 +173,7 @@
 </html>
 <script>
     validarSessao()
-   
+
     // Faz aparecer o nome do usuário na página
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
@@ -192,7 +189,6 @@
         obterDadosCompletaram();
         obterDadosUltimaSemana();
     }
-
 
 
     /* let proximaAtualizacao;*/
@@ -285,14 +281,14 @@
             clearTimeout(proximaAtualizacao);
         }*/
 
-        fetch('/livros/livrosMaisAvaliados'/*${idLivros}'*//*`/medidas/ultimas/${idAquario}`*//*, { cache: 'no-store' }*/)
+        fetch('/livros/livrosMaisAvaliados'/*`/medidas/ultimas/${idAquario}`*//*, { cache: 'no-store' }*/)
             .then(function (response) {
                 if (response.ok) {
                     response.json().then(function (resposta) {
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                         /*resposta.reverse();*/
 
-                        plotarGrafico(resposta/*, idLivros/*idAquario*/);
+                        plotarGrafico(resposta/*idAquario*/);
 
                     });
                 } else {
@@ -307,7 +303,7 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta/*, idLivros*/) {
+    function plotarGrafico(resposta) {
 
         console.log('iniciando plotagem do gráfico...');
 
@@ -369,9 +365,21 @@
         // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'bar',
+            //dados pegos pela rota
             data: dados,
+            //opçoes de design
             options: {
                 plugins: {
+                title: {
+                        display: true,
+                        text: "Livros mais avaliados",
+                        font: {
+                            size: 18,
+                            
+                        },
+                        color: '#D7201A'
+                    },
+                     //legendas
                     legend: {
                         labels: {
                             color: '#D7201A'
@@ -380,6 +388,7 @@
                 },
                 scales: {
                     x: {
+                        //não mostra a legenda do eixo x
                         ticks: false
                     },
                     y: {
@@ -392,7 +401,7 @@
         };
 
         // Adicionando gráfico criado em div na tela
-        // aqui tinha isso o: document.getElementById(`myChartCanvas'${idAquario}`),
+        //  document.getElementById(`myChartCanvas'${idAquario}`),
         console.log("Criando gráfico");
         let myChart = new Chart(
             document.getElementById(`graficoBarras`),
@@ -432,17 +441,17 @@
         let labels = [];
 
         let dados = {
+            //labels pegas pela rota
             labels: labels,
             datasets: [{
                 label: 'Quantidade de usuários',
                 data: [],
                 backgroundColor: [
-                    '#ff6384',
-                    '#36a2eb',
-                    '#ffce56',
-                    '#4bc0c0',
-                    '#9966ff',
-                    '#ff9f40'
+                    '#431551',
+                    '#3A75B7',
+                    '#883E8E',
+                    '#D7201A',
+                    '#BB1C17'
                 ],
                 borderColor: '#ffffff',
                 borderWidth: 2
@@ -474,11 +483,20 @@
             data: dados,
             options: {
                 plugins: {
-                    legend: {
-                        labels: {
-                            color: 'white'
-                        }
-                    }
+                    title: {
+                        display: true,
+                        text: "Quantidade de livros lidos por usuário",
+                        font: {
+                            size: 18,
+                        },
+                        color: '#D7201A'
+                    },
+                    
+                        legend: {
+                            labels: {
+                                color: 'black'
+                            }
+                        }  
                 }
             }
         };
@@ -533,29 +551,29 @@
 
             if (i === 0) {
                 primeiro_lugar.innerHTML = `
-              <div class="posicao-nome-livro-ranking"><h2>1°</h2> <div class="altura-nome">${registro.titulo}</div></div>
-              <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
+              <div><h2>1°</h2> <div class="altura-nome">${registro.titulo}</div></div>
+              <div><h2>Média:${registro.score}</h2></div><br>`
             }
             if (i == 1) {
                 segundo_lugar.innerHTML = `
-               <div class="posicao-nome-livro-ranking"><h2>2°</h2> <div class="altura-nome">${registro.titulo}</div></div>
-              <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
+               <div><h2>2°</h2> <div class="altura-nome">${registro.titulo}</div></div>
+              <div><h2>Média:${registro.score}</h2></div><br>`
 
             }
             if (i == 2) {
                 terceiro_lugar.innerHTML = `
-                <div class="posicao-nome-livro-ranking"><h2>3°</h2> <div class="altura-nome">${registro.titulo}</div></div>
-              <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
+                <div><h2>3°</h2> <div class="altura-nome">${registro.titulo}</div></div>
+              <div><h2>Média:${registro.score}</h2></div><br>`
             }
             if (i == 3) {
                 quarto_lugar.innerHTML = `
-               <div class="posicao-nome-livro-ranking"><h2>4°</h2> <div class="altura-nome">${registro.titulo}</div></div>
-              <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
+               <div><h2>4°</h2> <div class="altura-nome">${registro.titulo}</div></div>
+              <div> <h2>Média:${registro.score}</h2></div><br>`
             }
             if (i == 4) {
                 quinto_lugar.innerHTML = `
-                <div class="posicao-nome-livro-ranking"><h2>5°</h2> <div class="altura-nome">${registro.titulo}</div></div>
-              <div class="posicao-media-livro-ranking"><h2>Média:</h2> <div class="altura-media">${registro.score}</div></div><br>`
+                <div><h2>5°</h2> <div class="altura-nome">${registro.titulo}</div></div>
+              <div> <h2>Média: ${registro.score}</h2></div><br>`
             }
         }
     }

@@ -67,7 +67,7 @@ SELECT
     (((select avg(nota_livro) -- média de todas as notas
     from avaliacao_livros) * 5) -- multiplicada pela constante
     + -- somado
-    (avg(a.nota_livro) -- media do livro específico
+    (avg(a.nota_livro) -- media de todas as notas
     * count(*))) -- multiplicada pela qtd de avaliações
     / -- dividido
     (5 + count(*)), -- pela constante + qtd de avaliações
