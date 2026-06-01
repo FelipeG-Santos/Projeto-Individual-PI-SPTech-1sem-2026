@@ -46,20 +46,6 @@ group by nome_livro
 order by media_livro desc;
 
 -- gráfico: ranking de livros mais bem avaliados utilizando score:
-/*SELECT 
-    l.nome_livro AS titulo,
-    ROUND(
-    -- constante de referência: 5
-    ((COUNT(*) / (COUNT(*) + 5.0)) * AVG(a.nota_livro) +
-            (5.0 / (COUNT(*) + 5.0)) *
-            (SELECT AVG(a.nota_livro) FROM avaliacao_livros a)
-        ), 2) AS score
-FROM avaliacao_livros a
-JOIN livros l
-ON a.fk_livro = l.id_livro
-GROUP BY l.nome_livro
-ORDER BY score DESC LIMIT 5;*/
-
 SELECT 
     l.nome_livro AS titulo,
     ROUND(
@@ -156,8 +142,6 @@ where u.id_usuario = 1
 group by a.fk_usuario;
 
 -- Usuarios que completaram a série:
--- pesquisar formas de retornar a qtd de usuarios junto com os que completaram a serie
--- ou fazer outra rota puxando somente a qtd de usuarios no site e tirar a porcentagem no js
 SELECT(
 SELECT COUNT(*)
 FROM usuario) AS total_usuarios,
@@ -182,7 +166,6 @@ where a.data_avaliacao >= curdate() - interval 7 day
 group by a.fk_livro, l.nome_livro, l.imagem_livro
 order by count(a.fk_livro) desc
 limit 1;
-
 
 -- select para o pesquisar da página meus livros:
 select

@@ -252,7 +252,6 @@ body {
   padding: 20px;
 }
 
-
 .clube-livros {
   height: 200px;
   width: 400px;
@@ -311,7 +310,6 @@ body {
 }
 
 /* FOOTER-------------------------------------------------------------------------------------------*/
-
 .footer {
   height: 100px;
   color: #ffffff;
@@ -449,7 +447,7 @@ body {
   
 }
 
-.loading-div {
+/*.loading-div {
   width: 50px;
   display: none;
 }
@@ -457,7 +455,7 @@ body {
 .loading-div img {
   height: 50px;
   width: 50px;
-}
+}*/
 
 #div_erros_login {
   display: none

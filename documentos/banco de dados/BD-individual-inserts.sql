@@ -147,13 +147,13 @@ insert into avaliacao_livros (fk_livro, nota_livro, descricao, data_avaliacao, f
 (11, 2.1, 'Não gostei muito','2026-02-12', 12),
 (12, 2.1, 'Não gostei muito','2026-03-13', 12),
 (13, 2.1, 'Não gostei muito','2026-03-14', 12),
-(14, 2.1, 'Não gostei muito','2026-04-15', 12),
+(14, 4.1, 'Bem legal esse','2026-04-15', 12),
 (15, 2.1, 'Não gostei muito','2026-05-16', 12),
-(16, 2.1, 'Não gostei muito','2026-01-17', 12),
-(17, 2.1, 'Não gostei muito','2026-03-18', 12),
-(18, 2.1, 'Não gostei muito','2026-04-19', 12),
-(19, 2.1, 'Não gostei muito','2026-04-20', 12),
-(20, 2.1, 'Não gostei muito','2026-02-21', 12);
+(16, 5, 'Até me emocionei no final de tão bom!','2026-01-17', 12),
+(17, 3.1, 'Esperava mais piadas','2026-03-18', 12),
+(18, 1.1, 'Não foi o meu favorito','2026-04-19', 12),
+(19, 4.1, 'Sou muito fa desse autor','2026-04-20', 12),
+(20, 5, 'o melhor de todos!','2026-02-21', 12);
 
 
 -- inserts imagens 

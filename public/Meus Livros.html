@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/estilo.css">
   <title>Meus Livros</title>
-   <script src="./js/sessao.js"></script>
+  <script src="./js/sessao.js"></script>
 </head>
 
 <body>
@@ -47,12 +47,12 @@
       <li>
         <a href="cadastro.html">Cadastro</a>
       </li><br>
-            <br>
-            <li>|</li><br>
-            <br>
-            <li class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </li>
+      <br>
+      <li>|</li><br>
+      <br>
+      <li class="hello">
+        <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+      </li>
     </ul>
   </div>
   <!--HEADER--------------------------------------------------------------------------------->
@@ -75,13 +75,9 @@
   </div>
   <!--BANNER--------------------------------------------------------------------------------->
 
-
   <div class="container-cadastro-livros">
 
-
     <div class="boxes">
-
-
 
       <div>
         <h2 class="subtitulos">Avaliar Livros</h2>
@@ -192,8 +188,8 @@
 </body>
 <script>
 
-validarSessao()
-b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+  validarSessao()
+  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
   function Cadastrar() {
 
@@ -206,7 +202,7 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "Preencha todos os campos para avaliar!";
-    }else if(nota_livroVar < 1 || nota_livroVar > 5 ){
+    } else if (nota_livroVar < 1 || nota_livroVar > 5) {
 
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "Insira a nota de 1 a 5!";
@@ -243,17 +239,13 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
         if (resposta.ok) {
           console.log("entrei");
 
-
-
           cardErro.style.display = "block";
           mensagem_erro.innerHTML = "O Livro foi cadastrado!";
 
-
+          //settimeout executa somente 1 vez
           setTimeout(sumirMensagem, 2000);
 
           sumirFormulario()
-
-
 
         } else {
           throw "Houve um erro ao tentar cadastrar o livro!";
@@ -268,7 +260,6 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     return false;
   }
 
-
   /* funções de desaparecer ---------------------------------------------------------------- */
   function sumirMensagem() {
     cardErro.style.display = "none";
@@ -281,7 +272,6 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
   }
 
   /* função de procura de livros --------------------------------------------------------------*/
-
   function Procurar() {
 
     let procura_livro = ipt_procura_livro.value
@@ -366,15 +356,12 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
       });
   }
 
-
   function plotarlivrosPesquisar(resposta) {
 
     console.log(resposta)
 
     var registro = []
     for (i = 0; i < resposta.length; i++) {
-
-      console.log(resposta[i]);
 
       registro.push(resposta[i])
     }

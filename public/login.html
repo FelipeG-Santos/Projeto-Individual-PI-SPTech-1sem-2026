@@ -133,7 +133,6 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
             })
         }).then(function (resposta) {
           
-
             if (resposta.ok) {
                 console.log(resposta);
 
@@ -143,6 +142,10 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
                 resposta.json().then(json => {
                    /* console.log(json);
                     console.log(JSON.stringify(json));*/
+
+                    // a resposta da rota vem em formato json, sendo
+                    //convertida para sessionStorage, permitindo que as outras
+                    //páginas utilizem
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     // pega o id para posterior salvamento na página de cadastro de livros
@@ -152,7 +155,6 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
                     setTimeout(function () {
                         window.location = "index.html";
                     }, 2000); 
-
                 });
 
             } else {
@@ -173,10 +175,9 @@ b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
         return false;
     }
 
+    // executada quando clica no botão de não tem uma conta
    function irCadastro(){
  window.location = "cadastro.html"
-
-
    }
 
     function sumirMensagem() {

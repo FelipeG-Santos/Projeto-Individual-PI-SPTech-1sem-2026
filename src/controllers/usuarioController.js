@@ -11,7 +11,6 @@ function autenticar(req, res) {
     var senha = req.body.senhaServer;
     var fk_usuario = req.body.fk_usuarioServer;
 
-
     if (email == undefined) {
         res.status(400).send("Seu email está indefinido!");
     } else if (senha == undefined) {
@@ -19,8 +18,8 @@ function autenticar(req, res) {
     } else {
 
         usuarioModel.autenticar(email, senha)
-            .then(
-                function (resultadoAutenticar) {
+        // a verificação é retornada através do then:
+            .then( function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
 
                     // caso encontre o email e a senha do usuário:

@@ -116,8 +116,6 @@
         <!-- parte da página sem o menu: -->
         <div class="dash">
 
-
-
             <!-- separa os graficos de coluna e pizza do de ranking -->
             <div>
                 <div class="barras">
@@ -400,7 +398,7 @@
             }
         };
 
-        // Adicionando gráfico criado em div na tela
+        // Adicionando gráfico criado na tela
         //  document.getElementById(`myChartCanvas'${idAquario}`),
         console.log("Criando gráfico");
         let myChart = new Chart(
@@ -469,14 +467,6 @@
             dados.datasets[0].data.push(registro.qtd_de_usuarios);
         }
 
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
-
         // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'pie',
@@ -501,7 +491,7 @@
             }
         };
 
-        // Adicionando gráfico criado em div na tela
+        // Adicionando gráfico criado na tela
         // aqui tinha isso o: document.getElementById(`myChartCanvas'${idAquario}`),
         let myChart = new Chart(
             document.getElementById(`graficoPizza`),
@@ -537,7 +527,7 @@
 
         console.log('iniciando plotagem do ranking...');
         console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosRanking" e passados para "plotarRanking":')
         console.log(resposta)
 
 
@@ -596,31 +586,21 @@
                 }
             })
             .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
             });
     }
 
     function plotarMaisAvaliado(resposta) {
 
-        console.log('iniciando plotagem do ranking...');
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
-
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
 
-            console.log(`
-               ${registro.titulo}<br>
-               ${registro.imagem}<br>`);
-
-
-            maisAvaliado.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.titulo}</h4></div>
-<img src="${registro.imagem}" alt=""></div>`;
+            maisAvaliado.innerHTML = `<div class="conteudo-kpi"><div class="titulo-livro-kpi"><h4>${registro.titulo}</h4></div>
+            <img src="${registro.imagem}" alt=""></div>`;
         }
     }
-
 
     // função KPI livro com maior nota: ----------------------------------------------------------------------------------------------------------------------
     function obterDadosMaiorNota() {
@@ -639,28 +619,19 @@
                 }
             })
             .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
             });
     }
 
     function plotarMaiorNota(resposta) {
 
-        console.log('iniciando plotagem do ranking...');
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
 
-            console.log(`
-               ${registro.titulo}<br>
-               ${registro.imagem}<br>
-               ${registro.score}<br>`);
-
-
-            maiorMedia.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.titulo}</h4><h4>Média: ${registro.score}</h4></div>
-<img src="${registro.imagem}" alt=""></div>`;
+            maiorMedia.innerHTML = `<div class="conteudo-kpi"><div class="titulo-livro-kpi"><h4>${registro.titulo}</h4><h4>Média: ${registro.score}</h4></div>
+            <img src="${registro.imagem}" alt=""></div>`;
         }
     }
 
@@ -682,36 +653,24 @@
                 }
             })
             .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
             });
     }
     function plotarMenorNota(resposta) {
-
-        console.log('iniciando plotagem do ranking...');
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
 
-            console.log(`
-               ${registro.titulo}<br>
-               ${registro.imagem}<br>
-               ${registro.score}<br>`);
-
-
-            menorMedia.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.titulo}</h4><h4>Média: ${registro.score}</h4></div>
-<img src="${registro.imagem}" alt=""></div>`;
+            menorMedia.innerHTML = `<div class="conteudo-kpi"><div class="titulo-livro-kpi"><h4>${registro.titulo}</h4><h4>Média: ${registro.score}</h4></div>
+            <img src="${registro.imagem}" alt=""></div>`;
 
         }
     }
 
     // função KPI porcentagem para completar a série: ----------------------------------------------------------------------------------------------------------------------
     function obterDadosClassificacao() {
-
-        console.log("id que vai ser enviadaaaaaaaaaaaaaaaaaAAA:", sessionStorage.ID_USUARIO);
 
         // pega o id pelo sessionStorage e transforma em query parameter, onde o controller recebe como req.query.id_usuario
         // é uma informação extra a ser enviada junto com o fetch
@@ -741,22 +700,22 @@
 
 
             if (registro.qtd_lidos <= 0) {
-                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.usuario} você já leu 0% da série!
+                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="titulo-livro-kpi"><h4>${registro.usuario} você já leu 0% da série!
                 </h4><h3>Quando vai abrir seu primerio diário de um banana?</h3></div></div><br>`;
             } else if (registro.qtd_lidos <= 4) {
-                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.usuario} você
+                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="titulo-livro-kpi"><h4>${registro.usuario} você
                      já leu entre 5% e 20% da série!</h4><h3>O hábito da leitura está surgindo</h3></div></div><br>`;
             } else if (registro.qtd_lidos <= 9) {
-                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.usuario} você já leu entre 25% e 45% da série!
+                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="titulo-livro-kpi"><h4>${registro.usuario} você já leu entre 25% e 45% da série!
                 </h4><h3>Você já é quase da família Heffley</h3></div></div><br>`
             } else if (registro.qtd_lidos <= 14) {
-                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.usuario} você já leu entre 50% e 70% da série!
+                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="titulo-livro-kpi"><h4>${registro.usuario} você já leu entre 50% e 70% da série!
                 </h4><h3>Você oficialmente entrou para o clube dos leitores Banana</h3></div></div><br>`
             } else if (registro.qtd_lidos <= 19) {
-                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.usuario} você já leu entre 75% e 90% da série!
+                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="titulo-livro-kpi"><h4>${registro.usuario} você já leu entre 75% e 90% da série!
                 </h4><h3>Seu nível de Banana está incrivelmente alto</h3></div></div><br>`
             } else if (registro.qtd_lidos <= 20) {
-                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.usuario} Parabéns! você leu 100% da série!
+                classificacao.innerHTML = `<div class="conteudo-kpi"><div class="titulo-livro-kpi"><h4>${registro.usuario} Parabéns! você leu 100% da série!
                 </h4><h3>Poucos chegam até aqui… você entrou para a elite Banana</h3></div></div><br>`
             }
         }
@@ -779,28 +738,20 @@
                 }
             })
             .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                console.error(`Erro na obtenção dos dados: ${error.message}`);
             });
     }
 
     function plotarCompletaram(resposta) {
-
-        console.log('iniciando plotagem do ranking...');
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
 
-            console.log(`
-               ${registro.total_usuarios}<br>
-               ${registro.usuarios_completaram}<br>`);
-
             let PorcentagemCompletaram = (registro.usuarios_completaram * 100) / registro.total_usuarios
 
-            completaramSerie.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${PorcentagemCompletaram.toFixed(1)}% dos usuários
-                    já leram todos os livros da série!</h4></div></div><br>`
+            completaramSerie.innerHTML = `<div class="conteudo-kpi"><div class="titulo-livro-kpi"><h4>${PorcentagemCompletaram.toFixed(1)}% dos usuários
+            já leram todos os livros da série!</h4></div></div><br>`
         }
     }
 
@@ -827,23 +778,13 @@
     }
 
     function plotarUltimaSemana(resposta) {
-
-        console.log('iniciando plotagem do ranking...');
-
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
 
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
 
-            console.log(`
-               ${registro.titulo}<br>
-               ${registro.imagem}<br>`);
-
-
-            ultimaSemana.innerHTML = `<div class="conteudo-kpi"><div class="info-livro"><h4>${registro.titulo}</h4></div>
+            ultimaSemana.innerHTML = `<div class="conteudo-kpi"><div class="titulo-livro-kpi"><h4>${registro.titulo}</h4></div>
             <img src="${registro.imagem}" alt=""></div>`;
         }
     }

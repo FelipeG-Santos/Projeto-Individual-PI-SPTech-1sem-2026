@@ -27,7 +27,6 @@ function buscarLivrosMaisAvaliados() {
     console.log("executando a instrução sql: \n" + instrucao);
 
     return database.executar(instrucao);
-
 }
 
 
@@ -91,7 +90,7 @@ function cadastrar(fk_livro, nota_livro, descricao, fk_usuario) {
 }
 
 
-
+// funçãp para pesquisar as ultimas avaliações:
 function buscarPesquisar(titulo) {
 
     var instrucao = `
@@ -115,7 +114,6 @@ order by a.data_avaliacao desc limit 3;
 
     return database.executar(instrucao);
 };
-
 
 
 // torna possível que outros arquivos vejam esse arquivo:
