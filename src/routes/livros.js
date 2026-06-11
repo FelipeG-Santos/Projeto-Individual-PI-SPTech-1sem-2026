@@ -18,18 +18,6 @@ router.get("/livrosPesquisar", function (req, res) {
     livroController.buscarPesquisar(req, res);
 });
 
-
-
-// rota para gerar os gráficos:
-/*router.get("/ultimos/:idLivros", function (req, res) {
-    livroController.buscarUltimosLivros(req, res);
-});
-
-router.get("/tempo-real/:idLivros", function (req, res) {
-    livroController.buscarLivrosEmTempoReal(req, res);
-});*/
-
-
 router.get("/livrosMaisAvaliados", function (req, res) {
     livroController.buscarLivrosMaisAvaliados(req, res);
 });

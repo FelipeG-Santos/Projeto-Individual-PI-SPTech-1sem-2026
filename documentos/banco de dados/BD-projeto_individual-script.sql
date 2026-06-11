@@ -18,6 +18,12 @@ constraint ctfk_usuario foreign key (fk_usuario)
 references usuario (id_usuario)
 );
 
+create table livros (
+id_livro int primary key auto_increment,
+nome_livro varchar(50),
+imagem_livro varchar(200)
+);
+
 create table avaliacao_livros (
 id_avaliacao_livros int primary key auto_increment,
 fk_livro int,
@@ -33,8 +39,4 @@ references livros (id_livro)
 );
 
 
-create table livros (
-id_livro int primary key auto_increment,
-nome_livro varchar(50),
-imagem_livro varchar(200)
-);
+

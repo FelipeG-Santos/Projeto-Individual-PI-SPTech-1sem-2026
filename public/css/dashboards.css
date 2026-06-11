@@ -18,13 +18,11 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: #1F3467;;
-  /* width: 100vw; */
   height: 300vh;
  
 }
 
 /*KPIS---------------------------------------------------------------------------------------------*/
-
 
 .kpis-individual {
   border-radius: 10px;
@@ -35,13 +33,6 @@ body {
   padding-inline: 10px;
   padding-bottom: 10px;
 }
-
-
-/*.diarios {
-  height: 130px;
-  width: 100px;
-  border: 1px solid #ffffff;
-}*/
 
 .conteudo-kpi {
   display: flex;
@@ -155,7 +146,6 @@ margin-bottom: 20px;
 }
 
 .graph-pizza {
-   
   width: 100%;
   margin: 50px;
   margin-top: 0px;
@@ -200,7 +190,6 @@ padding: 20px;
   font-size: 18px;
     
 }
-
 
 .numero-do-ranking {
   font-size: 40px;

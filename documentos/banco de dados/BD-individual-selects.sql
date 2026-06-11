@@ -49,15 +49,10 @@ order by media_livro desc;
 SELECT 
     l.nome_livro AS titulo,
     ROUND(
-    -- constante de referência: 5
-    (((select avg(nota_livro) -- média de todas as notas
-    from avaliacao_livros) * 5) -- multiplicada pela constante
-    + -- somado
-    (avg(a.nota_livro) -- media de todas as notas
-    * count(*))) -- multiplicada pela qtd de avaliações
-    / -- dividido
-    (5 + count(*)), -- pela constante + qtd de avaliações
-    2) AS score
+    (((select avg(nota_livro) 
+    from avaliacao_livros) * 5) + 
+    (avg(a.nota_livro) * count(*)))/ 
+    (5 + count(*)), 2) AS score
 FROM avaliacao_livros a
 JOIN livros l
 ON a.fk_livro = l.id_livro
@@ -94,13 +89,9 @@ SELECT
     l.imagem_livro AS imagem,
    ROUND(
     (((select avg(nota_livro) 
-    from avaliacao_livros) * 5)
-    + 
-    (avg(a.nota_livro) 
-    * count(*)))
-    /
-    (5 + count(*)), 
-    2) AS score
+    from avaliacao_livros) * 5) + 
+    (avg(a.nota_livro) * count(*)))/
+    (5 + count(*)), 2) AS score
 FROM avaliacao_livros a
 JOIN livros l
 ON a.fk_livro = l.id_livro
@@ -115,13 +106,9 @@ SELECT
     l.imagem_livro AS imagem,
     ROUND(
     (((select avg(nota_livro) 
-    from avaliacao_livros) * 5)
-    + 
-    (avg(a.nota_livro) 
-    * count(*)))
-    /
-    (5 + count(*)), 
-    2) AS score
+    from avaliacao_livros) * 5) + 
+    (avg(a.nota_livro) * count(*)))/
+    (5 + count(*)),  2) AS score
 FROM avaliacao_livros a
 JOIN livros l
 ON a.fk_livro = l.id_livro
@@ -129,9 +116,6 @@ GROUP BY l.nome_livro, l.imagem_livro
 ORDER BY score LIMIT 1;
 
 -- Sua classificação para completar a série:
--- com base no valor recebido de qtd fazer um if else para exibir uma mensagem 
--- dizendo a distancia do usuario para completar a serie e uma mensagem do tipo:
--- ainda falta muito seu banana...
 select
 u.nome as usuario,
 count(a.fk_usuario) as qtd_lidos
@@ -161,7 +145,6 @@ l.imagem_livro as imagem
 from livros l
 join avaliacao_livros a
 on l.id_livro = a.fk_livro
--- curdate pega a data atual e subtrai um intervalo de 7 dias
 where a.data_avaliacao >= curdate() - interval 7 day
 group by a.fk_livro, l.nome_livro, l.imagem_livro
 order by count(a.fk_livro) desc
@@ -187,3 +170,4 @@ order by a.data_avaliacao desc limit 3;
 -- emails iguais:
 select email
 from usuario;
+

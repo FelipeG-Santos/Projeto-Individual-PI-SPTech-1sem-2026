@@ -66,6 +66,29 @@ insert into endereco (estado, cidade, bairro, fk_usuario) values
 ('SC', 'guaianazes', 'Rua P', 29),
 ('RJ', 'Rio de Janeiro', 'Rua N', 30);
 
+-- inserts imagens 
+insert into livros (nome_livro, imagem_livro) values
+('Diário de um Banana 1', '../assets/imgs/diario-1.jpg'),
+('Diário de um Banana 2: Rodrick é o Cara', '../assets/imgs/diario-2.jpg'),
+('Diário de um Banana 3: A Gota D’Água', '../assets/imgs/diario-3.jpg'),
+('Diário de um Banana 4: Dias de Cão', '../assets/imgs/diario-4.jpg'),
+('Diário de um Banana 5: A Verdade Nua e Crua', '../assets/imgs/diario-5.jpg'),
+('Diário de um Banana 6: Casa dos Horrores', '../assets/imgs/diario-6.jpg'),
+('Diário de um Banana 7: Segurando Vela', '../assets/imgs/diario-7.jpg'),
+('Diário de um Banana 8: Maré de Azar', '../assets/imgs/diario-8.jpg'),
+('Diário de um Banana 9: Caindo na Estrada', '../assets/imgs/diario-9.jpg'),
+('Diário de um Banana 10: Bons Tempos', '../assets/imgs/diario-10.jpg'),
+('Diário de um Banana 11: Vai ou Racha', '../assets/imgs/diario-11.jpg'),
+('Diário de um Banana 12: Apertem os Cintos', '../assets/imgs/diario-12.jpg'),
+('Diário de um Banana 13: Batalha Neval', '../assets/imgs/diario-13.jpg'),
+('Diário de um Banana 14: Quebra Tudo', '../assets/imgs/diario-14.jpg'),
+('Diário de um Banana 15: Vai Fundo', '../assets/imgs/diario-15.jpg'),
+('Diário de um Banana 16: Bola Fora', '../assets/imgs/diario-16.jpg'),
+('Diário de um Banana 17: Fräwda Megaxeia', '../assets/imgs/diario-17.jpg'),
+('Diário de um Banana 18: Cabeça Oca', '../assets/imgs/diario-18.jpg'),
+('Diário de um Banana 19: Baita Lambança', '../assets/imgs/diario-19.jpg'),
+('Diário de um Banana 20: Festa Insana', '../assets/imgs/diario-20.jpg');
+
 insert into avaliacao_livros (fk_livro, nota_livro, descricao, data_avaliacao, fk_usuario) values
 (1, 2.5, 'Achei o primeiro fraco','2026-05-01', 1), 
 (3, 3.5, 'Mediano','2026-01-14', 1), 
@@ -156,25 +179,3 @@ insert into avaliacao_livros (fk_livro, nota_livro, descricao, data_avaliacao, f
 (20, 5, 'o melhor de todos!','2026-02-21', 12);
 
 
--- inserts imagens 
-insert into livros (nome_livro, imagem_livro) values
-('Diário de um Banana 1', '../assets/imgs/diario-1.jpg'),
-('Diário de um Banana 2: Rodrick é o Cara', '../assets/imgs/diario-2.jpg'),
-('Diário de um Banana 3: A Gota D’Água', '../assets/imgs/diario-3.jpg'),
-('Diário de um Banana 4: Dias de Cão', '../assets/imgs/diario-4.jpg'),
-('Diário de um Banana 5: A Verdade Nua e Crua', '../assets/imgs/diario-5.jpg'),
-('Diário de um Banana 6: Casa dos Horrores', '../assets/imgs/diario-6.jpg'),
-('Diário de um Banana 7: Segurando Vela', '../assets/imgs/diario-7.jpg'),
-('Diário de um Banana 8: Maré de Azar', '../assets/imgs/diario-8.jpg'),
-('Diário de um Banana 9: Caindo na Estrada', '../assets/imgs/diario-9.jpg'),
-('Diário de um Banana 10: Bons Tempos', '../assets/imgs/diario-10.jpg'),
-('Diário de um Banana 11: Vai ou Racha', '../assets/imgs/diario-11.jpg'),
-('Diário de um Banana 12: Apertem os Cintos', '../assets/imgs/diario-12.jpg'),
-('Diário de um Banana 13: Batalha Neval', '../assets/imgs/diario-13.jpg'),
-('Diário de um Banana 14: Quebra Tudo', '../assets/imgs/diario-14.jpg'),
-('Diário de um Banana 15: Vai Fundo', '../assets/imgs/diario-15.jpg'),
-('Diário de um Banana 16: Bola Fora', '../assets/imgs/diario-16.jpg'),
-('Diário de um Banana 17: Fräwda Megaxeia', '../assets/imgs/diario-17.jpg'),
-('Diário de um Banana 18: Cabeça Oca', '../assets/imgs/diario-18.jpg'),
-('Diário de um Banana 19: Baita Lambança', '../assets/imgs/diario-19.jpg'),
-('Diário de um Banana 20: Festa Insana', '../assets/imgs/diario-20.jpg');
